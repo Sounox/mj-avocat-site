@@ -12,6 +12,12 @@
 </head>
 <body>
 
+  <!-- Site Loader (first visit only via sessionStorage) -->
+  <div class="site-loader" id="siteLoader" aria-hidden="true" role="presentation">
+    <img src="assets/1_LOGO_BLANC.png" alt="" class="site-loader__logo">
+    <div class="site-loader__curtain"></div>
+  </div>
+
   <!-- Cursor (fixed, outside scroll) -->
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true">
@@ -91,6 +97,20 @@
 
         </div>
 
+        <!-- Marquee domaines -->
+        <div class="hero__marquee" aria-hidden="true">
+          <div class="hero__marquee-track">
+            <span>DROIT DE LA FAMILLE</span><span class="hero__marquee-sep">·</span>
+            <span>DROIT CIVIL</span><span class="hero__marquee-sep">·</span>
+            <span>CONTENTIEUX AAH</span><span class="hero__marquee-sep">·</span>
+            <span>BARREAU DE MONTPELLIER</span><span class="hero__marquee-sep">·</span>
+            <span>DROIT DE LA FAMILLE</span><span class="hero__marquee-sep">·</span>
+            <span>DROIT CIVIL</span><span class="hero__marquee-sep">·</span>
+            <span>CONTENTIEUX AAH</span><span class="hero__marquee-sep">·</span>
+            <span>BARREAU DE MONTPELLIER</span><span class="hero__marquee-sep">·</span>
+          </div>
+        </div>
+
         <!-- Scroll indicator -->
         <div class="hero__scroll-indicator hero-anim" data-delay="1700" aria-hidden="true">
           <span class="hero__scroll-line"></span>
@@ -115,7 +135,7 @@
     <!-- ================================================================
          SECTION 2 — PRÉSENTATION (light)
     ================================================================ -->
-    <section id="presentation" class="section section-light" aria-label="Présentation du cabinet">
+    <section id="presentation" class="section section-light section--numbered" style="--section-num: 'II'" aria-label="Présentation du cabinet">
       <div class="ornament-corners" aria-hidden="true">
         <svg class="ornament-corner ornament-corner--tl" viewBox="0 0 40 40"><path d="M0 20 L0 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 15 L5 5 L15 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
         <svg class="ornament-corner ornament-corner--tr" viewBox="0 0 40 40"><path d="M40 20 L40 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 15 L35 5 L25 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
@@ -191,9 +211,30 @@
     </div>
 
     <!-- ================================================================
+         SECTION CITATION
+    ================================================================ -->
+    <section class="section-citation" aria-label="Engagement du cabinet">
+      <div class="citation-bg" aria-hidden="true">
+        <img src="assets/img-dark.jpg" alt="" loading="lazy">
+      </div>
+      <div class="citation-inner">
+        <div class="citation-line reveal-ornament"></div>
+        <blockquote class="citation-quote">
+          <p class="citation-quote__text split-words">
+            «&nbsp;Le droit doit être un outil de protection,<br>d'écoute et d'accompagnement.&nbsp;»
+          </p>
+          <footer class="citation-quote__footer reveal-up">
+            <cite class="citation-quote__author">— Maître Morgane JOSEPH, Avocat au Barreau de Montpellier</cite>
+          </footer>
+        </blockquote>
+        <div class="citation-line reveal-ornament"></div>
+      </div>
+    </section>
+
+    <!-- ================================================================
          SECTION 3 — DOMAINES (dark, row layout)
     ================================================================ -->
-    <section id="domaines" class="section section-dark domaines" aria-label="Domaines d'activité">
+    <section id="domaines" class="section section-dark domaines section--numbered" style="--section-num: 'III'" aria-label="Domaines d'activité">
       <div class="bg-word bg-word--left parallax" data-speed="-0.2" aria-hidden="true">DÉFENSE</div>
 
       <div class="container">
@@ -205,6 +246,9 @@
 
       <!-- Row 1: Famille -->
       <div class="domaine-row reveal-up" data-index="01">
+        <div class="domaine-row__bg" aria-hidden="true">
+          <img src="assets/img-room.jpg" alt="" loading="lazy">
+        </div>
         <div class="container domaine-row__inner">
           <div class="domaine-row__intro">
             <p class="eyebrow">01 — Domaine d'intervention</p>
@@ -233,6 +277,9 @@
 
       <!-- Row 2: Civil -->
       <div class="domaine-row reveal-up" data-index="02">
+        <div class="domaine-row__bg" aria-hidden="true">
+          <img src="assets/img-books.jpg" alt="" loading="lazy">
+        </div>
         <div class="container domaine-row__inner">
           <div class="domaine-row__intro">
             <p class="eyebrow">02 — Domaine d'intervention</p>
@@ -259,6 +306,9 @@
 
       <!-- Row 3: AAH -->
       <div class="domaine-row reveal-up" data-index="03">
+        <div class="domaine-row__bg" aria-hidden="true">
+          <img src="assets/img-texture.jpg" alt="" loading="lazy">
+        </div>
         <div class="container domaine-row__inner">
           <div class="domaine-row__intro">
             <p class="eyebrow">03 — Domaine d'intervention</p>
@@ -293,7 +343,7 @@
     <!-- ================================================================
          SECTION 4 — HONORAIRES (light)
     ================================================================ -->
-    <section id="honoraires" class="section section-light" aria-label="Honoraires">
+    <section id="honoraires" class="section section-light section--numbered" style="--section-num: 'IV'" aria-label="Honoraires">
       <div class="ornament-corners" aria-hidden="true">
         <svg class="ornament-corner ornament-corner--tl" viewBox="0 0 40 40"><path d="M0 20 L0 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 15 L5 5 L15 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
         <svg class="ornament-corner ornament-corner--tr" viewBox="0 0 40 40"><path d="M40 20 L40 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 15 L35 5 L25 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
@@ -359,7 +409,7 @@
     <!-- ================================================================
          SECTION 5 — FAQ (dark)
     ================================================================ -->
-    <section id="faq" class="section section-dark faq" aria-label="Questions fréquentes">
+    <section id="faq" class="section section-dark faq section--numbered" style="--section-num: 'V'" aria-label="Questions fréquentes">
       <div class="container">
         <div class="section__header reveal-up">
           <p class="eyebrow">FAQ</p>
@@ -453,7 +503,7 @@
     <!-- ================================================================
          SECTION 6 — CONTACT (light)
     ================================================================ -->
-    <section id="contact" class="section section-light" aria-label="Prendre rendez-vous">
+    <section id="contact" class="section section-light section--numbered" style="--section-num: 'VI'" aria-label="Prendre rendez-vous">
       <div class="ornament-corners" aria-hidden="true">
         <svg class="ornament-corner ornament-corner--tl" viewBox="0 0 40 40"><path d="M0 20 L0 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 15 L5 5 L15 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
         <svg class="ornament-corner ornament-corner--tr" viewBox="0 0 40 40"><path d="M40 20 L40 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 15 L35 5 L25 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>

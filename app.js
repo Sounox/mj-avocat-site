@@ -14,6 +14,37 @@ const isMobile       = window.innerWidth < 768;
 
 let cursorX = 0, cursorY = 0;
 let ringX   = 0, ringY   = 0;
+let loaderActive = false;
+
+/* ---------------------------------------------------------------------------
+   0.5 SITE LOADER (first visit via sessionStorage)
+--------------------------------------------------------------------------- */
+function initLoader() {
+  const loader = document.getElementById('siteLoader');
+  if (!loader) return;
+
+  if (sessionStorage.getItem('mj-loader-shown')) {
+    loader.classList.add('gone');
+    return;
+  }
+
+  loaderActive = true;
+
+  /* Suppress page-overlay: loader handles the reveal */
+  const overlay = document.querySelector('.page-overlay');
+  if (overlay) overlay.style.opacity = '0';
+
+  setTimeout(() => loader.classList.add('logo-in'), 220);
+  setTimeout(() => {
+    loader.classList.add('lifting');
+    document.body.classList.remove('is-locked');
+  }, 1100);
+  setTimeout(() => {
+    loader.classList.add('gone');
+    loaderActive = false;
+    sessionStorage.setItem('mj-loader-shown', '1');
+  }, 2600);
+}
 
 /* ---------------------------------------------------------------------------
    1. RAF MAIN LOOP
@@ -184,7 +215,8 @@ function initHero() {
 
   function at(ms, fn) { setTimeout(fn, ms); }
 
-  at(0,    () => overlay?.classList.add('gone'));
+  /* Only fade the overlay when no loader is running */
+  if (!loaderActive) at(0, () => overlay?.classList.add('gone'));
 
   document.querySelectorAll('.hero-anim').forEach(el => {
     const delay = parseInt(el.dataset.delay || '0', 10);
@@ -489,6 +521,7 @@ function initForm() {
    16. BOOT
 --------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+  initLoader();
   initCursor();
   initSplitText();
   initReveals();
