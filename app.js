@@ -1,62 +1,34 @@
 /* =============================================================================
-   MAÎTRE MORGANE JOSEPH — app.js
-   Vanilla JS: smooth scroll, cursor, split text, reveals, parallax,
-   canvas particles, nav, accordions, card glow/tilt — astr.studio
+   MAÎTRE MORGANE JOSEPH — app.js — astr.studio
+   Native scroll · RAF loop for cursor + parallax + massive text
 ============================================================================= */
 
 'use strict';
 
 /* ---------------------------------------------------------------------------
-   0. GLOBALS & MOTION PREFERENCE
+   0. GLOBALS
 --------------------------------------------------------------------------- */
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const isTouch = window.matchMedia('(pointer: coarse)').matches;
-const isMobile = window.innerWidth < 768;
+const isTouch        = window.matchMedia('(pointer: coarse)').matches;
+const isMobile       = window.innerWidth < 768;
 
 let cursorX = 0, cursorY = 0;
-let ringX = 0, ringY = 0;
-let smoothY = 0;
-
-const scrollContent = document.querySelector('.scroll-content');
-const scrollSpacer  = document.querySelector('.scroll-spacer');
-const smoothEnabled = !prefersReduced && !isTouch && !isMobile;
+let ringX   = 0, ringY   = 0;
 
 /* ---------------------------------------------------------------------------
-   1. SMOOTH SCROLL (RAF lerp)
+   1. RAF MAIN LOOP
+   Handles: cursor ring lerp · parallax · massive text scaling
 --------------------------------------------------------------------------- */
-function initSmoothScroll() {
-  if (!smoothEnabled) {
-    document.body.classList.add('smooth-disabled');
-    return;
-  }
-
-  smoothY = window.scrollY;
-
-  function updateSpacer() {
-    if (scrollSpacer && scrollContent) {
-      scrollSpacer.style.height = scrollContent.scrollHeight + 'px';
-    }
-  }
-
-  window.addEventListener('resize', updateSpacer, { passive: true });
-  const ro = new ResizeObserver(updateSpacer);
-  if (scrollContent) ro.observe(scrollContent);
-  updateSpacer();
+function startRAF() {
+  if (prefersReduced) return;
 
   function loop() {
-    const targetY = window.scrollY;
-    smoothY += (targetY - smoothY) * 0.08;
-    if (Math.abs(targetY - smoothY) < 0.1) smoothY = targetY;
-    if (scrollContent) scrollContent.style.transform = `translate3d(0,${-smoothY}px,0)`;
-    updateParallax(smoothY);
     updateCursorRing();
+    updateParallax();
+    updateMassiveText();
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
-}
-
-function getScroll() {
-  return smoothEnabled ? smoothY : window.scrollY;
 }
 
 /* ---------------------------------------------------------------------------
@@ -74,25 +46,17 @@ function initCursor() {
     if (dot) dot.style.transform = `translate(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%))`;
   }, { passive: true });
 
-  if (!smoothEnabled) {
-    (function ringLoop() {
-      updateCursorRing();
-      requestAnimationFrame(ringLoop);
-    })();
-  }
-
   document.addEventListener('mouseover', e => {
     const isImg  = !!e.target.closest('img, .hero__portrait-frame, .presentation__img-wrap');
-    const isLink = !!e.target.closest('a, button, label[for], .pillar, .c-card, .h-card');
-
-    dot?.classList.toggle('hov-img', isImg);
+    const isLink = !!e.target.closest('a, button, label[for], .pillar, .c-card, .h-card, .domaine-row__trigger');
+    dot?.classList.toggle('hov-img',  isImg);
     dot?.classList.toggle('hov-link', !isImg && isLink);
-    ring?.classList.toggle('hov-img', isImg);
+    ring?.classList.toggle('hov-img',  isImg);
     ring?.classList.toggle('hov-link', !isImg && isLink);
   }, { passive: true });
 
   window.addEventListener('mousedown', () => {
-    dot?.style.setProperty('transform', `translate(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%)) scale(0.75)`);
+    if (dot) dot.style.transform = `translate(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%)) scale(0.75)`;
     setTimeout(() => {
       if (dot) dot.style.transform = `translate(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%))`;
     }, 300);
@@ -107,7 +71,67 @@ function updateCursorRing() {
 }
 
 /* ---------------------------------------------------------------------------
-   3. SPLIT TEXT
+   3. PARALLAX
+--------------------------------------------------------------------------- */
+const parallaxEls = [];
+
+function initParallax() {
+  if (prefersReduced) return;
+  document.querySelectorAll('.parallax').forEach(el => {
+    parallaxEls.push({ el, speed: parseFloat(el.dataset.speed || '0.15') });
+    el.style.willChange = 'transform';
+  });
+}
+
+function updateParallax() {
+  if (!parallaxEls.length) return;
+  const vh = window.innerHeight;
+  parallaxEls.forEach(({ el, speed }) => {
+    const rect   = el.parentElement?.getBoundingClientRect() || el.getBoundingClientRect();
+    const center = rect.top + rect.height / 2 - vh / 2;
+    const offset = Math.max(-120, Math.min(120, center * speed));
+    el.style.transform = `translate3d(0,${offset}px,0)`;
+  });
+}
+
+/* ---------------------------------------------------------------------------
+   4. MASSIVE TEXT (scroll-driven font-size)
+   Hero is 200vh; inner sticky is 100vh.
+   Progress 0→1 as user scrolls through the extra 100vh.
+--------------------------------------------------------------------------- */
+const massiveText    = document.getElementById('massiveText');
+const heroSection    = document.querySelector('.hero');
+const heroStickyEl   = document.querySelector('.hero__sticky');
+
+const MASSIVE_START  = 22;  /* vw — initial */
+const MASSIVE_END    = 55;  /* vw — fully scrolled */
+const OPACITY_START  = 0.28;
+const OPACITY_END    = 0.08;
+
+function updateMassiveText() {
+  if (!massiveText || !heroSection || prefersReduced) return;
+
+  const rect     = heroSection.getBoundingClientRect();
+  const totalH   = heroSection.offsetHeight;    /* 200vh */
+  const stickyH  = window.innerHeight;          /* 100vh */
+  const scrolled = -rect.top;                   /* px scrolled into hero */
+
+  /* Progress 0 → 1 over the second 100vh of the hero */
+  const progress = Math.max(0, Math.min(1, (scrolled - stickyH * 0) / stickyH));
+
+  const fz  = MASSIVE_START + (MASSIVE_END - MASSIVE_START) * easeInOutCubic(progress);
+  const op  = OPACITY_START + (OPACITY_END - OPACITY_START) * progress;
+
+  massiveText.style.fontSize = `${fz}vw`;
+  massiveText.style.opacity  = op;
+}
+
+function easeInOutCubic(t) {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+/* ---------------------------------------------------------------------------
+   5. SPLIT TEXT
 --------------------------------------------------------------------------- */
 function splitText(el, mode) {
   const original = el.textContent.trim();
@@ -131,12 +155,12 @@ function initSplitText() {
 }
 
 /* ---------------------------------------------------------------------------
-   4. INTERSECTION OBSERVER REVEALS
+   6. INTERSECTION OBSERVER REVEALS
 --------------------------------------------------------------------------- */
 function initReveals() {
   const els = document.querySelectorAll(
     '.reveal-up, .reveal-fade, .reveal-scale, .reveal-mask, .reveal-stagger, ' +
-    '.split-chars, .split-words, .section-sep__line'
+    '.reveal-ornament, .split-chars, .split-words, .section-sep__line'
   );
   if (!els.length) return;
 
@@ -152,39 +176,7 @@ function initReveals() {
 }
 
 /* ---------------------------------------------------------------------------
-   5. PARALLAX (called from RAF loop)
---------------------------------------------------------------------------- */
-const parallaxEls = [];
-
-function initParallax() {
-  if (prefersReduced) return;
-  document.querySelectorAll('.parallax').forEach(el => {
-    parallaxEls.push({ el, speed: parseFloat(el.dataset.speed || '0.15') });
-    el.style.willChange = 'transform';
-  });
-}
-
-function updateParallax() {
-  if (!parallaxEls.length) return;
-  const vh = window.innerHeight;
-  parallaxEls.forEach(({ el, speed }) => {
-    const parent = el.parentElement || el;
-    const rect = parent.getBoundingClientRect();
-    // When smooth scroll active, getBoundingClientRect already uses the
-    // translated position — no extra math needed.
-    const center = rect.top + rect.height / 2 - vh / 2;
-    const offset = Math.max(-120, Math.min(120, center * speed));
-    el.style.transform = `translate3d(0,${offset}px,0)`;
-  });
-}
-
-// For native scroll (no smooth scroll), update parallax on scroll event
-if (!smoothEnabled && !prefersReduced) {
-  window.addEventListener('scroll', updateParallax, { passive: true });
-}
-
-/* ---------------------------------------------------------------------------
-   6. HERO CHOREOGRAPHY
+   7. HERO CHOREOGRAPHY
 --------------------------------------------------------------------------- */
 function initHero() {
   const overlay = document.querySelector('.page-overlay');
@@ -192,35 +184,33 @@ function initHero() {
 
   function at(ms, fn) { setTimeout(fn, ms); }
 
-  // Fade out page overlay
-  at(0, () => overlay?.classList.add('gone'));
+  at(0,    () => overlay?.classList.add('gone'));
 
-  // Staggered hero elements
   document.querySelectorAll('.hero-anim').forEach(el => {
     const delay = parseInt(el.dataset.delay || '0', 10);
     at(delay, () => el.classList.add('entered'));
   });
 
-  // Portrait mask reveal
+  /* Portrait mask reveal */
   const portrait = document.querySelector('.hero__portrait-frame[data-mask-hero]');
   at(1500, () => portrait?.classList.add('is-visible'));
 
-  // Canvas fade in
+  /* Canvas fade in */
   at(1900, () => document.querySelector('.hero__canvas')?.classList.add('ready'));
 
-  // Unlock scroll
-  at(1500, () => document.body.classList.remove('is-locked'));
+  /* Unlock scroll */
+  at(1400, () => document.body.classList.remove('is-locked'));
 }
 
 /* ---------------------------------------------------------------------------
-   7. CANVAS PARTICLES
+   8. CANVAS PARTICLES
 --------------------------------------------------------------------------- */
 function initParticles() {
-  const canvas = document.getElementById('heroCanvas');
-  const section = document.querySelector('.hero');
+  const canvas  = document.getElementById('heroCanvas');
+  const section = document.querySelector('.hero__sticky');
   if (!canvas || !section || prefersReduced) return;
 
-  const ctx = canvas.getContext('2d');
+  const ctx   = canvas.getContext('2d');
   const count = isMobile ? 40 : 100;
   let W, H, pts = [], active = true;
 
@@ -234,17 +224,10 @@ function initParticles() {
   function rand(a, b) { return a + Math.random() * (b - a); }
 
   for (let i = 0; i < count; i++) {
-    pts.push({
-      x: rand(0, W), y: rand(0, H),
-      vx: rand(-0.14, 0.14), vy: rand(-0.14, 0.14),
-      r: rand(0.8, 2),
-      a: rand(0.05, 0.2)
-    });
+    pts.push({ x: rand(0, W), y: rand(0, H), vx: rand(-0.14, 0.14), vy: rand(-0.14, 0.14), r: rand(0.8, 2), a: rand(0.05, 0.2) });
   }
 
-  // Stop animation when hero is off screen
-  new IntersectionObserver(([e]) => { active = e.isIntersecting; }, { threshold: 0 })
-    .observe(section);
+  new IntersectionObserver(([e]) => { active = e.isIntersecting; }, { threshold: 0 }).observe(section);
 
   (function draw() {
     requestAnimationFrame(draw);
@@ -260,7 +243,6 @@ function initParticles() {
       ctx.fill();
     });
 
-    // Constellation links
     for (let i = 0; i < pts.length; i++) {
       for (let j = i + 1; j < pts.length; j++) {
         const dx = pts[i].x - pts[j].x;
@@ -271,7 +253,7 @@ function initParticles() {
           ctx.moveTo(pts[i].x, pts[i].y);
           ctx.lineTo(pts[j].x, pts[j].y);
           ctx.strokeStyle = `rgba(240,235,230,${(1 - d / 110) * 0.055})`;
-          ctx.lineWidth = 0.5;
+          ctx.lineWidth   = 0.5;
           ctx.stroke();
         }
       }
@@ -280,7 +262,7 @@ function initParticles() {
 }
 
 /* ---------------------------------------------------------------------------
-   8. NAV (scroll-based transform + magic hide/show)
+   9. NAV
 --------------------------------------------------------------------------- */
 function initNav() {
   const nav = document.querySelector('.nav');
@@ -293,13 +275,13 @@ function initNav() {
     nav.classList.toggle('scrolled', sy > 80);
 
     if (sy > 800) {
-      if (sy > lastY + 2)  nav.classList.add('hidden');
-      if (sy < lastY - 4)  nav.classList.remove('hidden');
+      if (sy > lastY + 2) nav.classList.add('hidden');
+      if (sy < lastY - 4) nav.classList.remove('hidden');
     } else {
       nav.classList.remove('hidden');
     }
-    lastY = sy;
-    ticking = false;
+    lastY    = sy;
+    ticking  = false;
   }
 
   window.addEventListener('scroll', () => {
@@ -308,7 +290,7 @@ function initNav() {
 }
 
 /* ---------------------------------------------------------------------------
-   9. MOBILE NAV TOGGLE
+   10. MOBILE NAV
 --------------------------------------------------------------------------- */
 function initMobileNav() {
   const toggle = document.querySelector('.nav__toggle');
@@ -332,7 +314,47 @@ function initMobileNav() {
 }
 
 /* ---------------------------------------------------------------------------
-   10. ACCORDIONS
+   11. DOMAINES (row expand/collapse)
+--------------------------------------------------------------------------- */
+function initDomaines() {
+  document.querySelectorAll('.domaine-row__trigger').forEach(trigger => {
+    const panelId = trigger.getAttribute('aria-controls');
+    const panel   = document.getElementById(panelId);
+    const row     = trigger.closest('.domaine-row');
+    if (!panel || !row) return;
+
+    /* Remove hidden attr — CSS handles collapse via max-height/opacity */
+    panel.removeAttribute('hidden');
+
+    trigger.addEventListener('click', () => {
+      const isOpen = row.classList.contains('is-open');
+
+      document.querySelectorAll('.domaine-row.is-open').forEach(openRow => {
+        if (openRow !== row) closeDomaineRow(openRow);
+      });
+
+      isOpen ? closeDomaineRow(row) : openDomaineRow(row, panel, trigger);
+    });
+  });
+}
+
+function openDomaineRow(row, panel, trigger) {
+  row.classList.add('is-open');
+  trigger.setAttribute('aria-expanded', 'true');
+  panel.classList.add('is-open');
+}
+
+function closeDomaineRow(row) {
+  row.classList.remove('is-open');
+  const trigger = row.querySelector('.domaine-row__trigger');
+  const panelId = trigger?.getAttribute('aria-controls');
+  const panel   = panelId ? document.getElementById(panelId) : null;
+  trigger?.setAttribute('aria-expanded', 'false');
+  panel?.classList.remove('is-open');
+}
+
+/* ---------------------------------------------------------------------------
+   12. ACCORDIONS (FAQ)
 --------------------------------------------------------------------------- */
 function initAccordions() {
   document.querySelectorAll('.accordion__trigger').forEach(trigger => {
@@ -341,14 +363,12 @@ function initAccordions() {
     const item    = trigger.closest('.accordion__item');
     if (!panel || !item) return;
 
-    // Init closed state
     panel.style.maxHeight = '0';
     panel.setAttribute('hidden', '');
 
     trigger.addEventListener('click', () => {
       const isOpen = item.classList.contains('open');
 
-      // Close siblings in same accordion wrapper
       item.closest('.accordion')?.querySelectorAll('.accordion__item.open').forEach(sib => {
         if (sib !== item) closeAccordion(sib);
       });
@@ -381,7 +401,7 @@ function closeAccordion(item) {
 }
 
 /* ---------------------------------------------------------------------------
-   11. CARD GLOW + 3D TILT
+   13. CARD GLOW (h-card)
 --------------------------------------------------------------------------- */
 function initCardEffects() {
   if (prefersReduced || isTouch) return;
@@ -405,7 +425,7 @@ function initCardEffects() {
 }
 
 /* ---------------------------------------------------------------------------
-   12. SMOOTH ANCHOR CLICKS
+   14. SMOOTH ANCHOR CLICKS
 --------------------------------------------------------------------------- */
 function initAnchors() {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -417,17 +437,16 @@ function initAnchors() {
       e.preventDefault();
 
       const navH = parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue('--nav-h-s') || '64',
-        10
+        getComputedStyle(document.documentElement).getPropertyValue('--nav-h-s') || '64', 10
       );
       const top = target.getBoundingClientRect().top + window.scrollY - navH;
-      window.scrollTo({ top, behavior: smoothEnabled ? 'instant' : 'smooth' });
+      window.scrollTo({ top, behavior: 'smooth' });
     });
   });
 }
 
 /* ---------------------------------------------------------------------------
-   13. CONTACT FORM (mailto fallback)
+   15. CONTACT FORM
 --------------------------------------------------------------------------- */
 function initForm() {
   const form    = document.getElementById('contactForm');
@@ -467,22 +486,22 @@ function initForm() {
 }
 
 /* ---------------------------------------------------------------------------
-   14. BOOT
+   16. BOOT
 --------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
-  initSmoothScroll();
   initCursor();
   initSplitText();
   initReveals();
   initParallax();
   initNav();
   initMobileNav();
+  initDomaines();
   initAccordions();
   initCardEffects();
   initAnchors();
   initForm();
+  startRAF();
 
-  // Hero choreography: small delay lets fonts render
   setTimeout(initHero, 80);
   setTimeout(initParticles, 300);
 });
