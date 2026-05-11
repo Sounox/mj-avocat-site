@@ -1,5 +1,5 @@
-/* =============================================================================
-   MAÎTRE MORGANE JOSEPH — styles.css — astr.studio
+﻿/* =============================================================================
+   MAÃŽTRE MORGANE JOSEPH â€” styles.css â€” astr.studio
 ============================================================================= */
 
 /* ---------------------------------------------------------------------------
@@ -55,7 +55,7 @@ address { font-style: normal; }
 abbr { text-decoration: none; cursor: help; }
 
 /* ---------------------------------------------------------------------------
-   3. SCROLL (native — smooth-scroll wrapper disabled for sticky support)
+   3. SCROLL (native â€” smooth-scroll wrapper disabled for sticky support)
 --------------------------------------------------------------------------- */
 .scroll-content { position: static; }
 .scroll-spacer  { display: none; }
@@ -339,7 +339,7 @@ p {
   color: var(--espresso);
 }
 
-/* Light section — child overrides for hardcoded colours */
+/* Light section â€” child overrides for hardcoded colours */
 .section-light .bg-word            { color: var(--taupe); opacity: 0.055; }
 .section-light .section-sep__line  { background: var(--taupe); }
 
@@ -493,7 +493,7 @@ p {
 .bg-word--left { left: -4%; right: auto; }
 
 /* ---------------------------------------------------------------------------
-   17. HERO — 200vh sticky pin
+   17. HERO â€” 200vh sticky pin
 --------------------------------------------------------------------------- */
 .hero {
   position: relative;
@@ -771,7 +771,7 @@ p {
 .reveal-stagger.is-visible > *:nth-child(5)     { transition-delay: 320ms; }
 
 /* ---------------------------------------------------------------------------
-   20. PRÉSENTATION
+   20. PRÃ‰SENTATION
 --------------------------------------------------------------------------- */
 .presentation__grid {
   display: grid;
@@ -835,7 +835,7 @@ p {
 .signature-img { max-width: 280px; opacity: 0.65; }
 
 /* ---------------------------------------------------------------------------
-   21. DOMAINES — row layout
+   21. DOMAINES â€” row layout
 --------------------------------------------------------------------------- */
 .domaine-row {
   border-top: 1px solid rgba(240,235,230,0.07);
@@ -962,7 +962,7 @@ p {
   line-height: 1.65;
 }
 .domaine-detail__body ul li::before {
-  content: '—';
+  content: '\2014';
   position: absolute;
   left: 0;
   color: var(--taupe);
@@ -1060,7 +1060,7 @@ p {
   font-size: 0.93rem;
   line-height: 1.6;
 }
-.accordion__content ul li::before { content: '—'; position: absolute; left: 0; color: var(--taupe); opacity: 0.6; }
+.accordion__content ul li::before { content: '\2014'; position: absolute; left: 0; color: var(--taupe); opacity: 0.6; }
 .accordion__content strong { color: var(--sand); font-weight: 600; }
 
 .faq .accordion__num { display: none; }
@@ -1300,7 +1300,7 @@ p {
 }
 
 /* ---------------------------------------------------------------------------
-   26. FOOTER — dark, with background image
+   26. FOOTER â€” dark, with background image
 --------------------------------------------------------------------------- */
 .footer {
   position: relative;
@@ -1420,7 +1420,7 @@ p {
 }
 
 /* ---------------------------------------------------------------------------
-   28. RESPONSIVE — TABLET (1024px)
+   28. RESPONSIVE â€” TABLET (1024px)
 --------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
   .honoraires__cards { grid-template-columns: repeat(2, 1fr); }
@@ -1444,7 +1444,7 @@ p {
 }
 
 /* ---------------------------------------------------------------------------
-   29. RESPONSIVE — MOBILE (768px)
+   29. RESPONSIVE â€” MOBILE (768px)
 --------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   :root {
@@ -1795,7 +1795,7 @@ body::after {
 }
 
 /* ---------------------------------------------------------------------------
-   36. NUMÉROS ROMAINS — background par section
+   36. NUMÃ‰ROS ROMAINS â€” background par section
 --------------------------------------------------------------------------- */
 .section--numbered::after {
   content: var(--section-num, 'I');
@@ -1814,7 +1814,7 @@ body::after {
 }
 
 /* ---------------------------------------------------------------------------
-   37. DOMAINES — image d'ambiance par domaine
+   37. DOMAINES â€” image d'ambiance par domaine
 --------------------------------------------------------------------------- */
 .domaine-row__bg {
   position: absolute;
@@ -1847,7 +1847,7 @@ body::after {
 .domaine-row__inner { position: relative; z-index: 1; }
 
 /* ---------------------------------------------------------------------------
-   38. DROP CAP — premier paragraphe Présentation
+   38. DROP CAP â€” premier paragraphe PrÃ©sentation
 --------------------------------------------------------------------------- */
 .presentation__body p:first-child::first-letter {
   font-family: 'Cormorant Garamond', Georgia, serif;
@@ -1867,13 +1867,13 @@ body::after {
 }
 
 /* ---------------------------------------------------------------------------
-   40. UNDERLINE ANIMÉ depuis le centre (nav + footer)
+   40. UNDERLINE ANIMÃ‰ depuis le centre (nav + footer)
 --------------------------------------------------------------------------- */
 .nav__link::after    { transform-origin: center; }
 .footer__link::after { transform-origin: center; }
 
 /* ---------------------------------------------------------------------------
-   41. FOOTER CINÉMATOGRAPHIQUE
+   41. FOOTER CINÃ‰MATOGRAPHIQUE
 --------------------------------------------------------------------------- */
 .footer {
   min-height: 75vh;
@@ -1903,6 +1903,90 @@ body::after {
 }
 
 /* ---------------------------------------------------------------------------
-   42. CARET COLOR DORÉ sur inputs
+   42. CARET COLOR DORÃ‰ sur inputs
 --------------------------------------------------------------------------- */
 .form__input { caret-color: var(--sand); }
+
+/* ---------------------------------------------------------------------------
+   43. MULTI-PAGE â€” offset nav fixe + lien actif
+--------------------------------------------------------------------------- */
+.section-first {
+  padding-top: calc(var(--nav-h) + clamp(3rem, 6vw, 5rem));
+}
+
+.nav__link[aria-current="page"] {
+  color: var(--ivory);
+}
+.nav__link[aria-current="page"]::after {
+  transform: scaleX(1) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   44. MULTI-PAGE — pages intérieures
+--------------------------------------------------------------------------- */
+.page-interior .page-overlay {
+  opacity: 0;
+}
+
+.page-interior .nav {
+  height: var(--nav-h-s);
+  background: rgba(47,26,18,0.82);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-color: rgba(240,235,230,0.08);
+}
+
+.page-interior .nav__logo-img {
+  height: 32px;
+}
+
+.page-interior .footer {
+  min-height: auto;
+}
+
+.page-interior .footer__inner {
+  padding-top: clamp(3.5rem, 7vw, 5rem);
+}
+
+.footer__link[aria-current="page"] {
+  color: var(--ivory);
+}
+
+.footer__link[aria-current="page"]::after {
+  transform: scaleX(1) !important;
+}
+
+@media (max-width: 768px) {
+  .page-interior .nav__logo-img {
+    height: 40px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .nav__toggle {
+    z-index: 1002;
+    border-color: rgba(240,235,230,0.68);
+    background: rgba(47,26,18,0.78);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+  }
+
+  .presentation__col-left,
+  .presentation__col-right {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .presentation__body,
+  .presentation__body p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .form__select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-size: 14px 14px;
+    padding-right: 2.6rem;
+  }
+}

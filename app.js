@@ -1,6 +1,6 @@
-/* =============================================================================
-   MAÎTRE MORGANE JOSEPH — app.js — astr.studio
-   Native scroll · RAF loop for cursor + parallax + massive text
+﻿/* =============================================================================
+   MAÃŽTRE MORGANE JOSEPH â€” app.js â€” astr.studio
+   Native scroll Â· RAF loop for cursor + parallax + massive text
 ============================================================================= */
 
 'use strict';
@@ -42,13 +42,16 @@ function initLoader() {
   setTimeout(() => {
     loader.classList.add('gone');
     loaderActive = false;
+    if (!document.querySelector('.hero')) {
+      document.querySelector('.page-overlay')?.classList.add('gone');
+    }
     sessionStorage.setItem('mj-loader-shown', '1');
   }, 2600);
 }
 
 /* ---------------------------------------------------------------------------
    1. RAF MAIN LOOP
-   Handles: cursor ring lerp · parallax · massive text scaling
+   Handles: cursor ring lerp Â· parallax Â· massive text scaling
 --------------------------------------------------------------------------- */
 function startRAF() {
   if (prefersReduced) return;
@@ -128,14 +131,14 @@ function updateParallax() {
 /* ---------------------------------------------------------------------------
    4. MASSIVE TEXT (scroll-driven font-size)
    Hero is 200vh; inner sticky is 100vh.
-   Progress 0→1 as user scrolls through the extra 100vh.
+   Progress 0â†’1 as user scrolls through the extra 100vh.
 --------------------------------------------------------------------------- */
 const massiveText    = document.getElementById('massiveText');
 const heroSection    = document.querySelector('.hero');
 const heroStickyEl   = document.querySelector('.hero__sticky');
 
-const MASSIVE_START  = isMobile ? 16 : 22;  /* vw — initial */
-const MASSIVE_END    = isMobile ? 34 : 55;  /* vw — fully scrolled */
+const MASSIVE_START  = isMobile ? 16 : 22;  /* vw â€” initial */
+const MASSIVE_END    = isMobile ? 34 : 55;  /* vw â€” fully scrolled */
 const OPACITY_START  = isMobile ? 0.12 : 0.28;
 const OPACITY_END    = isMobile ? 0.04 : 0.08;
 
@@ -147,7 +150,7 @@ function updateMassiveText() {
   const stickyH  = window.innerHeight;          /* 100vh */
   const scrolled = -rect.top;                   /* px scrolled into hero */
 
-  /* Progress 0 → 1 over the second 100vh of the hero */
+  /* Progress 0 â†’ 1 over the second 100vh of the hero */
   const progress = Math.max(0, Math.min(1, (scrolled - stickyH * 0) / stickyH));
 
   const fz  = MASSIVE_START + (MASSIVE_END - MASSIVE_START) * easeInOutCubic(progress);
@@ -213,6 +216,8 @@ function initReveals() {
    7. HERO CHOREOGRAPHY
 --------------------------------------------------------------------------- */
 function initHero() {
+  if (!document.querySelector('.hero')) return;
+
   const overlay = document.querySelector('.page-overlay');
   document.body.classList.add('is-locked');
 
@@ -303,11 +308,12 @@ function initNav() {
   const nav = document.querySelector('.nav');
   if (!nav) return;
 
+  const forceScrolled = document.body.classList.contains('page-interior');
   let lastY = 0, ticking = false;
 
   function update() {
     const sy = window.scrollY;
-    nav.classList.toggle('scrolled', sy > 80);
+    nav.classList.toggle('scrolled', forceScrolled || sy > 80);
 
     if (sy > 800) {
       if (sy > lastY + 2) nav.classList.add('hidden');
@@ -322,6 +328,8 @@ function initNav() {
   window.addEventListener('scroll', () => {
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
+
+  update();
 }
 
 /* ---------------------------------------------------------------------------
@@ -358,7 +366,7 @@ function initDomaines() {
     const row     = trigger.closest('.domaine-row');
     if (!panel || !row) return;
 
-    /* Remove hidden attr — CSS handles collapse via max-height/opacity */
+    /* Remove hidden attr â€” CSS handles collapse via max-height/opacity */
     panel.removeAttribute('hidden');
 
     trigger.addEventListener('click', () => {
@@ -483,6 +491,23 @@ function initAnchors() {
   });
 }
 
+function redirectLegacySectionHash() {
+  const redirects = {
+    '#presentation': 'presentation.html',
+    '#domaines': 'domaines.html',
+    '#honoraires': 'honoraires.html',
+    '#faq': 'faq.html',
+    '#contact': 'contact.html'
+  };
+
+  if (!document.querySelector('.hero')) return false;
+
+  const nextPage = redirects[window.location.hash];
+  if (!nextPage) return false;
+
+  window.location.replace(nextPage);
+  return true;
+}
 function initInitialHash() {
   const hash = window.location.hash;
   if (!hash || hash === '#' || hash === '#accueil') return;
@@ -537,7 +562,7 @@ function initForm() {
     const body = [
       `Nom : ${nom}`,
       `Email : ${email}`,
-      `Téléphone : ${tel || '—'}`,
+      `T\u00E9l\u00E9phone : ${tel || '\u2014'}`,
       `Domaine : ${domaine}`,
       '',
       message
@@ -545,7 +570,7 @@ function initForm() {
 
     window.location.href =
       `mailto:morganejoseph.avocat@gmail.com` +
-      `?subject=${encodeURIComponent('Demande de rendez-vous — ' + nom)}` +
+      `?subject=${encodeURIComponent('Demande de rendez-vous \u2014 ' + nom)}` +
       `&body=${body}`;
 
     if (success) {
@@ -560,7 +585,14 @@ function initForm() {
    16. BOOT
 --------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+  if (redirectLegacySectionHash()) return;
   initLoader();
+
+  /* Sur les pages sans hero, effacer le page-overlay */
+  if (!document.querySelector('.hero') && !loaderActive) {
+    setTimeout(() => document.querySelector('.page-overlay')?.classList.add('gone'), 80);
+  }
+
   initCursor();
   initSplitText();
   initReveals();
@@ -578,3 +610,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(initHero, 80);
   setTimeout(initParticles, 300);
 });
+
+

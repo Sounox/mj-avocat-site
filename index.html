@@ -24,13 +24,13 @@
     <span class="cursor-ring__label" aria-hidden="true">VOIR</span>
   </div>
 
-  <!-- Page overlay (hero intro) -->
+  <!-- Page overlay (intro) -->
   <div class="page-overlay" aria-hidden="true"></div>
 
-  <!-- Navigation (fixed, outside scroll) -->
+  <!-- Navigation (fixed) -->
   <nav class="nav" role="navigation" aria-label="Navigation principale">
     <div class="nav__inner">
-      <a href="#accueil" class="nav__logo" aria-label="Maître Morgane JOSEPH — Accueil">
+      <a href="index.html" class="nav__logo" aria-label="Maître Morgane JOSEPH — Accueil">
         <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="nav__logo-img" height="44" width="auto">
       </a>
       <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
@@ -38,23 +38,20 @@
         <span class="nav__toggle-line"></span>
       </button>
       <ul class="nav__links" id="nav-menu" role="list">
-        <li><a href="#presentation" class="nav__link">Présentation</a></li>
-        <li><a href="#domaines" class="nav__link">Domaines</a></li>
-        <li><a href="#honoraires" class="nav__link">Honoraires</a></li>
-        <li><a href="#faq" class="nav__link">FAQ</a></li>
-        <li><a href="#contact" class="nav__link">Contact</a></li>
+        <li><a href="presentation.html" class="nav__link">Présentation</a></li>
+        <li><a href="domaines.html" class="nav__link">Domaines</a></li>
+        <li><a href="honoraires.html" class="nav__link">Honoraires</a></li>
+        <li><a href="faq.html" class="nav__link">FAQ</a></li>
+        <li><a href="contact.html" class="nav__link">Contact</a></li>
       </ul>
-      <a href="#contact" class="nav__cta btn btn--outline">Prendre rendez-vous</a>
+      <a href="contact.html" class="nav__cta btn btn--outline">Prendre rendez-vous</a>
     </div>
   </nav>
 
-  <!-- ================================================================
-       MAIN CONTENT
-  ================================================================ -->
   <main>
 
     <!-- ================================================================
-         SECTION 1 — HERO (200vh pin)
+         HERO (200vh pin)
     ================================================================ -->
     <section id="accueil" class="hero" aria-label="Accueil">
       <div class="hero__sticky">
@@ -79,7 +76,7 @@
           <p class="hero-massive-text" id="massiveText">JOSEPH</p>
         </div>
 
-        <!-- Hero content (above massive text) -->
+        <!-- Hero content -->
         <div class="hero__inner container">
           <div class="hero__content">
             <p class="hero__eyebrow eyebrow hero-anim" data-delay="200">AVOCAT AU BARREAU DE MONTPELLIER</p>
@@ -87,26 +84,27 @@
             <p class="hero__subtitle hero-anim" data-delay="900">Le droit comme outil de protection,<br>d'écoute et d'accompagnement.</p>
             <p class="hero__description hero-anim" data-delay="1100">Cabinet d'avocat dédié au droit de la famille, au droit civil et au contentieux de l'Allocation aux Adultes Handicapés. Une approche rigoureuse et humaine, à Montpellier.</p>
             <div class="hero__ctas hero-anim" data-delay="1300">
-              <a href="#contact" class="btn btn--primary">
+              <a href="contact.html" class="btn btn--primary">
                 Prendre rendez-vous
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="btn__icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <a href="#presentation" class="btn btn--ghost">Découvrir le cabinet</a>
-            </div>
-            <div class="hero__marquee hero__marquee--inline hero-anim" data-delay="1500" aria-hidden="true">
-              <div class="hero__marquee-track">
-                <span>DROIT DE LA FAMILLE</span><span class="hero__marquee-sep">�</span>
-                <span>DROIT CIVIL</span><span class="hero__marquee-sep">�</span>
-                <span>CONTENTIEUX AAH</span><span class="hero__marquee-sep">�</span>
-                <span>BARREAU DE MONTPELLIER</span><span class="hero__marquee-sep">�</span>
-                <span>DROIT DE LA FAMILLE</span><span class="hero__marquee-sep">�</span>
-                <span>DROIT CIVIL</span><span class="hero__marquee-sep">�</span>
-                <span>CONTENTIEUX AAH</span><span class="hero__marquee-sep">�</span>
-                <span>BARREAU DE MONTPELLIER</span><span class="hero__marquee-sep">�</span>
-              </div>
+              <a href="presentation.html" class="btn btn--ghost">Découvrir le cabinet</a>
             </div>
           </div>
+        </div>
 
+        <!-- Marquee domaines -->
+        <div class="hero__marquee" aria-hidden="true">
+          <div class="hero__marquee-track">
+            <span>DROIT DE LA FAMILLE</span><span class="hero__marquee-sep">·</span>
+            <span>DROIT CIVIL</span><span class="hero__marquee-sep">·</span>
+            <span>CONTENTIEUX AAH</span><span class="hero__marquee-sep">·</span>
+            <span>BARREAU DE MONTPELLIER</span><span class="hero__marquee-sep">·</span>
+            <span>DROIT DE LA FAMILLE</span><span class="hero__marquee-sep">·</span>
+            <span>DROIT CIVIL</span><span class="hero__marquee-sep">·</span>
+            <span>CONTENTIEUX AAH</span><span class="hero__marquee-sep">·</span>
+            <span>BARREAU DE MONTPELLIER</span><span class="hero__marquee-sep">·</span>
+          </div>
         </div>
 
         <!-- Scroll indicator -->
@@ -118,9 +116,7 @@
       </div>
     </section>
 
-    <!-- ================================================================
-         ORNAMENT SEPARATOR
-    ================================================================ -->
+    <!-- Ornament separator -->
     <div class="ornament-sep" aria-hidden="true">
       <svg class="ornament-sep__svg reveal-ornament" viewBox="0 0 240 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="0" y1="12" x2="90" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
@@ -130,455 +126,9 @@
       </svg>
     </div>
 
-    <!-- ================================================================
-         SECTION 2 — PRÉSENTATION (light)
-    ================================================================ -->
-    <section id="presentation" class="section section-light section--numbered" style="--section-num: 'II'" aria-label="Présentation du cabinet">
-      <div class="ornament-corners" aria-hidden="true">
-        <svg class="ornament-corner ornament-corner--tl" viewBox="0 0 40 40"><path d="M0 20 L0 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 15 L5 5 L15 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="ornament-corner ornament-corner--tr" viewBox="0 0 40 40"><path d="M40 20 L40 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 15 L35 5 L25 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="ornament-corner ornament-corner--bl" viewBox="0 0 40 40"><path d="M0 20 L0 40 L20 40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 25 L5 35 L15 35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="ornament-corner ornament-corner--br" viewBox="0 0 40 40"><path d="M40 20 L40 40 L20 40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 25 L35 35 L25 35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-      </div>
-
-      <div class="bg-word parallax" data-speed="-0.2" aria-hidden="true">ÉCOUTE</div>
-
-      <div class="container">
-        <div class="section__header reveal-up">
-          <p class="eyebrow">LE CABINET</p>
-          <h2 class="split-words">À propos</h2>
-        </div>
-
-        <div class="presentation__grid">
-          <div class="presentation__col-left">
-            <div class="presentation__img-wrap">
-              <img src="assets/photo.jpg"
-                   alt="Maître Morgane JOSEPH, Avocat au Barreau de Montpellier"
-                   class="presentation__img"
-                   loading="eager"
-                   onerror="this.parentElement.classList.add('img-placeholder')">
-            </div>
-            <div class="presentation__pillars reveal-stagger">
-              <div class="pillar card">
-                <div class="pillar__icon" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v1z"/></svg>
-                </div>
-                <div><h3 class="pillar__title">Écoute</h3><p class="pillar__text">Une attention portée à chaque situation, chaque client.</p></div>
-              </div>
-              <div class="pillar card">
-                <div class="pillar__icon" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9S3 16.97 3 12 7.03 3 12 3s9 4.03 9 9z"/></svg>
-                </div>
-                <div><h3 class="pillar__title">Rigueur</h3><p class="pillar__text">Un traitement précis et méthodique de chaque dossier.</p></div>
-              </div>
-              <div class="pillar card">
-                <div class="pillar__icon" aria-hidden="true">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <div><h3 class="pillar__title">Confiance</h3><p class="pillar__text">Une relation transparente et accessible dès le premier rendez-vous.</p></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="presentation__col-right reveal-up">
-            <div class="presentation__body">
-              <p>Maître Morgane JOSEPH a prêté serment devant la Cour d'appel de Montpellier le 13 décembre 2025.</p>
-              <p>Titulaire d'un Master 2 en Droit civil, mention Droit des personnes et de la famille, obtenu à l'Université de Montpellier, elle a ensuite intégré l'EDACS de Montpellier, où elle a obtenu le Certificat d'Aptitude à la Profession d'Avocat (CAPA).</p>
-              <p>Son parcours s'est construit autour d'une conviction forte&nbsp;: le droit doit être un outil de protection, d'écoute et d'accompagnement. Grâce à ses expériences en cabinet d'avocat, en association et auprès de publics parfois en situation de vulnérabilité, Maître Morgane JOSEPH a développé une approche à la fois rigoureuse et humaine.</p>
-              <p>Elle intervient principalement en Droit civil général, Droit de la famille, contentieux de l'Allocation aux Adultes Handicapés (AAH), avec une attention particulière portée aux situations sensibles nécessitant disponibilité, réactivité et confiance.</p>
-              <p>Attachée à instaurer une relation transparente et accessible avec chacun de ses clients, Maître Morgane JOSEPH s'engage à assurer un accompagnement personnalisé, fondé sur l'écoute, la précision et la défense de leurs intérêts.</p>
-            </div>
-            <div class="presentation__signature reveal-fade">
-              <img src="assets/signature_fonce.png" alt="Signature — Morgane JOSEPH, Avocat à la Cour" class="signature-img" loading="lazy" width="280">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================
-         ORNAMENT SEPARATOR
-    ================================================================ -->
-    <div class="ornament-sep" aria-hidden="true">
-      <svg class="ornament-sep__svg reveal-ornament" viewBox="0 0 240 24" fill="none">
-        <line x1="0" y1="12" x2="90" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
-        <circle cx="120" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>
-        <circle cx="120" cy="12" r="1.5" fill="currentColor" opacity="0.5"/>
-        <line x1="150" y1="12" x2="240" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <!-- ================================================================
-         SECTION CITATION
-    ================================================================ -->
-    <section class="section-citation" aria-label="Engagement du cabinet">
-      <div class="citation-bg" aria-hidden="true">
-        <img src="assets/img-dark.jpg" alt="" loading="lazy">
-      </div>
-      <div class="citation-inner">
-        <div class="citation-line reveal-ornament"></div>
-        <blockquote class="citation-quote">
-          <p class="citation-quote__text split-words">
-            «&nbsp;Le droit doit être un outil de protection,<br>d'écoute et d'accompagnement.&nbsp;»
-          </p>
-          <footer class="citation-quote__footer reveal-up">
-            <cite class="citation-quote__author">— Maître Morgane JOSEPH, Avocat au Barreau de Montpellier</cite>
-          </footer>
-        </blockquote>
-        <div class="citation-line reveal-ornament"></div>
-      </div>
-    </section>
-
-    <!-- ================================================================
-         SECTION 3 — DOMAINES (dark, row layout)
-    ================================================================ -->
-    <section id="domaines" class="section section-dark domaines section--numbered" style="--section-num: 'III'" aria-label="Domaines d'activité">
-      <div class="bg-word bg-word--left parallax" data-speed="-0.2" aria-hidden="true">DÉFENSE</div>
-
-      <div class="container">
-        <div class="section__header reveal-up">
-          <p class="eyebrow">INTERVENTIONS</p>
-          <h2 class="split-words">Domaines d'activité</h2>
-        </div>
-      </div>
-
-      <!-- Row 1: Famille -->
-      <div class="domaine-row reveal-up" data-index="01">
-        <div class="domaine-row__bg" aria-hidden="true">
-          <img src="assets/img-room.jpg" alt="" loading="lazy">
-        </div>
-        <div class="container domaine-row__inner">
-          <div class="domaine-row__intro">
-            <p class="eyebrow">01 — Domaine d'intervention</p>
-            <p class="domaine-row__teaser">Accompagnement dans les étapes de la vie familiale&nbsp;: divorce, autorité parentale, pension alimentaire, violences conjugales, ordonnances de protection.</p>
-          </div>
-          <h3 class="domaine-keyword" data-text="Famille" aria-hidden="true">Famille</h3>
-          <button class="domaine-row__trigger" aria-expanded="false" aria-controls="dom-detail-1" aria-label="Voir le détail du Droit de la famille">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="domaine-detail" id="dom-detail-1" hidden>
-        <div class="container domaine-detail__body">
-          <p>Maître Morgane Joseph accompagne ses clients dans les différentes étapes de leur vie familiale. Consciente des enjeux personnels et émotionnels que recouvrent les procédures familiales, elle veille à offrir un accompagnement personnalisé et une défense attentive des intérêts de chacun.</p>
-          <p>Elle intervient notamment en matière de&nbsp;:</p>
-          <ul>
-            <li>Procédure de divorce amiable et divorce contentieux&nbsp;;</li>
-            <li>Exercice de l'autorité parentale&nbsp;;</li>
-            <li>Fixation de la résidence des enfants et des droits de visite et d'hébergement&nbsp;;</li>
-            <li>Fixation de la pension alimentaire&nbsp;;</li>
-            <li>Situations de violences conjugales et procédures d'ordonnance de protection&nbsp;;</li>
-            <li>Procédures urgentes en matière familiale.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Row 2: Civil -->
-      <div class="domaine-row reveal-up" data-index="02">
-        <div class="domaine-row__bg" aria-hidden="true">
-          <img src="assets/img-books.jpg" alt="" loading="lazy">
-        </div>
-        <div class="container domaine-row__inner">
-          <div class="domaine-row__intro">
-            <p class="eyebrow">02 — Domaine d'intervention</p>
-            <p class="domaine-row__teaser">Défense des droits et résolution des litiges du quotidien&nbsp;: contrats, baux d'habitation, responsabilité civile, troubles de voisinage.</p>
-          </div>
-          <h3 class="domaine-keyword" data-text="Civil" aria-hidden="true">Civil</h3>
-          <button class="domaine-row__trigger" aria-expanded="false" aria-controls="dom-detail-2" aria-label="Voir le détail du Droit civil">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="domaine-detail" id="dom-detail-2" hidden>
-        <div class="container domaine-detail__body">
-          <p>Maître Morgane Joseph intervient en droit civil afin d'accompagner ses clients dans la défense de leurs droits et la résolution de leurs litiges du quotidien.</p>
-          <p>Elle intervient notamment dans les domaines suivants&nbsp;:</p>
-          <ul>
-            <li><strong>Litiges contractuels</strong>&nbsp;: accompagnement dans les différends liés à l'exécution, l'inexécution ou la rupture de contrats entre particuliers ou professionnels.</li>
-            <li><strong>Contentieux des baux d'habitation</strong>&nbsp;: assistance des propriétaires et locataires dans les problématiques relatives aux loyers impayés, expulsions, troubles locatifs ou résiliation de bail.</li>
-            <li><strong>Réparation du préjudice et responsabilité civile</strong>&nbsp;: accompagnement dans les demandes d'indemnisation à la suite d'un dommage corporel, matériel ou moral.</li>
-            <li><strong>Troubles et conflits de voisinage</strong>&nbsp;: défense des intérêts des clients dans les litiges liés aux nuisances, troubles anormaux de voisinage ou empiètements.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Row 3: AAH -->
-      <div class="domaine-row reveal-up" data-index="03">
-        <div class="domaine-row__bg" aria-hidden="true">
-          <img src="assets/img-texture.jpg" alt="" loading="lazy">
-        </div>
-        <div class="container domaine-row__inner">
-          <div class="domaine-row__intro">
-            <p class="eyebrow">03 — Domaine d'intervention</p>
-            <p class="domaine-row__teaser">Accompagnement des personnes en situation de handicap dans leurs démarches et recours relatifs à l'Allocation aux Adultes Handicapés (AAH).</p>
-          </div>
-          <h3 class="domaine-keyword" data-text="AAH" aria-hidden="true">AAH</h3>
-          <button class="domaine-row__trigger" aria-expanded="false" aria-controls="dom-detail-3" aria-label="Voir le détail du Contentieux AAH">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="domaine-detail" id="dom-detail-3" hidden>
-        <div class="container domaine-detail__body">
-          <p>Maître Morgane Joseph accompagne les personnes en situation de handicap dans leurs démarches et recours relatifs à l'Allocation aux Adultes Handicapés (AAH). Elle veille à assurer une défense rigoureuse et attentive des droits de ses clients face aux décisions administratives contestées.</p>
-          <p>Elle intervient notamment dans les domaines suivants&nbsp;:</p>
-          <ul>
-            <li><strong>Refus d'attribution de l'AAH</strong>&nbsp;: accompagnement dans les recours engagés à la suite d'une décision de refus de la MDPH ou des organismes compétents.</li>
-            <li><strong>Refus d'attribution ou révision des compléments</strong>&nbsp;: défense des droits des bénéficiaires concernant les décisions relatives aux compléments et prestations associées à l'AAH.</li>
-          </ul>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- Atmospheric image band -->
-    <div class="img-band reveal-mask" aria-hidden="true">
-      <img src="assets/img-dark.jpg" alt="" class="img-band__img parallax" data-speed="0.1" loading="lazy"
-           onerror="this.parentElement.classList.add('img-placeholder')">
-      <div class="img-band__overlay"></div>
-    </div>
-
-    <!-- ================================================================
-         SECTION 4 — HONORAIRES (light)
-    ================================================================ -->
-    <section id="honoraires" class="section section-light section--numbered" style="--section-num: 'IV'" aria-label="Honoraires">
-      <div class="ornament-corners" aria-hidden="true">
-        <svg class="ornament-corner ornament-corner--tl" viewBox="0 0 40 40"><path d="M0 20 L0 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 15 L5 5 L15 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="ornament-corner ornament-corner--tr" viewBox="0 0 40 40"><path d="M40 20 L40 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 15 L35 5 L25 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="ornament-corner ornament-corner--bl" viewBox="0 0 40 40"><path d="M0 20 L0 40 L20 40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 25 L5 35 L15 35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="ornament-corner ornament-corner--br" viewBox="0 0 40 40"><path d="M40 20 L40 40 L20 40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 25 L35 35 L25 35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-      </div>
-
-      <div class="bg-word parallax" data-speed="-0.2" aria-hidden="true">TRANSPARENCE</div>
-
-      <div class="container">
-        <div class="section__header reveal-up">
-          <p class="eyebrow">TRANSPARENCE</p>
-          <h2 class="split-words">Honoraires</h2>
-        </div>
-
-        <div class="honoraires__cards reveal-stagger">
-          <div class="h-card card" style="--i:0">
-            <div class="h-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-            <h3>Forfaitaire ou au temps passé</h3>
-            <p>Selon la nature et la complexité du dossier, un honoraire forfaitaire ou une facturation au temps passé est convenu avec le client.</p>
-          </div>
-          <div class="h-card card" style="--i:1">
-            <div class="h-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-            <h3>Honoraire de résultat possible</h3>
-            <p>Dans certains dossiers, un honoraire de résultat peut être prévu en complément, conformément aux règles déontologiques de la profession.</p>
-          </div>
-          <div class="h-card card" style="--i:2">
-            <div class="h-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-            <h3>Convention d'honoraires transparente</h3>
-            <p>Les honoraires sont expliqués dès le premier rendez-vous. Une convention est proposée pour fixer les modalités de façon claire.</p>
-          </div>
-          <div class="h-card card" style="--i:3">
-            <div class="h-card__icon" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <h3>Facilités de paiement &amp; aide juridictionnelle</h3>
-            <p>Des échelonnements peuvent être envisagés. L'aide juridictionnelle est acceptée dans certaines procédures (divorce, contentieux AAH).</p>
-          </div>
-        </div>
-
-        <div class="honoraires__text reveal-up">
-          <p>Les honoraires du cabinet sont déterminés en fonction de plusieurs critères, notamment la nature du dossier, sa complexité, le temps consacré à l'affaire ainsi que les diligences nécessaires à son traitement.</p>
-          <p>Selon la procédure concernée, il peut être convenu soit d'un honoraire forfaitaire, soit d'une facturation au temps passé.</p>
-          <p>Dans certains dossiers, un honoraire de résultat peut également être prévu en complément de l'honoraire principal, conformément aux règles déontologiques de la profession d'avocat.</p>
-          <p>Les éventuels frais annexes, tels que les droits de plaidoirie ou les frais de déplacement, peuvent être facturés séparément.</p>
-          <p>Maître Morgane JOSEPH attache une importance particulière à la transparence&nbsp;: les honoraires sont systématiquement expliqués et détaillés dès le premier rendez-vous. Une convention d'honoraires est proposée à l'issue de celui-ci, afin de fixer de manière claire, compréhensible et transparente les modalités financières de l'intervention.</p>
-          <p>Des facilités de paiement peuvent également être proposées, notamment sous forme d'échelonnement des honoraires.</p>
-          <p>Maître Morgane Joseph accepte d'intervenir au titre de l'aide juridictionnelle uniquement dans certaines procédures, notamment en matière de divorce et de contentieux relatif à l'Allocation aux Adultes Handicapés (AAH).</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================
-         ORNAMENT SEPARATOR
-    ================================================================ -->
-    <div class="ornament-sep" aria-hidden="true">
-      <svg class="ornament-sep__svg reveal-ornament" viewBox="0 0 240 24" fill="none">
-        <line x1="0" y1="12" x2="90" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
-        <circle cx="120" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>
-        <circle cx="120" cy="12" r="1.5" fill="currentColor" opacity="0.5"/>
-        <line x1="150" y1="12" x2="240" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <!-- ================================================================
-         SECTION 5 — FAQ (dark)
-    ================================================================ -->
-    <section id="faq" class="section section-dark faq section--numbered" style="--section-num: 'V'" aria-label="Questions fréquentes">
-      <div class="container">
-        <div class="section__header reveal-up">
-          <p class="eyebrow">FAQ</p>
-          <h2 class="split-words">Questions fréquentes</h2>
-        </div>
-
-        <div class="faq__cat reveal-up">
-          <h3 class="faq__cat-title">Avant tout</h3>
-          <div class="accordion" role="list">
-            <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn">
-                <span class="accordion__label">Prendre un avocat, est-ce partir en guerre juridique&nbsp;?</span>
-                <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
-              </button>
-              <div class="accordion__panel" id="faq-1" role="region" aria-labelledby="faq-1-btn">
-                <div class="accordion__content">
-                  <p>Non. Faire appel à un avocat n'est pas synonyme de conflit ou d'escalade. C'est avant tout choisir d'être accompagné, conseillé et protégé dans une situation qui peut être juridiquement complexe et/ou émotionnellement difficile.</p>
-                  <p>Maître Morgane JOSEPH privilégie, chaque fois que cela est possible, des solutions apaisées et durables, dans une logique de dialogue et d'équilibre. L'objectif est de rechercher la solution la plus adaptée aux intérêts du client.</p>
-                  <p>Cependant, lorsque le désaccord persiste ou qu'un contentieux est inévitable, l'accompagnement se fait alors dans un cadre contentieux avec une défense engagée et déterminée des droits du client.</p>
-                  <p>L'approche s'adapte toujours à la situation, avec un seul objectif&nbsp;: la protection efficace des intérêts défendus.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="faq__cat reveal-up">
-          <h3 class="faq__cat-title">Honoraires et suivi du dossier</h3>
-          <div class="accordion" role="list">
-            <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn"><span class="accordion__label">Puis-je payer en plusieurs fois&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-2" role="region" aria-labelledby="faq-2-btn"><div class="accordion__content"><p>Oui. Un échelonnement des honoraires peut être envisagé et fait l'objet d'une discussion au cas par cas. Les modalités de paiement sont définies en toute transparence avant la signature de la convention d'honoraires.</p></div></div>
-            </div>
-            <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn"><span class="accordion__label">Puis-je bénéficier de l'aide juridictionnelle&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-3" role="region" aria-labelledby="faq-3-btn"><div class="accordion__content"><p>Lors du premier rendez-vous, Maître Morgane JOSEPH vous indiquera de manière transparente si votre situation peut ouvrir droit à l'aide juridictionnelle. Il est précisé que le cabinet accepte d'intervenir au titre de l'aide juridictionnelle uniquement dans certaines procédures, notamment en matière de divorce et de contentieux relatif à l'Allocation aux Adultes Handicapés (AAH).</p></div></div>
-            </div>
-            <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn"><span class="accordion__label">Que se passe-t-il lors du premier rendez-vous&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-4" role="region" aria-labelledby="faq-4-btn"><div class="accordion__content"><p>Le premier rendez-vous permet d'exposer votre situation en toute confidentialité. Maître Morgane JOSEPH procède à une analyse juridique de votre dossier, identifie les premières options envisageables et vous informe des suites possibles. Les modalités d'intervention ainsi que les honoraires sont également expliqués de manière claire et transparente.</p></div></div>
-            </div>
-            <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn"><span class="accordion__label">Dois-je apporter des documents dès le premier rendez-vous&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-5" role="region" aria-labelledby="faq-5-btn"><div class="accordion__content"><p>Il est recommandé d'apporter tout document utile à l'analyse de votre situation (décisions de justice, courriers, échanges, justificatifs de ressources ou médicaux selon le dossier). À défaut, le rendez-vous peut parfaitement avoir lieu et les pièces pourront être transmises ultérieurement.</p></div></div>
-            </div>
-            <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-6" id="faq-6-btn"><span class="accordion__label">Puis-je contacter mon avocat en cours de procédure&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-6" role="region" aria-labelledby="faq-6-btn"><div class="accordion__content"><p>Oui. Le cabinet reste accessible pendant toute la durée de la procédure.</p><ul><li><strong>Par mail&nbsp;:</strong> Merci de préciser votre nom et prénom dans l'objet. Les pièces doivent être envoyées au format PDF. Aucun dépôt sans rendez-vous préalable ne sera accepté.</li><li><strong>Par téléphone&nbsp;:</strong> Maître Morgane JOSEPH est joignable du lundi au vendredi, de 9h à 18h30. En cas d'urgence, laisser un message vocal ou adresser un email avec la mention «&nbsp;URGENT&nbsp;» dans l'objet.</li></ul></div></div>
-            </div>
-            <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-7" id="faq-7-btn"><span class="accordion__label">Quels sont les frais en plus des honoraires&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-7" role="region" aria-labelledby="faq-7-btn"><div class="accordion__content"><p>Des frais annexes peuvent s'ajouter selon les dossiers (huissiers, expertises, déplacements, timbres de justice). Ces frais sont distincts des honoraires du cabinet. Cela ne s'applique pas aux clients bénéficiaires de l'aide juridictionnelle.</p></div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="faq__cat reveal-up">
-          <h3 class="faq__cat-title">Droit de la famille / divorce / séparation</h3>
-          <div class="accordion" role="list">
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-8" id="faq-8-btn"><span class="accordion__label">Puis-je avoir le même avocat que mon époux/épouse dans le cadre d'un divorce&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-8" role="region" aria-labelledby="faq-8-btn"><div class="accordion__content"><p>Non. En matière de divorce, chaque époux doit obligatoirement être assisté par son propre avocat.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-9" id="faq-9-btn"><span class="accordion__label">Que devient le logement familial en cas de séparation&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-9" role="region" aria-labelledby="faq-9-btn"><div class="accordion__content"><p>Le sort du logement dépend de la situation des époux (propriété, location, accord entre les parties, présence d'enfants). Il peut être attribué à l'un des époux, maintenu en indivision ou vendu, selon les circonstances du dossier.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-10" id="faq-10-btn"><span class="accordion__label">Comment est fixée la pension alimentaire&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-10" role="region" aria-labelledby="faq-10-btn"><div class="accordion__content"><p>La pension alimentaire est fixée en fonction des ressources des parents, des besoins de l'enfant et du mode de résidence. Elle peut être déterminée amiablement ou par le juge aux affaires familiales.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-11" id="faq-11-btn"><span class="accordion__label">Comment est organisée la garde des enfants&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-11" role="region" aria-labelledby="faq-11-btn"><div class="accordion__content"><p>La résidence des enfants peut être fixée en résidence alternée ou en résidence principale chez l'un des parents, avec un droit de visite et d'hébergement pour l'autre. L'intérêt supérieur de l'enfant constitue le critère principal de décision.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-12" id="faq-12-btn"><span class="accordion__label">Combien de temps dure une procédure de divorce&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-12" role="region" aria-labelledby="faq-12-btn"><div class="accordion__content"><p>Un divorce par consentement mutuel est en principe plus rapide, tandis qu'un divorce contentieux peut s'étendre sur une durée plus longue en fonction de la complexité du dossier et des délais de traitement des juridictions.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-13" id="faq-13-btn"><span class="accordion__label">Dois-je obligatoirement passer par le juge pour divorcer&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-13" role="region" aria-labelledby="faq-13-btn"><div class="accordion__content"><p>Non, pas dans tous les cas. Le divorce par consentement mutuel peut être réalisé sans passage devant le juge, par acte sous signature d'avocats. Les autres formes de divorce nécessitent une procédure judiciaire.</p></div></div></div>
-          </div>
-        </div>
-
-        <div class="faq__cat reveal-up">
-          <h3 class="faq__cat-title">Contentieux AAH</h3>
-          <div class="accordion" role="list">
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-14" id="faq-14-btn"><span class="accordion__label">Ai-je droit à l'AAH automatiquement&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-14" role="region" aria-labelledby="faq-14-btn"><div class="accordion__content"><p>Non. L'AAH n'est pas attribuée automatiquement. Elle est accordée après instruction du dossier par la MDPH selon des critères médicaux et administratifs précis.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-15" id="faq-15-btn"><span class="accordion__label">Que faire en cas de refus AAH&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-15" role="region" aria-labelledby="faq-15-btn"><div class="accordion__content"><p>Dans un premier temps, il est possible d'exercer un recours administratif préalable obligatoire auprès de la CDAPH dans un délai de deux mois à compter de la notification de la décision, par courrier LRAR. Si la décision de refus est maintenue, il est possible de saisir le tribunal judiciaire (Pôle social). L'accompagnement par un avocat permet de sécuriser les démarches et de présenter un dossier structuré et argumenté.</p></div></div></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================================
-         ORNAMENT SEPARATOR
-    ================================================================ -->
-    <div class="ornament-sep" aria-hidden="true">
-      <svg class="ornament-sep__svg reveal-ornament" viewBox="0 0 240 24" fill="none">
-        <line x1="0" y1="12" x2="90" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
-        <circle cx="120" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.6"/>
-        <circle cx="120" cy="12" r="1.5" fill="currentColor" opacity="0.5"/>
-        <line x1="150" y1="12" x2="240" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
-      </svg>
-    </div>
-
-    <!-- ================================================================
-         SECTION 6 — CONTACT (light)
-    ================================================================ -->
-    <section id="contact" class="section section-light section--numbered" style="--section-num: 'VI'" aria-label="Prendre rendez-vous">
-      <div class="ornament-corners" aria-hidden="true">
-        <svg class="ornament-corner ornament-corner--tl" viewBox="0 0 40 40"><path d="M0 20 L0 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 15 L5 5 L15 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="ornament-corner ornament-corner--tr" viewBox="0 0 40 40"><path d="M40 20 L40 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 15 L35 5 L25 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="ornament-corner ornament-corner--bl" viewBox="0 0 40 40"><path d="M0 20 L0 40 L20 40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 25 L5 35 L15 35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-        <svg class="ornament-corner ornament-corner--br" viewBox="0 0 40 40"><path d="M40 20 L40 40 L20 40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 25 L35 35 L25 35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
-      </div>
-
-      <div class="contact__desk-visual" aria-hidden="true">
-        <img src="assets/img-desk.jpg" alt="" class="contact__desk-img parallax" data-speed="0.1" loading="lazy"
-             onerror="this.parentElement.classList.add('img-placeholder')">
-        <div class="contact__desk-overlay"></div>
-      </div>
-
-      <div class="container">
-        <div class="section__header reveal-up">
-          <p class="eyebrow">PRENDRE RENDEZ-VOUS</p>
-          <h2 class="split-words">Contact</h2>
-        </div>
-        <p class="contact__intro reveal-up">Pour une prise de rendez-vous en urgence, l'appel téléphonique est conseillé.</p>
-
-        <div class="contact__grid">
-          <div class="contact__info reveal-up">
-            <div class="c-card card">
-              <div class="c-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-              <div><p class="c-card__label">Adresse</p><address class="c-card__text">12 Ter Rue du Lantissargues<br>34070 Montpellier</address><p class="c-card__note">Adresse susceptible d'évoluer prochainement</p></div>
-            </div>
-            <div class="c-card card">
-              <div class="c-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.13 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 5.06 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-              <div><p class="c-card__label">Téléphone</p><a href="tel:+33699154164" class="c-card__link">06 99 15 41 64</a><p class="c-card__text">Lun–Ven, 9h–18h30</p></div>
-            </div>
-            <div class="c-card card">
-              <div class="c-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-              <div><p class="c-card__label">Email</p><a href="mailto:morganejoseph.avocat@gmail.com" class="c-card__link">morganejoseph.avocat@gmail.com</a></div>
-            </div>
-            <div class="c-card card">
-              <div class="c-card__icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-              <div><p class="c-card__label">Disponibilité</p><p class="c-card__text">Lundi au vendredi, 9h–18h30</p><p class="c-card__note">Urgences&nbsp;: email avec mention «&nbsp;URGENT&nbsp;»</p></div>
-            </div>
-          </div>
-
-          <div class="contact__form-wrap reveal-up">
-            <form class="contact-form" id="contactForm" novalidate>
-              <div class="form__row">
-                <div class="form__field"><label for="f-nom" class="form__label">Nom &amp; Prénom <abbr title="obligatoire">*</abbr></label><input type="text" id="f-nom" name="nom" class="form__input" required autocomplete="name" placeholder="Jean Dupont"></div>
-                <div class="form__field"><label for="f-email" class="form__label">Email <abbr title="obligatoire">*</abbr></label><input type="email" id="f-email" name="email" class="form__input" required autocomplete="email" placeholder="jean@exemple.fr"></div>
-              </div>
-              <div class="form__row">
-                <div class="form__field"><label for="f-tel" class="form__label">Téléphone</label><input type="tel" id="f-tel" name="telephone" class="form__input" autocomplete="tel" placeholder="06 00 00 00 00"></div>
-                <div class="form__field">
-                  <label for="f-domaine" class="form__label">Domaine concerné <abbr title="obligatoire">*</abbr></label>
-                  <select id="f-domaine" name="domaine" class="form__input form__select" required>
-                    <option value="" disabled selected>Sélectionner</option>
-                    <option value="famille">Droit de la famille</option>
-                    <option value="civil">Droit civil</option>
-                    <option value="aah">Contentieux AAH</option>
-                    <option value="autre">Autre</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form__field"><label for="f-message" class="form__label">Message <abbr title="obligatoire">*</abbr></label><textarea id="f-message" name="message" class="form__input form__textarea" required rows="5" placeholder="Décrivez brièvement votre situation…"></textarea></div>
-              <div class="form__field form__field--check">
-                <input type="checkbox" id="f-rgpd" name="rgpd" class="form__checkbox" required>
-                <label for="f-rgpd" class="form__label form__label--check">J'accepte que mes données soient utilisées pour me recontacter dans le cadre de ma demande, conformément à la politique de confidentialité du cabinet.</label>
-              </div>
-              <button type="submit" class="btn btn--primary btn--full">Envoyer ma demande<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="btn__icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-              <p class="form__success" id="formSuccess" aria-live="polite" hidden>Votre message a bien été envoyé. Maître Morgane JOSEPH reviendra vers vous dans les meilleurs délais.</p>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- ================================================================
-       FOOTER (dark)
-  ================================================================ -->
+  <!-- Footer -->
   <footer class="footer" role="contentinfo">
     <div class="footer__bg-img" aria-hidden="true">
       <img src="assets/img-montpellier.jpg" alt="" class="footer__bg-photo" loading="lazy"
@@ -588,19 +138,19 @@
     <div class="footer__inner container">
       <div class="footer__top">
         <div class="footer__brand">
-          <a href="#accueil" aria-label="Retour en haut de page">
+          <a href="index.html" aria-label="Retour à l'accueil">
             <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="footer__logo" width="60" height="auto" loading="lazy">
           </a>
           <img src="assets/signature_clair.png" alt="Signature Morgane JOSEPH — Avocat à la Cour" class="footer__signature" width="210" height="auto" loading="lazy">
         </div>
         <nav class="footer__nav" aria-label="Navigation secondaire">
           <ul class="footer__links" role="list">
-            <li><a href="#accueil" class="footer__link">Accueil</a></li>
-            <li><a href="#presentation" class="footer__link">Présentation</a></li>
-            <li><a href="#domaines" class="footer__link">Domaines</a></li>
-            <li><a href="#honoraires" class="footer__link">Honoraires</a></li>
-            <li><a href="#faq" class="footer__link">FAQ</a></li>
-            <li><a href="#contact" class="footer__link">Contact</a></li>
+            <li><a href="index.html" class="footer__link">Accueil</a></li>
+            <li><a href="presentation.html" class="footer__link">Présentation</a></li>
+            <li><a href="domaines.html" class="footer__link">Domaines</a></li>
+            <li><a href="honoraires.html" class="footer__link">Honoraires</a></li>
+            <li><a href="faq.html" class="footer__link">FAQ</a></li>
+            <li><a href="contact.html" class="footer__link">Contact</a></li>
             <li><a href="mentions-legales.html" class="footer__link">Mentions légales</a></li>
           </ul>
         </nav>
