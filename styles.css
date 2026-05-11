@@ -602,34 +602,25 @@ p {
   position: relative;
   width: min(100%, 56rem);
   max-width: min(100%, 56rem);
-  padding: clamp(1.4rem, 2vw, 2rem) clamp(1.35rem, 2.5vw, 2.25rem) clamp(1.45rem, 2.5vw, 2.1rem);
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-radius: 22px;
-  isolation: isolate;
+  gap: 0;
 }
 .hero__content::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  border: 1px solid rgba(240,235,230,0.14);
-  background: linear-gradient(135deg, rgba(27,15,11,0.68) 0%, rgba(27,15,11,0.42) 62%, rgba(27,15,11,0.18) 100%);
-  box-shadow: 0 32px 90px rgba(0,0,0,0.18);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  content: none;
 }
 
 .hero__eyebrow {
   margin-bottom: 1.5rem;
-  color: rgba(221,213,200,0.72);
+  color: rgba(227,216,205,0.84);
 }
 .hero__title {
   margin-bottom: 1rem;
   white-space: nowrap;
-  text-shadow: 0 12px 36px rgba(0,0,0,0.18);
+  color: rgba(248,243,238,0.97);
+  text-shadow: none;
 }
 
 .hero__subtitle {
@@ -637,15 +628,15 @@ p {
   font-size: clamp(1.2rem, 2.2vw, 1.75rem);
   font-style: italic;
   font-weight: 300;
-  color: rgba(240,235,230,0.82);
+  color: rgba(234,223,211,0.92);
   line-height: 1.4;
   margin-bottom: 1.25rem;
   max-width: 22ch;
-  text-shadow: 0 8px 24px rgba(0,0,0,0.16);
+  text-shadow: none;
 }
 
 .hero__description {
-  color: rgba(240,235,230,0.82);
+  color: rgba(244,238,233,0.88);
   margin-bottom: 2.1rem;
   font-size: 1.02rem;
   max-width: 34rem;
@@ -1536,11 +1527,7 @@ p {
   .hero__content {
     width: 100%;
     max-width: 100%;
-    padding: 1.1rem 1rem 1.2rem;
-    border-radius: 18px;
-  }
-  .hero__content::before {
-    background: linear-gradient(135deg, rgba(27,15,11,0.78) 0%, rgba(27,15,11,0.58) 65%, rgba(27,15,11,0.34) 100%);
+    padding: 0;
   }
   .hero__eyebrow {
     margin-bottom: 1rem;
@@ -1702,12 +1689,10 @@ body::after {
    34. HERO MARQUEE
 --------------------------------------------------------------------------- */
 .hero__marquee {
-  position: absolute;
-  bottom: 6rem;
-  left: 0;
-  width: 100%;
+  position: relative;
+  width: min(100%, 34rem);
   overflow: hidden;
-  z-index: 4;
+  margin-top: 1.2rem;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
 }
