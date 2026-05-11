@@ -134,10 +134,10 @@ const massiveText    = document.getElementById('massiveText');
 const heroSection    = document.querySelector('.hero');
 const heroStickyEl   = document.querySelector('.hero__sticky');
 
-const MASSIVE_START  = 22;  /* vw — initial */
-const MASSIVE_END    = 55;  /* vw — fully scrolled */
-const OPACITY_START  = 0.28;
-const OPACITY_END    = 0.08;
+const MASSIVE_START  = isMobile ? 16 : 22;  /* vw — initial */
+const MASSIVE_END    = isMobile ? 34 : 55;  /* vw — fully scrolled */
+const OPACITY_START  = isMobile ? 0.12 : 0.28;
+const OPACITY_END    = isMobile ? 0.04 : 0.08;
 
 function updateMassiveText() {
   if (!massiveText || !heroSection || prefersReduced) return;
@@ -181,7 +181,10 @@ function splitText(el, mode) {
 }
 
 function initSplitText() {
-  document.querySelectorAll('.split-chars').forEach(el => splitText(el, 'chars'));
+  document.querySelectorAll('.split-chars').forEach(el => {
+    const mode = isMobile && el.classList.contains('hero__title') ? 'words' : 'chars';
+    splitText(el, mode);
+  });
   document.querySelectorAll('.split-words').forEach(el => splitText(el, 'words'));
 }
 
@@ -459,6 +462,14 @@ function initCardEffects() {
 /* ---------------------------------------------------------------------------
    14. SMOOTH ANCHOR CLICKS
 --------------------------------------------------------------------------- */
+function scrollToAnchorTarget(target, behavior = 'smooth') {
+  const navH = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue('--nav-h-s') || '64', 10
+  );
+  const top = target.getBoundingClientRect().top + window.scrollY - navH;
+  window.scrollTo({ top, behavior });
+}
+
 function initAnchors() {
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
@@ -467,14 +478,42 @@ function initAnchors() {
       const target = document.querySelector(id);
       if (!target) return;
       e.preventDefault();
-
-      const navH = parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue('--nav-h-s') || '64', 10
-      );
-      const top = target.getBoundingClientRect().top + window.scrollY - navH;
-      window.scrollTo({ top, behavior: 'smooth' });
+      scrollToAnchorTarget(target, 'smooth');
     });
   });
+}
+
+function initInitialHash() {
+  const hash = window.location.hash;
+  if (!hash || hash === '#' || hash === '#accueil') return;
+
+  function jumpToHash() {
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    let tries = 0;
+
+    function jump() {
+      scrollToAnchorTarget(target, 'auto');
+      if (Math.abs(target.getBoundingClientRect().top) > 8 && tries < 5) {
+        tries += 1;
+        window.setTimeout(jump, 220);
+      }
+    }
+
+    jump();
+  }
+
+  const delay = sessionStorage.getItem('mj-loader-shown') ? 220 : 3000;
+
+  if (document.readyState === 'complete') {
+    window.setTimeout(jumpToHash, delay);
+    return;
+  }
+
+  window.addEventListener('load', () => {
+    window.setTimeout(jumpToHash, delay);
+  }, { once: true });
 }
 
 /* ---------------------------------------------------------------------------
@@ -532,6 +571,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordions();
   initCardEffects();
   initAnchors();
+  initInitialHash();
   initForm();
   startRAF();
 
