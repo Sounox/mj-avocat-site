@@ -1306,7 +1306,7 @@ p {
   position: relative;
   background: rgba(22,10,5,0.98);
   border-top: 1px solid rgba(118,95,90,0.18);
-  padding: clamp(3rem, 6vw, 5rem) 0 clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(2rem, 4vw, 3rem) 0 clamp(1.1rem, 2.4vw, 1.5rem);
   overflow: hidden;
 }
 
@@ -1335,16 +1335,16 @@ p {
 .footer__top {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: clamp(2rem, 5vw, 4rem);
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  padding-bottom: clamp(2rem, 4vw, 3rem);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(1.4rem, 3vw, 2rem);
+  padding-bottom: clamp(1.4rem, 3vw, 2rem);
   border-bottom: 1px solid rgba(118,95,90,0.13);
   align-items: start;
 }
 
-.footer__brand { display: flex; flex-direction: column; gap: 1.5rem; }
-.footer__logo  { height: 56px; width: auto; }
-.footer__signature { max-width: 200px; opacity: 0.6; }
+.footer__brand { display: flex; flex-direction: column; gap: 1rem; }
+.footer__logo  { height: 46px; width: auto; }
+.footer__signature { max-width: 172px; opacity: 0.6; }
 
 .footer__links {
   display: flex;
@@ -1876,7 +1876,7 @@ body::after {
    41. FOOTER CINÃ‰MATOGRAPHIQUE
 --------------------------------------------------------------------------- */
 .footer {
-  min-height: 75vh;
+  min-height: 52vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1884,12 +1884,12 @@ body::after {
 
 .footer__bg-photo { opacity: 0.35; }
 
-.footer__inner { padding-top: clamp(4rem, 8vw, 7rem); }
+.footer__inner { padding-top: clamp(2.6rem, 5vw, 4rem); }
 
 /* Signature manuscrite agrandie dans le footer */
 .footer__signature {
-  max-width: 240px;
-  opacity: 0.75;
+  max-width: 188px;
+  opacity: 0.72;
   transition: opacity 400ms var(--ease-out-quart), transform 400ms var(--ease-out-quart);
 }
 .footer__signature:hover { opacity: 1; transform: scale(1.04) rotate(-0.5deg); }
@@ -1990,52 +1990,74 @@ body::after {
     padding-right: 2.6rem;
   }
 }
+.page-home {
+  --manifesto-seam: #5d473e;
+}
+
 .page-home .footer {
-  padding-top: clamp(2rem, 4vw, 3rem);
+  padding-top: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .manifesto {
   position: relative;
   height: 240vh;
-  background:
-    radial-gradient(circle at 50% 18%, rgba(221,213,200,0.75) 0%, rgba(221,213,200,0) 48%),
-    linear-gradient(180deg, #f5f0eb 0%, var(--ivory) 38%, #ebe4de 100%);
-  color: var(--espresso);
+  background: var(--manifesto-seam);
+  color: var(--ivory);
   overflow: clip;
+}
+
+.manifesto::before,
+.manifesto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.manifesto::before {
+  background-image: url('assets/img-desk.jpg');
+  background-size: cover;
+  background-position: center 54%;
+  filter: grayscale(1) sepia(0.34) saturate(1.1) brightness(0.42) contrast(1.06);
+  transform: scale(1.04);
+}
+
+.manifesto::after {
+  background:
+    linear-gradient(180deg, rgba(30,14,9,0.28) 0%, rgba(47,26,18,0.44) 26%, rgba(76,53,44,0.62) 66%, var(--manifesto-seam) 100%),
+    linear-gradient(90deg, rgba(47,26,18,0.5) 0%, rgba(47,26,18,0.18) 32%, rgba(47,26,18,0.18) 68%, rgba(47,26,18,0.52) 100%);
 }
 
 .manifesto__sticky {
   position: sticky;
   top: 0;
+  z-index: 1;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: clamp(1rem, 3vw, 2.5rem);
-  padding: clamp(2rem, 5vw, 4rem) var(--container-pad);
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
   text-align: center;
 }
 
 .manifesto__eyebrow {
-  color: rgba(118,95,90,0.82);
+  color: rgba(240,235,230,0.72);
 }
 
 .manifesto__word {
   margin: 0;
+  display: inline-block;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 300;
   font-style: italic;
-  font-size: clamp(8rem, 48vw, 38rem);
-  line-height: 0.82;
-  letter-spacing: -0.06em;
+  font-size: clamp(7rem, 43vw, 34rem);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  padding: 0 0.12em 0 0.05em;
   white-space: nowrap;
-  background-image: url('assets/manifesto-fill.webp');
-  background-size: cover;
-  background-position: center;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: rgba(240,235,230,0.96);
+  text-shadow: 0 10px 32px rgba(0,0,0,0.22);
   will-change: font-size;
 }
 
@@ -2050,7 +2072,7 @@ body::after {
   font-style: italic;
   font-weight: 300;
   font-size: clamp(1.7rem, 3.4vw, 2.9rem);
-  color: rgba(47,26,18,0.92);
+  color: rgba(240,235,230,0.92);
   opacity: 0;
   transform: translateY(26px);
   transition: opacity 800ms var(--ease-out-expo), transform 800ms var(--ease-out-expo);
@@ -2063,7 +2085,7 @@ body::after {
 
 .home-about {
   background:
-    linear-gradient(180deg, rgba(221,213,200,0.35) 0%, rgba(240,235,230,1) 22%, rgba(240,235,230,1) 100%);
+    linear-gradient(180deg, var(--manifesto-seam) 0%, rgba(240,235,230,0.94) 18%, rgba(240,235,230,1) 32%, rgba(240,235,230,1) 100%);
 }
 
 .home-about__grid {
@@ -2682,7 +2704,12 @@ body::after {
     font-size: clamp(3rem, 15vw, 5.5rem);
   }
 
-  .manifesto__word,
+  .manifesto__word {
+    background-image: none !important;
+    -webkit-text-fill-color: var(--ivory);
+    color: var(--ivory);
+  }
+
   .cta-contact__word {
     background-image: none !important;
     -webkit-text-fill-color: var(--taupe);

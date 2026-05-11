@@ -188,8 +188,8 @@ function updateManifesto() {
   const progress = clamp01(-rect.top / total);
 
   const phase1   = clamp01(progress / 0.38);
-  const startVw  = 48;
-  const endVw    = 13;
+  const startVw  = 43;
+  const endVw    = 12;
   const current  = startVw - (startVw - endVw) * easeInOutCubic(phase1);
 
   word.style.fontSize = `${current}vw`;
