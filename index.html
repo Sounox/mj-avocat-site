@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -10,24 +10,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="page-home">
 
-  <!-- Site Loader (first visit only via sessionStorage) -->
   <div class="site-loader" id="siteLoader" aria-hidden="true" role="presentation">
     <img src="assets/1_LOGO_BLANC.png" alt="" class="site-loader__logo">
     <div class="site-loader__curtain"></div>
   </div>
 
-  <!-- Cursor (fixed, outside scroll) -->
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true">
     <span class="cursor-ring__label" aria-hidden="true">VOIR</span>
   </div>
 
-  <!-- Page overlay (intro) -->
   <div class="page-overlay" aria-hidden="true"></div>
 
-  <!-- Navigation (fixed) -->
   <nav class="nav" role="navigation" aria-label="Navigation principale">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Maître Morgane JOSEPH — Accueil">
@@ -49,17 +45,10 @@
   </nav>
 
   <main>
-
-    <!-- ================================================================
-         HERO (200vh pin)
-    ================================================================ -->
     <section id="accueil" class="hero" aria-label="Accueil">
       <div class="hero__sticky">
-
-        <!-- Canvas particles -->
         <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
 
-        <!-- Background image -->
         <div class="hero__bg-img" aria-hidden="true">
           <img src="assets/hero-cour-appel.jpg" alt=""
                class="hero__bg-photo"
@@ -68,15 +57,12 @@
           <div class="hero__bg-overlay"></div>
         </div>
 
-        <!-- Radial gradient pulse -->
         <div class="hero__bg-gradient" aria-hidden="true"></div>
 
-        <!-- Massive JOSEPH text (scroll-driven) -->
         <div class="hero-massive-wrapper" aria-hidden="true">
           <p class="hero-massive-text" id="massiveText">JOSEPH</p>
         </div>
 
-        <!-- Hero content -->
         <div class="hero__inner container">
           <div class="hero__content">
             <p class="hero__eyebrow eyebrow hero-anim" data-delay="200">AVOCAT AU BARREAU DE MONTPELLIER</p>
@@ -93,7 +79,6 @@
           </div>
         </div>
 
-        <!-- Marquee domaines -->
         <div class="hero__marquee" aria-hidden="true">
           <div class="hero__marquee-track">
             <span>DROIT DE LA FAMILLE</span><span class="hero__marquee-sep">·</span>
@@ -107,16 +92,13 @@
           </div>
         </div>
 
-        <!-- Scroll indicator -->
         <div class="hero__scroll-indicator hero-anim" data-delay="1700" aria-hidden="true">
           <span class="hero__scroll-line"></span>
           <span class="hero__scroll-label">Défiler</span>
         </div>
-
       </div>
     </section>
 
-    <!-- Ornament separator -->
     <div class="ornament-sep" aria-hidden="true">
       <svg class="ornament-sep__svg reveal-ornament" viewBox="0 0 240 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="0" y1="12" x2="90" y2="12" stroke="currentColor" stroke-width="0.5" opacity="0.4"/>
@@ -126,9 +108,204 @@
       </svg>
     </div>
 
+    <section id="manifeste" class="manifesto" aria-label="Manifeste du cabinet">
+      <div class="manifesto__sticky">
+        <p class="manifesto__eyebrow eyebrow">LE MANIFESTE</p>
+        <h2 class="manifesto__word" data-text="DROIT" aria-label="Droit">DROIT</h2>
+        <div class="manifesto__lines" aria-live="off">
+          <p class="manifesto__line manifesto__line--1">comme outil de protection.</p>
+          <p class="manifesto__line manifesto__line--2">comme outil d'écoute.</p>
+          <p class="manifesto__line manifesto__line--3">comme outil d'accompagnement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cabinet" class="section section-light home-about" aria-label="Aperçu de présentation">
+      <div class="ornament-corners" aria-hidden="true">
+        <svg class="ornament-corner ornament-corner--tl" viewBox="0 0 40 40"><path d="M0 20 L0 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 15 L5 5 L15 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
+        <svg class="ornament-corner ornament-corner--tr" viewBox="0 0 40 40"><path d="M40 20 L40 0 L20 0" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 15 L35 5 L25 5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
+        <svg class="ornament-corner ornament-corner--bl" viewBox="0 0 40 40"><path d="M0 20 L0 40 L20 40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M5 25 L5 35 L15 35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
+        <svg class="ornament-corner ornament-corner--br" viewBox="0 0 40 40"><path d="M40 20 L40 40 L20 40" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25"/><path d="M35 25 L35 35 L25 35" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.4"/></svg>
+      </div>
+
+      <div class="container">
+        <div class="home-about__grid">
+          <div class="home-about__media reveal-up">
+            <div class="home-about__image-wrap">
+              <img src="assets/photo.jpg"
+                   alt="Maître Morgane JOSEPH, avocat au Barreau de Montpellier"
+                   class="home-about__image"
+                   loading="lazy"
+                   onerror="this.parentElement.classList.add('img-placeholder')">
+            </div>
+          </div>
+
+          <div class="home-about__body reveal-up">
+            <p class="eyebrow">LE CABINET</p>
+            <h2>Une approche humaine du droit</h2>
+            <p>Avocate au Barreau de Montpellier depuis décembre 2025, Maître Morgane JOSEPH accompagne particuliers et familles dans les moments où le droit devient un outil de protection.</p>
+            <div class="home-about__meta" aria-label="Repères du cabinet">
+              <span>Prestation de serment : 13 décembre 2025</span>
+              <span>Montpellier</span>
+            </div>
+            <a href="presentation.html" class="btn btn--outline">
+              Découvrir le parcours
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="btn__icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apercu-domaines" class="section section-dark home-domaines" aria-label="Aperçu des domaines d'activité">
+      <div class="container">
+        <header class="section__header reveal-up">
+          <p class="eyebrow">EXPERTISES</p>
+          <h2>Trois domaines d'activité</h2>
+        </header>
+
+        <div class="domaines-grid home-domaines__grid">
+          <a class="domaine-card reveal-up" href="domaines.html#famille" data-fill="assets/domaine-famille.webp">
+            <span class="domaine-card__num">I</span>
+            <div class="domaine-card__body">
+              <h3 class="domaine-card__title" data-text="Famille">Famille</h3>
+              <p class="domaine-card__teaser">Divorce, autorité parentale, ordonnance de protection.</p>
+            </div>
+            <span class="domaine-card__arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a class="domaine-card reveal-up" href="domaines.html#civil" data-fill="assets/domaine-civil.webp">
+            <span class="domaine-card__num">II</span>
+            <div class="domaine-card__body">
+              <h3 class="domaine-card__title" data-text="Civil">Civil</h3>
+              <p class="domaine-card__teaser">Litiges contractuels, baux, responsabilité civile, voisinage.</p>
+            </div>
+            <span class="domaine-card__arrow" aria-hidden="true">→</span>
+          </a>
+
+          <a class="domaine-card reveal-up" href="domaines.html#aah" data-fill="assets/domaine-aah.webp">
+            <span class="domaine-card__num">III</span>
+            <div class="domaine-card__body">
+              <h3 class="domaine-card__title" data-text="AAH">AAH</h3>
+              <p class="domaine-card__teaser">Recours MDPH, refus d'attribution, contentieux du Pôle social.</p>
+            </div>
+            <span class="domaine-card__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="home-domaines__footer reveal-up">
+          <a href="domaines.html" class="btn btn--outline">
+            Voir tous les domaines
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="btn__icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation" class="quote-section" aria-label="Citation du cabinet">
+      <div class="quote-section__sticky">
+        <blockquote class="quote">
+          «
+          <span class="quote__word" data-fill="assets/texture-1.webp">Le</span>
+          <span class="quote__word" data-fill="assets/texture-2.webp">droit</span>
+          <span class="quote__word" data-fill="assets/texture-3.webp">se</span>
+          <span class="quote__word" data-fill="assets/texture-4.webp">vit</span>
+          <span class="quote__word" data-fill="assets/texture-5.webp">à</span>
+          <span class="quote__word" data-fill="assets/texture-6.webp">hauteur</span>
+          <span class="quote__word">d'humain.</span>
+          »
+        </blockquote>
+        <cite class="quote__author">— Maître Morgane JOSEPH</cite>
+      </div>
+    </section>
+
+    <section id="approche" class="section section-light home-approach" aria-label="Approche du cabinet">
+      <div class="container">
+        <header class="section__header reveal-up">
+          <p class="eyebrow">L'APPROCHE</p>
+          <h2>Écoute, rigueur, confiance</h2>
+        </header>
+
+        <div class="approach-grid">
+          <article class="approach-card reveal-up">
+            <span class="approach-card__roman" aria-hidden="true">I</span>
+            <h3>Écoute</h3>
+            <p>Prendre le temps d'entendre votre situation avant d'analyser les options juridiques.</p>
+          </article>
+
+          <article class="approach-card reveal-up">
+            <span class="approach-card__roman" aria-hidden="true">II</span>
+            <h3>Rigueur</h3>
+            <p>Un traitement méthodique de chaque dossier, soutenu par des recherches documentées.</p>
+          </article>
+
+          <article class="approach-card reveal-up">
+            <span class="approach-card__roman" aria-hidden="true">III</span>
+            <h3>Confiance</h3>
+            <p>Une relation transparente, accessible et fondée sur la défense de vos intérêts.</p>
+          </article>
+        </div>
+
+        <div class="home-approach__links reveal-up">
+          <a href="honoraires.html" class="btn btn--outline">Consulter les honoraires</a>
+          <a href="faq.html" class="btn btn--ghost">Lire la FAQ</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reperes" class="section section-dark home-reperes" aria-label="Repères du cabinet">
+      <div class="container">
+        <header class="section__header reveal-up">
+          <p class="eyebrow">REPÈRES</p>
+          <h2>Quelques points d'ancrage</h2>
+        </header>
+
+        <div class="stats-grid">
+          <article class="stat-card reveal-up">
+            <p class="stat-number" data-counter="3">0</p>
+            <p class="stat-label">domaines d'activité</p>
+          </article>
+
+          <article class="stat-card reveal-up">
+            <p class="stat-number" data-counter="2025">0</p>
+            <p class="stat-label">année de prestation de serment</p>
+          </article>
+
+          <article class="stat-card reveal-up">
+            <p class="stat-number" data-counter="34070">0</p>
+            <p class="stat-label">code postal du cabinet</p>
+          </article>
+
+          <article class="stat-card reveal-up">
+            <p class="stat-number" data-counter="1">0</p>
+            <p class="stat-label">barreau d'inscription</p>
+            <p class="stat-meta">Montpellier</p>
+          </article>
+
+          <article class="stat-card stat-card--text reveal-up">
+            <p class="stat-kicker">Adresse</p>
+            <p class="stat-text">12 Ter Rue du Lantissargues<br>34070 Montpellier</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="prise-rendez-vous" class="cta-contact" aria-label="Prendre rendez-vous">
+      <a href="contact.html" class="cta-contact__link" aria-label="Prendre rendez-vous au cabinet">
+        <span class="cta-contact__eyebrow eyebrow">RENDEZ-VOUS</span>
+        <span class="cta-contact__word">CONTACT</span>
+        <span class="cta-contact__sub">Prendre rendez-vous au cabinet</span>
+      </a>
+    </section>
+
+    <section class="marquee">
+      <div class="marquee__track" aria-hidden="true">
+        <span class="marquee__word">JOSEPH · AVOCAT · MONTPELLIER · JOSEPH · AVOCAT · MONTPELLIER ·</span>
+        <span class="marquee__word">JOSEPH · AVOCAT · MONTPELLIER · JOSEPH · AVOCAT · MONTPELLIER ·</span>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <footer class="footer" role="contentinfo">
     <div class="footer__bg-img" aria-hidden="true">
       <img src="assets/img-montpellier.jpg" alt="" class="footer__bg-photo" loading="lazy"
@@ -145,7 +322,7 @@
         </div>
         <nav class="footer__nav" aria-label="Navigation secondaire">
           <ul class="footer__links" role="list">
-            <li><a href="index.html" class="footer__link">Accueil</a></li>
+            <li><a href="index.html" class="footer__link" aria-current="page">Accueil</a></li>
             <li><a href="presentation.html" class="footer__link">Présentation</a></li>
             <li><a href="domaines.html" class="footer__link">Domaines</a></li>
             <li><a href="honoraires.html" class="footer__link">Honoraires</a></li>

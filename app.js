@@ -60,6 +60,8 @@ function startRAF() {
     updateCursorRing();
     updateParallax();
     updateMassiveText();
+    updateManifesto();
+    updateQuote();
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
@@ -164,6 +166,62 @@ function easeInOutCubic(t) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
 
+function clamp01(value) {
+  return Math.max(0, Math.min(1, value));
+}
+
+function updateManifesto() {
+  const section = document.querySelector('.manifesto');
+  const word    = document.querySelector('.manifesto__word');
+  const lines   = document.querySelectorAll('.manifesto__line');
+
+  if (!section || !word) return;
+
+  if (prefersReduced || isMobile) {
+    lines.forEach(line => line.classList.add('is-visible'));
+    word.style.removeProperty('font-size');
+    return;
+  }
+
+  const rect     = section.getBoundingClientRect();
+  const total    = Math.max(1, section.offsetHeight - window.innerHeight);
+  const progress = clamp01(-rect.top / total);
+
+  const phase1   = clamp01(progress / 0.38);
+  const startVw  = 48;
+  const endVw    = 13;
+  const current  = startVw - (startVw - endVw) * easeInOutCubic(phase1);
+
+  word.style.fontSize = `${current}vw`;
+
+  const phase2 = clamp01((progress - 0.32) / 0.45);
+  lines.forEach((line, index) => {
+    const threshold = 0.14 + index * 0.2;
+    line.classList.toggle('is-visible', phase2 > threshold);
+  });
+}
+
+function updateQuote() {
+  const section = document.querySelector('.quote-section');
+  const words   = section?.querySelectorAll('.quote__word');
+
+  if (!section || !words?.length) return;
+
+  if (prefersReduced || isMobile) {
+    words.forEach(word => word.classList.add('is-visible'));
+    return;
+  }
+
+  const rect     = section.getBoundingClientRect();
+  const total    = Math.max(1, section.offsetHeight - window.innerHeight);
+  const progress = clamp01(-rect.top / total);
+
+  words.forEach((word, index) => {
+    const threshold = (index / Math.max(1, words.length - 1)) * 0.72;
+    word.classList.toggle('is-visible', progress > threshold);
+  });
+}
+
 /* ---------------------------------------------------------------------------
    5. SPLIT TEXT
 --------------------------------------------------------------------------- */
@@ -210,6 +268,53 @@ function initReveals() {
   }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
   els.forEach(el => obs.observe(el));
+}
+
+function initMaskAssets() {
+  document.querySelectorAll('.domaine-card[data-fill]').forEach(card => {
+    card.style.setProperty('--bg-img', `url("${card.dataset.fill}")`);
+  });
+
+  document.querySelectorAll('.quote__word[data-fill]').forEach(word => {
+    word.style.setProperty('--fill', `url("${word.dataset.fill}")`);
+  });
+}
+
+function initCounters() {
+  const counters = document.querySelectorAll('[data-counter]');
+  if (!counters.length) return;
+
+  if (prefersReduced) {
+    counters.forEach(counter => {
+      counter.textContent = counter.dataset.counter || '0';
+    });
+    return;
+  }
+
+  const animateCounter = counter => {
+    const end = parseInt(counter.dataset.counter || '0', 10);
+    const duration = end >= 1000 ? 1400 : 950;
+    const start = performance.now();
+
+    function tick(now) {
+      const progress = clamp01((now - start) / duration);
+      const eased    = easeInOutCubic(progress);
+      counter.textContent = Math.round(end * eased).toString();
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+  };
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      animateCounter(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.55 });
+
+  counters.forEach(counter => observer.observe(counter));
 }
 
 /* ---------------------------------------------------------------------------
@@ -517,9 +622,16 @@ function initInitialHash() {
     if (!target) return;
 
     let tries = 0;
+    let domainOpened = false;
 
     function jump() {
       scrollToAnchorTarget(target, 'auto');
+
+      if (!domainOpened && target.classList.contains('domaine-row')) {
+        target.querySelector('.domaine-row__trigger')?.click();
+        domainOpened = true;
+      }
+
       if (Math.abs(target.getBoundingClientRect().top) > 8 && tries < 5) {
         tries += 1;
         window.setTimeout(jump, 220);
@@ -596,12 +708,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursor();
   initSplitText();
   initReveals();
+  initMaskAssets();
   initParallax();
   initNav();
   initMobileNav();
   initDomaines();
   initAccordions();
   initCardEffects();
+  initCounters();
   initAnchors();
   initInitialHash();
   initForm();
