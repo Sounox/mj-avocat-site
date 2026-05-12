@@ -80,6 +80,10 @@ function initCursor() {
     cursorX = e.clientX;
     cursorY = e.clientY;
     if (dot) dot.style.transform = `translate(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%))`;
+    const under = document.elementFromPoint(cursorX, cursorY);
+    const onLight = !!under?.closest('.section-light');
+    dot?.classList.toggle('on-light', onLight);
+    ring?.classList.toggle('on-light', onLight);
   }, { passive: true });
 
   document.addEventListener('mouseover', e => {
@@ -148,7 +152,6 @@ function updateMassiveText() {
   if (!massiveText || !heroSection || prefersReduced) return;
 
   const rect     = heroSection.getBoundingClientRect();
-  const totalH   = heroSection.offsetHeight;    /* 200vh */
   const stickyH  = window.innerHeight;          /* 100vh */
   const scrolled = -rect.top;                   /* px scrolled into hero */
 
