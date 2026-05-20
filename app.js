@@ -59,7 +59,6 @@ function startRAF() {
   function loop() {
     updateCursorRing();
     updateParallax();
-    updateMassiveText();
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
@@ -132,37 +131,6 @@ function updateParallax() {
   });
 }
 
-/* ---------------------------------------------------------------------------
-   4. MASSIVE TEXT (scroll-driven font-size)
-   Hero is 200vh; inner sticky is 100vh.
-   Progress 0â†’1 as user scrolls through the extra 100vh.
---------------------------------------------------------------------------- */
-const massiveText    = document.getElementById('massiveText');
-const heroSection    = document.querySelector('.hero');
-const heroStickyEl   = document.querySelector('.hero__sticky');
-
-const MASSIVE_START  = isMobile ? 16 : 22;  /* vw â€” initial */
-const MASSIVE_END    = isMobile ? 34 : 55;  /* vw â€” fully scrolled */
-const OPACITY_START  = isMobile ? 0.12 : 0.28;
-const OPACITY_END    = isMobile ? 0.04 : 0.08;
-
-function updateMassiveText() {
-  if (!massiveText || !heroSection || prefersReduced) return;
-
-  const rect     = heroSection.getBoundingClientRect();
-  const stickyH  = window.innerHeight;          /* 100vh */
-  const scrolled = -rect.top;                   /* px scrolled into hero */
-
-  /* Progress 0 â†’ 1 over the second 100vh of the hero */
-  const progress = Math.max(0, Math.min(1, (scrolled - stickyH * 0) / stickyH));
-
-  const fz  = MASSIVE_START + (MASSIVE_END - MASSIVE_START) * easeInOutCubic(progress);
-  const op  = OPACITY_START + (OPACITY_END - OPACITY_START) * progress;
-
-  massiveText.style.fontSize = `${fz}vw`;
-  massiveText.style.opacity  = op;
-}
-
 function easeInOutCubic(t) {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 }
@@ -181,7 +149,7 @@ function initManifestoObserver() {
         obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.3 }).observe(manifesto);
+  }, { threshold: 0.25 }).observe(manifesto);
 }
 
 function initQuoteObserver() {

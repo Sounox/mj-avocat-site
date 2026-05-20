@@ -515,18 +515,18 @@ select::-ms-expand { display: none; }
 .bg-word--left { left: -4%; right: auto; }
 
 /* ---------------------------------------------------------------------------
-   17. HERO â€” 200vh sticky pin
+   17. HERO
 --------------------------------------------------------------------------- */
 .hero {
   position: relative;
-  height: 200vh;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 .hero__sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
+  position: relative;
+  height: 100%;
 }
 
 /* Background image layer */
@@ -1958,26 +1958,20 @@ body::after {
 .footer__link::after { transform-origin: center; }
 
 /* ---------------------------------------------------------------------------
-   41. FOOTER CINÃ‰MATOGRAPHIQUE
+   41. FOOTER â€" brand name text
 --------------------------------------------------------------------------- */
-.footer {
-  min-height: 52vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+.footer__brand-name {
+  font-size: 0.83rem;
+  color: rgba(240,235,230,0.68);
+  line-height: 1.5;
+  font-style: italic;
 }
-
-.footer__bg-photo { opacity: 0.35; }
-
-.footer__inner { padding-top: clamp(2.6rem, 5vw, 4rem); }
-
-/* Signature manuscrite agrandie dans le footer */
-.footer__signature {
-  max-width: 188px;
-  opacity: 0.72;
-  transition: opacity 400ms var(--ease-out-quart), transform 400ms var(--ease-out-quart);
+.footer__brand-name span {
+  font-style: normal;
+  font-size: 0.75rem;
+  color: rgba(240,235,230,0.42);
+  display: block;
 }
-.footer__signature:hover { opacity: 1; transform: scale(1.04) rotate(-0.5deg); }
 
 .footer__logo {
   transition: transform 400ms var(--ease-out-quart), opacity 400ms var(--ease-out-quart);
@@ -2041,10 +2035,6 @@ body::after {
   padding-bottom: clamp(3rem, 6vw, 5rem);
 }
 
-.page-interior .footer__inner {
-  padding-top: clamp(3.5rem, 7vw, 5rem);
-}
-
 .footer__link[aria-current="page"] {
   color: var(--ivory);
 }
@@ -2087,15 +2077,10 @@ body::after {
     padding-right: 2.6rem;
   }
 }
-.page-home .footer {
-  padding-top: clamp(1.25rem, 2.5vw, 2rem);
-}
-
 .manifesto {
-  background: var(--espresso);
-  color: var(--ivory);
-  padding-block: clamp(5rem, 10vw, 8rem);
-  min-height: 70vh;
+  background: var(--ivory);
+  color: var(--espresso);
+  padding-block: clamp(4rem, 8vw, 6rem);
   display: flex;
   align-items: center;
 }
@@ -2109,9 +2094,9 @@ body::after {
 }
 
 .manifesto .eyebrow {
-  color: rgba(240,235,230,0.6);
+  color: var(--taupe);
   display: block;
-  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .manifesto__word {
@@ -2121,9 +2106,8 @@ body::after {
   letter-spacing: -0.03em;
   line-height: 1;
   font-size: clamp(5rem, 14vw, 12rem);
-  margin: 0 0 clamp(2rem, 4vw, 3rem) 0;
-  color: rgba(240,235,230,0.96);
-  opacity: 0;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.5rem) 0;
+  color: var(--taupe);
 }
 
 .manifesto__word-text {
@@ -2131,12 +2115,12 @@ body::after {
 }
 
 .manifesto.is-visible .manifesto__word {
-  animation: manifesto-word-scale 1400ms var(--ease-out-expo) both;
+  animation: manifesto-word-scale 1400ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes manifesto-word-scale {
-  from { transform: scale(0.92); opacity: 0; letter-spacing: -0.06em; }
-  to   { transform: scale(1);    opacity: 1; letter-spacing: -0.03em; }
+  from { transform: scale(0.92); letter-spacing: -0.06em; }
+  to   { transform: scale(1);    letter-spacing: -0.03em; }
 }
 
 .manifesto__lines {
@@ -2145,19 +2129,19 @@ body::after {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(0.5rem, 1vw, 1rem);
+  gap: clamp(0.4rem, 0.8vw, 0.75rem);
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
-  color: rgba(240,235,230,0.88);
+  font-size: clamp(1.125rem, 2.2vw, 1.625rem);
+  color: var(--espresso);
 }
 
 .manifesto__line {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 800ms var(--ease-out-expo), transform 800ms var(--ease-out-expo);
-  transition-delay: calc(var(--i) * 150ms);
+  transform: translateY(16px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 120ms + 200ms);
 }
 
 .manifesto.is-visible .manifesto__line {
@@ -2424,8 +2408,7 @@ body::after {
 .quote-section {
   background: var(--espresso);
   color: var(--ivory);
-  padding-block: clamp(5rem, 10vw, 7rem);
-  min-height: 60vh;
+  padding-block: clamp(4rem, 8vw, 6rem);
   display: flex;
   align-items: center;
   justify-content: center;
