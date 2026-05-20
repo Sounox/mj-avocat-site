@@ -60,8 +60,6 @@ function startRAF() {
     updateCursorRing();
     updateParallax();
     updateMassiveText();
-    updateManifesto();
-    updateQuote();
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
@@ -173,56 +171,43 @@ function clamp01(value) {
   return Math.max(0, Math.min(1, value));
 }
 
-function updateManifesto() {
-  const section = document.querySelector('.manifesto');
-  const word    = document.querySelector('.manifesto__word');
-  const lines   = document.querySelectorAll('.manifesto__line');
-
-  if (!section || !word) return;
-
-  if (prefersReduced || isMobile) {
-    lines.forEach(line => line.classList.add('is-visible'));
-    word.style.removeProperty('font-size');
-    return;
-  }
-
-  const rect     = section.getBoundingClientRect();
-  const total    = Math.max(1, section.offsetHeight - window.innerHeight);
-  const progress = clamp01(-rect.top / total);
-
-  const phase1   = clamp01(progress / 0.38);
-  const startVw  = 43;
-  const endVw    = 12;
-  const current  = startVw - (startVw - endVw) * easeInOutCubic(phase1);
-
-  word.style.fontSize = `${current}vw`;
-
-  const phase2 = clamp01((progress - 0.32) / 0.45);
-  lines.forEach((line, index) => {
-    const threshold = 0.14 + index * 0.2;
-    line.classList.toggle('is-visible', phase2 > threshold);
-  });
+function initManifestoObserver() {
+  const manifesto = document.querySelector('.manifesto');
+  if (!manifesto) return;
+  new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 }).observe(manifesto);
 }
 
-function updateQuote() {
-  const section = document.querySelector('.quote-section');
-  const words   = section?.querySelectorAll('.quote__word');
+function initQuoteObserver() {
+  const quote = document.querySelector('.quote-section');
+  if (!quote) return;
+  new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 }).observe(quote);
+}
 
-  if (!section || !words?.length) return;
-
-  if (prefersReduced || isMobile) {
-    words.forEach(word => word.classList.add('is-visible'));
-    return;
-  }
-
-  const rect     = section.getBoundingClientRect();
-  const total    = Math.max(1, section.offsetHeight - window.innerHeight);
-  const progress = clamp01(-rect.top / total);
-
-  words.forEach((word, index) => {
-    const threshold = (index / Math.max(1, words.length - 1)) * 0.72;
-    word.classList.toggle('is-visible', progress > threshold);
-  });
+function initContactCardObserver() {
+  const card = document.querySelector('.contact-card');
+  if (!card) return;
+  new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 }).observe(card);
 }
 
 /* ---------------------------------------------------------------------------
@@ -299,9 +284,6 @@ function initMaskAssets() {
     card.style.setProperty('--bg-img', `url("${card.dataset.fill}")`);
   });
 
-  document.querySelectorAll('.quote__word[data-fill]').forEach(word => {
-    word.style.setProperty('--fill', `url("${word.dataset.fill}")`);
-  });
 }
 
 function initCounters() {
@@ -862,6 +844,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordions();
   initCardEffects();
   initCounters();
+  initManifestoObserver();
+  initQuoteObserver();
+  initContactCardObserver();
   initAnchors();
   initInitialHash();
   initForm();
