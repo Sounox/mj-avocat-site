@@ -783,6 +783,41 @@ p {
 .reveal-stagger.is-visible > *:nth-child(4)     { transition-delay: 240ms; }
 .reveal-stagger.is-visible > *:nth-child(5)     { transition-delay: 320ms; }
 
+.reveal-flow {
+  --flow-offset: 108px;
+}
+
+.reveal-flow > * {
+  opacity: 0;
+  filter: blur(8px);
+  transition:
+    opacity 960ms var(--ease-out-expo),
+    transform 1040ms var(--ease-out-expo),
+    filter 1040ms var(--ease-out-expo);
+  will-change: transform, opacity, filter;
+}
+
+.reveal-flow[data-reveal-side="left"] > * {
+  transform: translate3d(calc(var(--flow-offset) * -1), 0, 0) scale(0.985);
+}
+
+.reveal-flow[data-reveal-side="right"] > * {
+  transform: translate3d(var(--flow-offset), 0, 0) scale(0.985);
+}
+
+.reveal-flow.is-visible > * {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.reveal-flow.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-flow.is-visible > *:nth-child(2) { transition-delay: 120ms; }
+.reveal-flow.is-visible > *:nth-child(3) { transition-delay: 240ms; }
+.reveal-flow.is-visible > *:nth-child(4) { transition-delay: 360ms; }
+.reveal-flow.is-visible > *:nth-child(5) { transition-delay: 480ms; }
+.reveal-flow.is-visible > *:nth-child(6) { transition-delay: 600ms; }
+
 /* ---------------------------------------------------------------------------
    20. PRÃ‰SENTATION
 --------------------------------------------------------------------------- */
@@ -1638,11 +1673,13 @@ p {
   .reveal-fade,
   .reveal-scale,
   .reveal-mask,
+  .reveal-flow > *,
   .reveal-ornament,
   .reveal-stagger > *,
   .hero__portrait-frame {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
     clip-path: none !important;
   }
   .domaine-detail { max-height: none !important; opacity: 1 !important; }
@@ -2877,6 +2914,8 @@ body::after {
 .nav__dropdown-footer:hover { opacity: 1; }
 
 @media (max-width: 768px) {
+  .reveal-flow { --flow-offset: 52px; }
+
   .nav__dropdown-trigger { width: 100%; justify-content: space-between; padding: 0.7rem 0; }
   .nav__dropdown {
     position: static; transform: none; width: 100%;

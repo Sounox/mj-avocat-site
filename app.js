@@ -257,7 +257,7 @@ function initSplitText() {
 --------------------------------------------------------------------------- */
 function initReveals() {
   const els = document.querySelectorAll(
-    '.reveal-up, .reveal-fade, .reveal-scale, .reveal-mask, .reveal-stagger, ' +
+    '.reveal-up, .reveal-fade, .reveal-scale, .reveal-mask, .reveal-stagger, .reveal-flow, ' +
     '.reveal-ornament, .split-chars, .split-words, .section-sep__line'
   );
   if (!els.length) return;
@@ -271,6 +271,22 @@ function initReveals() {
   }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
   els.forEach(el => obs.observe(el));
+}
+
+function initDomainTextFlow() {
+  const blocks = document.querySelectorAll(
+    '.domaine-page .domaine-section, ' +
+    '.domaine-page .domaine-faq-section, ' +
+    '.domaine-page .domaine-cta-block, ' +
+    '.domaine-page .domaine-related-section'
+  );
+  if (!blocks.length) return;
+
+  blocks.forEach((block, index) => {
+    block.classList.remove('reveal-up');
+    block.classList.add('reveal-flow');
+    block.dataset.revealSide = index % 2 === 0 ? 'right' : 'left';
+  });
 }
 
 function initMaskAssets() {
@@ -802,6 +818,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initCursor();
   initSplitText();
+  initDomainTextFlow();
   initReveals();
   initMaskAssets();
   initParallax();
@@ -820,4 +837,3 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(initHero, 80);
   setTimeout(initParticles, 300);
 });
-
