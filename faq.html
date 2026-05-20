@@ -1,10 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Questions fréquentes sur le cabinet, les honoraires, les procédures familiales et le contentieux AAH.">
-
+  <meta name="description" content="Questions fréquentes sur le cabinet, le premier rendez-vous, les honoraires et le suivi des dossiers de Maître Morgane JOSEPH à Montpellier.">
   <title>FAQ — Maître Morgane JOSEPH, Avocat au Barreau de Montpellier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,23 +12,18 @@
 </head>
 <body class="page-interior">
 
-  <!-- Site Loader (first visit only via sessionStorage) -->
   <div class="site-loader" id="siteLoader" aria-hidden="true" role="presentation">
     <img src="assets/1_LOGO_BLANC.png" alt="" class="site-loader__logo">
     <div class="site-loader__curtain"></div>
   </div>
 
-  <!-- Cursor (fixed, outside scroll) -->
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true">
     <span class="cursor-ring__label" aria-hidden="true">VOIR</span>
   </div>
 
-  <!-- Page overlay (intro) -->
   <div class="page-overlay" aria-hidden="true"></div>
-
-  <!-- Navigation (fixed) -->
-  <nav class="nav" role="navigation" aria-label="Navigation principale">
+<nav class="nav" role="navigation" aria-label="Navigation principale">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Maître Morgane JOSEPH — Accueil">
         <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="nav__logo-img" height="44" width="auto">
@@ -40,7 +34,30 @@
       </button>
       <ul class="nav__links" id="nav-menu" role="list">
         <li><a href="presentation.html" class="nav__link">Présentation</a></li>
-        <li><a href="domaines.html" class="nav__link">Domaines</a></li>
+        <li class="nav__item--dropdown">
+          <button class="nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-dropdown-domaines">
+            Domaines
+            <svg class="nav__dropdown-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div id="nav-dropdown-domaines" class="nav__dropdown" hidden role="menu">
+            <a class="nav__dropdown-item" href="domaines/droit-de-la-famille.html" role="menuitem">
+              <span class="nav__dropdown-num">I</span>
+              <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit de la famille</span><span class="nav__dropdown-teaser">Divorce, autorité parentale, ordonnance de protection.</span></span>
+              <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav__dropdown-item" href="domaines/droit-civil.html" role="menuitem">
+              <span class="nav__dropdown-num">II</span>
+              <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit civil</span><span class="nav__dropdown-teaser">Litiges contractuels, baux, responsabilité civile.</span></span>
+              <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav__dropdown-item" href="domaines/contentieux-aah.html" role="menuitem">
+              <span class="nav__dropdown-num">III</span>
+              <span class="nav__dropdown-body"><span class="nav__dropdown-title">Contentieux AAH</span><span class="nav__dropdown-teaser">Recours MDPH, refus d'attribution, Pôle social.</span></span>
+              <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav__dropdown-footer" href="domaines.html" role="menuitem">Vue d'ensemble des domaines →</a>
+          </div>
+        </li>
         <li><a href="honoraires.html" class="nav__link">Honoraires</a></li>
         <li><a href="faq.html" class="nav__link" aria-current="page">FAQ</a></li>
         <li><a href="contact.html" class="nav__link">Contact</a></li>
@@ -50,7 +67,7 @@
   </nav>
 
   <main>
-<section id="faq" class="section section-dark faq section-first section--numbered" style="--section-num: 'V'" aria-label="Questions fréquentes">
+    <section id="faq" class="section section-dark faq section-first section--numbered" style="--section-num: 'V'" aria-label="Questions fréquentes">
       <div class="container">
         <div class="section__header reveal-up">
           <p class="eyebrow">FAQ</p>
@@ -61,19 +78,14 @@
           <h3 class="faq__cat-title">Avant tout</h3>
           <div class="accordion" role="list">
             <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn">
-                <span class="accordion__label">Prendre un avocat, est-ce partir en guerre juridique&nbsp;?</span>
-                <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
-              </button>
-              <div class="accordion__panel" id="faq-1" role="region" aria-labelledby="faq-1-btn">
-                <div class="accordion__content">
-                  <p>Non. Faire appel à un avocat n'est pas synonyme de conflit ou d'escalade. C'est avant tout choisir d'être accompagné, conseillé et protégé dans une situation qui peut être juridiquement complexe et/ou émotionnellement difficile.</p>
-                  <p>Maître Morgane JOSEPH privilégie, chaque fois que cela est possible, des solutions apaisées et durables, dans une logique de dialogue et d'équilibre. L'objectif est de rechercher la solution la plus adaptée aux intérêts du client.</p>
-                  <p>Cependant, lorsque le désaccord persiste ou qu'un contentieux est inévitable, l'accompagnement se fait alors dans un cadre contentieux avec une défense engagée et déterminée des droits du client.</p>
-                  <p>L'approche s'adapte toujours à la situation, avec un seul objectif&nbsp;: la protection efficace des intérêts défendus.</p>
-                </div>
-              </div>
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn">
+              <span class="accordion__label">Prendre un avocat, est-ce partir en guerre juridique&nbsp;?</span>
+              <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
+            </button>
+            <div class="accordion__panel" id="faq-1" role="region" aria-labelledby="faq-1-btn">
+              <div class="accordion__content"><p>Non. Faire appel à un avocat n'est pas synonyme de conflit ou d'escalade. C'est avant tout choisir d'être accompagné, conseillé et protégé dans une situation qui peut être juridiquement complexe ou émotionnellement difficile.</p><p>Maître Morgane JOSEPH privilégie, chaque fois que cela est possible, des solutions apaisées et durables, dans une logique de dialogue et d'équilibre. Lorsque le désaccord persiste ou qu'un contentieux est inévitable, l'accompagnement se poursuit dans un cadre structuré, avec une défense engagée des intérêts du client.</p></div>
             </div>
+          </div>
           </div>
         </div>
 
@@ -81,49 +93,90 @@
           <h3 class="faq__cat-title">Honoraires et suivi du dossier</h3>
           <div class="accordion" role="list">
             <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn"><span class="accordion__label">Puis-je payer en plusieurs fois&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-2" role="region" aria-labelledby="faq-2-btn"><div class="accordion__content"><p>Oui. Un échelonnement des honoraires peut être envisagé et fait l'objet d'une discussion au cas par cas. Les modalités de paiement sont définies en toute transparence avant la signature de la convention d'honoraires.</p></div></div>
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn">
+              <span class="accordion__label">Puis-je payer en plusieurs fois&nbsp;?</span>
+              <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
+            </button>
+            <div class="accordion__panel" id="faq-2" role="region" aria-labelledby="faq-2-btn">
+              <div class="accordion__content"><p>Oui. Un échelonnement des honoraires peut être envisagé et fait l'objet d'une discussion au cas par cas. Les modalités de paiement sont définies en toute transparence avant la signature de la convention d'honoraires.</p></div>
             </div>
+          </div>
             <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn"><span class="accordion__label">Puis-je bénéficier de l'aide juridictionnelle&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-3" role="region" aria-labelledby="faq-3-btn"><div class="accordion__content"><p>Lors du premier rendez-vous, Maître Morgane JOSEPH vous indiquera de manière transparente si votre situation peut ouvrir droit à l'aide juridictionnelle. Il est précisé que le cabinet accepte d'intervenir au titre de l'aide juridictionnelle uniquement dans certaines procédures, notamment en matière de divorce et de contentieux relatif à l'Allocation aux Adultes Handicapés (AAH).</p></div></div>
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn">
+              <span class="accordion__label">Puis-je bénéficier de l'aide juridictionnelle&nbsp;?</span>
+              <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
+            </button>
+            <div class="accordion__panel" id="faq-3" role="region" aria-labelledby="faq-3-btn">
+              <div class="accordion__content"><p>Lors du premier rendez-vous, Maître Morgane JOSEPH vous indiquera de manière transparente si votre situation peut ouvrir droit à l'aide juridictionnelle. Le cabinet accepte d'intervenir au titre de l'aide juridictionnelle uniquement dans certaines procédures, notamment en <a href="domaines/droit-de-la-famille.html">droit de la famille</a> et en <a href="domaines/contentieux-aah.html">contentieux AAH</a>.</p></div>
             </div>
+          </div>
             <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn"><span class="accordion__label">Que se passe-t-il lors du premier rendez-vous&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-4" role="region" aria-labelledby="faq-4-btn"><div class="accordion__content"><p>Le premier rendez-vous permet d'exposer votre situation en toute confidentialité. Maître Morgane JOSEPH procède à une analyse juridique de votre dossier, identifie les premières options envisageables et vous informe des suites possibles. Les modalités d'intervention ainsi que les honoraires sont également expliqués de manière claire et transparente.</p></div></div>
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn">
+              <span class="accordion__label">Que se passe-t-il lors du premier rendez-vous&nbsp;?</span>
+              <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
+            </button>
+            <div class="accordion__panel" id="faq-4" role="region" aria-labelledby="faq-4-btn">
+              <div class="accordion__content"><p>Le premier rendez-vous permet d'exposer votre situation en toute confidentialité. Maître Morgane JOSEPH procède à une première analyse juridique du dossier, identifie les options envisageables et vous informe des suites possibles. Les modalités d'intervention ainsi que les honoraires sont également expliquées de manière claire et transparente.</p></div>
             </div>
+          </div>
             <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn"><span class="accordion__label">Dois-je apporter des documents dès le premier rendez-vous&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-5" role="region" aria-labelledby="faq-5-btn"><div class="accordion__content"><p>Il est recommandé d'apporter tout document utile à l'analyse de votre situation (décisions de justice, courriers, échanges, justificatifs de ressources ou médicaux selon le dossier). À défaut, le rendez-vous peut parfaitement avoir lieu et les pièces pourront être transmises ultérieurement.</p></div></div>
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">
+              <span class="accordion__label">Dois-je apporter des documents dès le premier rendez-vous&nbsp;?</span>
+              <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
+            </button>
+            <div class="accordion__panel" id="faq-5" role="region" aria-labelledby="faq-5-btn">
+              <div class="accordion__content"><p>Il est recommandé d'apporter tout document utile à l'analyse de votre situation : décisions de justice, courriers, échanges, justificatifs de ressources ou documents médicaux selon le dossier. À défaut, le rendez-vous peut parfaitement avoir lieu et les pièces pourront être transmises ensuite.</p></div>
             </div>
+          </div>
             <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-6" id="faq-6-btn"><span class="accordion__label">Puis-je contacter mon avocat en cours de procédure&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-6" role="region" aria-labelledby="faq-6-btn"><div class="accordion__content"><p>Oui. Le cabinet reste accessible pendant toute la durée de la procédure.</p><ul><li><strong>Par mail&nbsp;:</strong> Merci de préciser votre nom et prénom dans l'objet. Les pièces doivent être envoyées au format PDF. Aucun dépôt sans rendez-vous préalable ne sera accepté.</li><li><strong>Par téléphone&nbsp;:</strong> Maître Morgane JOSEPH est joignable du lundi au vendredi, de 9h à 18h30. En cas d'urgence, laisser un message vocal ou adresser un email avec la mention «&nbsp;URGENT&nbsp;» dans l'objet.</li></ul></div></div>
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-6" id="faq-6-btn">
+              <span class="accordion__label">Puis-je contacter mon avocat en cours de procédure&nbsp;?</span>
+              <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
+            </button>
+            <div class="accordion__panel" id="faq-6" role="region" aria-labelledby="faq-6-btn">
+              <div class="accordion__content"><p>Oui. Le cabinet reste accessible pendant toute la durée de la procédure.</p><ul><li><strong>Par mail :</strong> merci de préciser votre nom et prénom dans l'objet et d'envoyer les pièces au format PDF.</li><li><strong>Par téléphone :</strong> Maître Morgane JOSEPH est joignable du lundi au vendredi, de 9h à 18h30. En cas d'urgence, un message vocal ou un email mentionnant « URGENT » permet de signaler la situation.</li></ul></div>
             </div>
+          </div>
             <div class="accordion__item" role="listitem">
-              <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-7" id="faq-7-btn"><span class="accordion__label">Quels sont les frais en plus des honoraires&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button>
-              <div class="accordion__panel" id="faq-7" role="region" aria-labelledby="faq-7-btn"><div class="accordion__content"><p>Des frais annexes peuvent s'ajouter selon les dossiers (huissiers, expertises, déplacements, timbres de justice). Ces frais sont distincts des honoraires du cabinet. Cela ne s'applique pas aux clients bénéficiaires de l'aide juridictionnelle.</p></div></div>
+            <button class="accordion__trigger" aria-expanded="false" aria-controls="faq-7" id="faq-7-btn">
+              <span class="accordion__label">Quels sont les frais en plus des honoraires&nbsp;?</span>
+              <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
+            </button>
+            <div class="accordion__panel" id="faq-7" role="region" aria-labelledby="faq-7-btn">
+              <div class="accordion__content"><p>Des frais annexes peuvent s'ajouter selon les dossiers : huissiers, expertises, déplacements ou frais de procédure. Ils sont distincts des honoraires du cabinet et expliqués avec transparence lorsqu'ils sont susceptibles d'intervenir.</p></div>
             </div>
+          </div>
           </div>
         </div>
 
         <div class="faq__cat reveal-up">
-          <h3 class="faq__cat-title">Droit de la famille / divorce / séparation</h3>
-          <div class="accordion" role="list">
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-8" id="faq-8-btn"><span class="accordion__label">Puis-je avoir le même avocat que mon époux/épouse dans le cadre d'un divorce&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-8" role="region" aria-labelledby="faq-8-btn"><div class="accordion__content"><p>Non. En matière de divorce, chaque époux doit obligatoirement être assisté par son propre avocat.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-9" id="faq-9-btn"><span class="accordion__label">Que devient le logement familial en cas de séparation&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-9" role="region" aria-labelledby="faq-9-btn"><div class="accordion__content"><p>Le sort du logement dépend de la situation des époux (propriété, location, accord entre les parties, présence d'enfants). Il peut être attribué à l'un des époux, maintenu en indivision ou vendu, selon les circonstances du dossier.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-10" id="faq-10-btn"><span class="accordion__label">Comment est fixée la pension alimentaire&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-10" role="region" aria-labelledby="faq-10-btn"><div class="accordion__content"><p>La pension alimentaire est fixée en fonction des ressources des parents, des besoins de l'enfant et du mode de résidence. Elle peut être déterminée amiablement ou par le juge aux affaires familiales.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-11" id="faq-11-btn"><span class="accordion__label">Comment est organisée la garde des enfants&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-11" role="region" aria-labelledby="faq-11-btn"><div class="accordion__content"><p>La résidence des enfants peut être fixée en résidence alternée ou en résidence principale chez l'un des parents, avec un droit de visite et d'hébergement pour l'autre. L'intérêt supérieur de l'enfant constitue le critère principal de décision.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-12" id="faq-12-btn"><span class="accordion__label">Combien de temps dure une procédure de divorce&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-12" role="region" aria-labelledby="faq-12-btn"><div class="accordion__content"><p>Un divorce par consentement mutuel est en principe plus rapide, tandis qu'un divorce contentieux peut s'étendre sur une durée plus longue en fonction de la complexité du dossier et des délais de traitement des juridictions.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-13" id="faq-13-btn"><span class="accordion__label">Dois-je obligatoirement passer par le juge pour divorcer&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-13" role="region" aria-labelledby="faq-13-btn"><div class="accordion__content"><p>Non, pas dans tous les cas. Le divorce par consentement mutuel peut être réalisé sans passage devant le juge, par acte sous signature d'avocats. Les autres formes de divorce nécessitent une procédure judiciaire.</p></div></div></div>
-          </div>
-        </div>
-
-        <div class="faq__cat reveal-up">
-          <h3 class="faq__cat-title">Contentieux AAH</h3>
-          <div class="accordion" role="list">
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-14" id="faq-14-btn"><span class="accordion__label">Ai-je droit à l'AAH automatiquement&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-14" role="region" aria-labelledby="faq-14-btn"><div class="accordion__content"><p>Non. L'AAH n'est pas attribuée automatiquement. Elle est accordée après instruction du dossier par la MDPH selon des critères médicaux et administratifs précis.</p></div></div></div>
-            <div class="accordion__item" role="listitem"><button class="accordion__trigger" aria-expanded="false" aria-controls="faq-15" id="faq-15-btn"><span class="accordion__label">Que faire en cas de refus AAH&nbsp;?</span><span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span></button><div class="accordion__panel" id="faq-15" role="region" aria-labelledby="faq-15-btn"><div class="accordion__content"><p>Dans un premier temps, il est possible d'exercer un recours administratif préalable obligatoire auprès de la CDAPH dans un délai de deux mois à compter de la notification de la décision, par courrier LRAR. Si la décision de refus est maintenue, il est possible de saisir le tribunal judiciaire (Pôle social). L'accompagnement par un avocat permet de sécuriser les démarches et de présenter un dossier structuré et argumenté.</p></div></div></div>
+          <h3 class="faq__cat-title">Questions par domaine</h3>
+          <p class="faq__cat-intro">Les questions propres au droit de la famille et au contentieux AAH sont désormais regroupées sur leurs pages dédiées afin d'éviter la duplication et de vous orienter plus directement vers les informations utiles à votre situation.</p>
+          <div class="related-cards faq-domain-links">
+            <a href="domaines/droit-de-la-famille.html" class="related-card">
+              <span class="related-card__num">I</span>
+              <span class="related-card__body">
+                <span class="related-card__title">Avocat en droit de la famille</span>
+                <span class="related-card__teaser">Divorce, autorité parentale, pension alimentaire, ordonnance de protection.</span>
+              </span>
+              <svg class="related-card__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="domaines/droit-civil.html" class="related-card">
+              <span class="related-card__num">II</span>
+              <span class="related-card__body">
+                <span class="related-card__title">Consulter le droit civil</span>
+                <span class="related-card__teaser">Contrats, baux d'habitation, responsabilité civile et voisinage.</span>
+              </span>
+              <svg class="related-card__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="domaines/contentieux-aah.html" class="related-card">
+              <span class="related-card__num">III</span>
+              <span class="related-card__body">
+                <span class="related-card__title">En savoir plus sur le contentieux AAH</span>
+                <span class="related-card__teaser">Refus d'attribution, recours CDAPH et Pôle social du tribunal judiciaire.</span>
+              </span>
+              <svg class="related-card__arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -139,20 +192,18 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
+<footer class="footer" role="contentinfo">
     <div class="footer__bg-img" aria-hidden="true">
-      <img src="assets/img-montpellier.jpg" alt="" class="footer__bg-photo" loading="lazy"
-           onerror="this.parentElement.classList.add('img-placeholder')">
+      <img src="assets/img-montpellier.jpg" alt="" class="footer__bg-photo" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder')">
       <div class="footer__bg-overlay"></div>
     </div>
     <div class="footer__inner container">
       <div class="footer__top">
         <div class="footer__brand">
           <a href="index.html" aria-label="Retour à l'accueil">
-            <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="footer__logo" width="60" height="auto" loading="lazy">
+            <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="footer__logo" width="60" height="auto" loading="lazy" decoding="async">
           </a>
-          <img src="assets/signature_clair.png" alt="Signature Morgane JOSEPH — Avocat à la Cour" class="footer__signature" width="210" height="auto" loading="lazy">
+          <img src="assets/signature_clair.png" alt="Signature Morgane JOSEPH — Avocat à la Cour" class="footer__signature" width="210" height="auto" loading="lazy" decoding="async">
         </div>
         <nav class="footer__nav" aria-label="Navigation secondaire">
           <ul class="footer__links" role="list">
@@ -177,7 +228,6 @@
       </div>
     </div>
   </footer>
-
   <script src="app.js"></script>
 </body>
 </html>

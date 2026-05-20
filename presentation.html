@@ -40,7 +40,30 @@
       </button>
       <ul class="nav__links" id="nav-menu" role="list">
         <li><a href="presentation.html" class="nav__link" aria-current="page">Présentation</a></li>
-        <li><a href="domaines.html" class="nav__link">Domaines</a></li>
+        <li class="nav__item--dropdown">
+          <button class="nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-dropdown-domaines">
+            Domaines
+            <svg class="nav__dropdown-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div id="nav-dropdown-domaines" class="nav__dropdown" hidden role="menu">
+            <a class="nav__dropdown-item" href="domaines/droit-de-la-famille.html" role="menuitem">
+              <span class="nav__dropdown-num">I</span>
+              <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit de la famille</span><span class="nav__dropdown-teaser">Divorce, autorité parentale, ordonnance de protection.</span></span>
+              <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav__dropdown-item" href="domaines/droit-civil.html" role="menuitem">
+              <span class="nav__dropdown-num">II</span>
+              <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit civil</span><span class="nav__dropdown-teaser">Litiges contractuels, baux, responsabilité civile.</span></span>
+              <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav__dropdown-item" href="domaines/contentieux-aah.html" role="menuitem">
+              <span class="nav__dropdown-num">III</span>
+              <span class="nav__dropdown-body"><span class="nav__dropdown-title">Contentieux AAH</span><span class="nav__dropdown-teaser">Recours MDPH, refus d'attribution, Pôle social.</span></span>
+              <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav__dropdown-footer" href="domaines.html" role="menuitem">Vue d'ensemble des domaines →</a>
+          </div>
+        </li>
         <li><a href="honoraires.html" class="nav__link">Honoraires</a></li>
         <li><a href="faq.html" class="nav__link">FAQ</a></li>
         <li><a href="contact.html" class="nav__link">Contact</a></li>
@@ -103,6 +126,7 @@
               <p>Titulaire d'un Master 2 en Droit civil, mention Droit des personnes et de la famille, obtenu à l'Université de Montpellier, elle a ensuite intégré l'EDACS de Montpellier, où elle a obtenu le Certificat d'Aptitude à la Profession d'Avocat (CAPA).</p>
               <p>Son parcours s'est construit autour d'une conviction forte&nbsp;: le droit doit être un outil de protection, d'écoute et d'accompagnement. Grâce à ses expériences en cabinet d'avocat, en association et auprès de publics parfois en situation de vulnérabilité, Maître Morgane JOSEPH a développé une approche à la fois rigoureuse et humaine.</p>
               <p>Elle intervient principalement en Droit civil général, Droit de la famille, contentieux de l'Allocation aux Adultes Handicapés (AAH), avec une attention particulière portée aux situations sensibles nécessitant disponibilité, réactivité et confiance.</p>
+              <p>Pour approfondir les matières traitées par le cabinet, vous pouvez <a href="domaines.html">consulter la vue d'ensemble des domaines d'activité</a>, puis découvrir le <a href="domaines/droit-de-la-famille.html">droit de la famille à Montpellier</a>, <a href="domaines/droit-civil.html">le droit civil</a> ou <a href="domaines/contentieux-aah.html">le contentieux AAH</a> selon votre situation.</p>
               <p>Attachée à instaurer une relation transparente et accessible avec chacun de ses clients, Maître Morgane JOSEPH s'engage à assurer un accompagnement personnalisé, fondé sur l'écoute, la précision et la défense de leurs intérêts.</p>
             </div>
             <div class="presentation__signature reveal-fade">

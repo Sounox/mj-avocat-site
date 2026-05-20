@@ -278,6 +278,10 @@ function initMaskAssets() {
     card.style.setProperty('--bg-img', `url("${card.dataset.fill}")`);
   });
 
+  document.querySelectorAll('.hub-card[data-fill]').forEach(card => {
+    card.style.setProperty('--bg-img', `url("${card.dataset.fill}")`);
+  });
+
   document.querySelectorAll('.quote__word[data-fill]').forEach(word => {
     word.style.setProperty('--fill', `url("${word.dataset.fill}")`);
   });
@@ -697,6 +701,94 @@ function initForm() {
 }
 
 /* ---------------------------------------------------------------------------
+   15b. NAV DROPDOWN
+--------------------------------------------------------------------------- */
+function initNavDropdown() {
+  const triggers = document.querySelectorAll('.nav__dropdown-trigger');
+  if (!triggers.length) return;
+
+  function closeAll() {
+    triggers.forEach(t => {
+      t.setAttribute('aria-expanded', 'false');
+      const p = t.nextElementSibling;
+      if (p?.classList.contains('nav__dropdown')) p.setAttribute('hidden', '');
+    });
+  }
+
+  triggers.forEach(trigger => {
+    const panel = trigger.nextElementSibling;
+    if (!panel?.classList.contains('nav__dropdown')) return;
+
+    trigger.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      closeAll();
+      if (!isOpen) {
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.removeAttribute('hidden');
+      }
+    });
+
+    trigger.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      e.preventDefault();
+
+      const items = [...panel.querySelectorAll('.nav__dropdown-item, .nav__dropdown-footer')];
+      if (!items.length) return;
+
+      closeAll();
+      trigger.setAttribute('aria-expanded', 'true');
+      panel.removeAttribute('hidden');
+
+      const target = e.key === 'ArrowUp' ? items[items.length - 1] : items[0];
+      target.focus();
+    });
+
+    panel.addEventListener('keydown', e => {
+      const items = [...panel.querySelectorAll('.nav__dropdown-item, .nav__dropdown-footer')];
+      const idx   = items.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') { e.preventDefault(); (items[idx + 1] || items[0]).focus(); }
+      if (e.key === 'ArrowUp')   { e.preventDefault(); (items[idx - 1] || items[items.length - 1]).focus(); }
+      if (e.key === 'Escape')    { closeAll(); trigger.focus(); }
+    });
+
+    /* Close dropdown items close the mobile menu too */
+    panel.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        const toggle = document.querySelector('.nav__toggle');
+        const links  = document.querySelector('.nav__links');
+        if (toggle && links) {
+          toggle.setAttribute('aria-expanded', 'false');
+          links.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.nav__item--dropdown')) closeAll();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+
+  /* Mark current page in dropdown */
+  const path = window.location.pathname;
+  document.querySelectorAll('.nav__dropdown-item').forEach(item => {
+    const href = item.getAttribute('href') || '';
+    const norm = href.replace(/^\.\.\//, '/');
+    if (path.endsWith(href) || path.includes(norm.replace(/^\//, ''))) {
+      item.setAttribute('aria-current', 'page');
+      item.closest('.nav__item--dropdown')
+          ?.querySelector('.nav__dropdown-trigger')
+          ?.setAttribute('data-active', 'true');
+    }
+  });
+  if (path.includes('/domaines.html')) {
+    document.querySelector('.nav__dropdown-trigger')?.setAttribute('data-active', 'true');
+  }
+}
+
+/* ---------------------------------------------------------------------------
    16. BOOT
 --------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
@@ -715,6 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initParallax();
   initNav();
   initMobileNav();
+  initNavDropdown();
   initDomaines();
   initAccordions();
   initCardEffects();
@@ -727,5 +820,4 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(initHero, 80);
   setTimeout(initParticles, 300);
 });
-
 

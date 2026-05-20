@@ -1,11 +1,27 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Domaines d'activité de Maître Morgane JOSEPH : droit de la famille, droit civil et contentieux de l'Allocation aux Adultes Handicapés.">
-
-  <title>Domaines d'activité — Maître Morgane JOSEPH, Avocat au Barreau de Montpellier</title>
+  <meta name="description" content="Maître Morgane JOSEPH intervient dans trois domaines d'activité principaux à Montpellier : droit de la famille, droit civil et contentieux AAH.">
+  <title>Domaines d'activité — Maître Morgane JOSEPH, Avocat à Montpellier</title>
+  <link rel="canonical" href="https://mj-avocat-site.abl-slancry.workers.dev/domaines.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Domaines d'activité — Maître Morgane JOSEPH, Avocat à Montpellier">
+  <meta property="og:description" content="Découvrez les trois domaines d'activité du cabinet : droit de la famille, droit civil et contentieux AAH à Montpellier.">
+  <meta property="og:url" content="https://mj-avocat-site.abl-slancry.workers.dev/domaines.html">
+  <meta property="og:image" content="https://mj-avocat-site.abl-slancry.workers.dev/assets/hero-cour-appel.jpg">
+  <script>
+    (function () {
+      const map = {
+        '#famille': 'domaines/droit-de-la-famille.html',
+        '#civil': 'domaines/droit-civil.html',
+        '#aah': 'domaines/contentieux-aah.html'
+      };
+      const next = map[window.location.hash];
+      if (next) window.location.replace(next);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -13,23 +29,18 @@
 </head>
 <body class="page-interior">
 
-  <!-- Site Loader (first visit only via sessionStorage) -->
   <div class="site-loader" id="siteLoader" aria-hidden="true" role="presentation">
     <img src="assets/1_LOGO_BLANC.png" alt="" class="site-loader__logo">
     <div class="site-loader__curtain"></div>
   </div>
 
-  <!-- Cursor (fixed, outside scroll) -->
   <div class="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-ring" aria-hidden="true">
     <span class="cursor-ring__label" aria-hidden="true">VOIR</span>
   </div>
 
-  <!-- Page overlay (intro) -->
   <div class="page-overlay" aria-hidden="true"></div>
-
-  <!-- Navigation (fixed) -->
-  <nav class="nav" role="navigation" aria-label="Navigation principale">
+<nav class="nav" role="navigation" aria-label="Navigation principale">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo" aria-label="Maître Morgane JOSEPH — Accueil">
         <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="nav__logo-img" height="44" width="auto">
@@ -40,7 +51,30 @@
       </button>
       <ul class="nav__links" id="nav-menu" role="list">
         <li><a href="presentation.html" class="nav__link">Présentation</a></li>
-        <li><a href="domaines.html" class="nav__link" aria-current="page">Domaines</a></li>
+        <li class="nav__item--dropdown">
+          <button class="nav__dropdown-trigger" data-active="true" aria-expanded="false" aria-haspopup="true" aria-controls="nav-dropdown-domaines">
+            Domaines
+            <svg class="nav__dropdown-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div id="nav-dropdown-domaines" class="nav__dropdown" hidden role="menu">
+            <a class="nav__dropdown-item" href="domaines/droit-de-la-famille.html" role="menuitem">
+              <span class="nav__dropdown-num">I</span>
+              <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit de la famille</span><span class="nav__dropdown-teaser">Divorce, autorité parentale, ordonnance de protection.</span></span>
+              <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav__dropdown-item" href="domaines/droit-civil.html" role="menuitem">
+              <span class="nav__dropdown-num">II</span>
+              <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit civil</span><span class="nav__dropdown-teaser">Litiges contractuels, baux, responsabilité civile.</span></span>
+              <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav__dropdown-item" href="domaines/contentieux-aah.html" role="menuitem">
+              <span class="nav__dropdown-num">III</span>
+              <span class="nav__dropdown-body"><span class="nav__dropdown-title">Contentieux AAH</span><span class="nav__dropdown-teaser">Recours MDPH, refus d'attribution, Pôle social.</span></span>
+              <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="nav__dropdown-footer" href="domaines.html" role="menuitem">Vue d'ensemble des domaines →</a>
+          </div>
+        </li>
         <li><a href="honoraires.html" class="nav__link">Honoraires</a></li>
         <li><a href="faq.html" class="nav__link">FAQ</a></li>
         <li><a href="contact.html" class="nav__link">Contact</a></li>
@@ -50,103 +84,61 @@
   </nav>
 
   <main>
-<section id="domaines" class="section section-dark domaines section-first section--numbered" style="--section-num: 'III'" aria-label="Domaines d'activité">
-      <div class="bg-word bg-word--left parallax" data-speed="-0.2" aria-hidden="true">DÉFENSE</div>
-
+    <section class="section section-dark section-first domaines-hub-page" aria-label="Domaines d'activité du cabinet">
       <div class="container">
-        <div class="section__header reveal-up">
-          <p class="eyebrow">INTERVENTIONS</p>
-          <h2 class="split-words">Domaines d'activité</h2>
-        </div>
-      </div>
+        <header class="section__header domaines-hub-hero reveal-up">
+          <p class="eyebrow">EXPERTISES</p>
+          <h1>Domaines d'activité</h1>
+          <p class="lede">Maître Morgane JOSEPH intervient dans trois domaines d'activité principaux, avec une attention particulière portée aux situations personnelles, familiales et administratives sensibles.</p>
+        </header>
 
-      <!-- Row 1: Famille -->
-      <div class="domaine-row reveal-up" data-index="01" id="famille">
-        <div class="domaine-row__bg" aria-hidden="true">
-          <img src="assets/img-room.jpg" alt="" loading="lazy">
-        </div>
-        <div class="container domaine-row__inner">
-          <div class="domaine-row__intro">
-            <p class="eyebrow">01 — Domaine d'intervention</p>
-            <p class="domaine-row__teaser">Accompagnement dans les étapes de la vie familiale&nbsp;: divorce, autorité parentale, pension alimentaire, violences conjugales, ordonnances de protection.</p>
-          </div>
-          <h3 class="domaine-keyword" data-text="Famille" aria-hidden="true">Famille</h3>
-          <button class="domaine-row__trigger" aria-expanded="false" aria-controls="dom-detail-1" aria-label="Voir le détail du Droit de la famille">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="domaine-detail" id="dom-detail-1" hidden>
-        <div class="container domaine-detail__body">
-          <p>Maître Morgane Joseph accompagne ses clients dans les différentes étapes de leur vie familiale. Consciente des enjeux personnels et émotionnels que recouvrent les procédures familiales, elle veille à offrir un accompagnement personnalisé et une défense attentive des intérêts de chacun.</p>
-          <p>Elle intervient notamment en matière de&nbsp;:</p>
-          <ul>
-            <li>Procédure de divorce amiable et divorce contentieux&nbsp;;</li>
-            <li>Exercice de l'autorité parentale&nbsp;;</li>
-            <li>Fixation de la résidence des enfants et des droits de visite et d'hébergement&nbsp;;</li>
-            <li>Fixation de la pension alimentaire&nbsp;;</li>
-            <li>Situations de violences conjugales et procédures d'ordonnance de protection&nbsp;;</li>
-            <li>Procédures urgentes en matière familiale.</li>
-          </ul>
-        </div>
-      </div>
+        <div class="hub-grid">
+          <article class="hub-card reveal-up" data-fill="assets/domaine-famille.webp">
+            <span class="hub-card__num">I</span>
+            <h2 class="hub-card__title">Droit de la famille</h2>
+            <p class="hub-card__teaser">Divorce amiable ou contentieux, autorité parentale, pension alimentaire, ordonnance de protection. Un accompagnement humain dans les étapes sensibles de la vie familiale.</p>
+            <ul class="hub-card__items">
+              <li>Divorce amiable et contentieux</li>
+              <li>Autorité parentale et résidence des enfants</li>
+              <li>Pension alimentaire</li>
+              <li>Violences conjugales et ordonnance de protection</li>
+            </ul>
+            <a href="domaines/droit-de-la-famille.html" class="hub-card__link">En savoir plus sur le droit de la famille →</a>
+          </article>
 
-      <!-- Row 2: Civil -->
-      <div class="domaine-row reveal-up" data-index="02" id="civil">
-        <div class="domaine-row__bg" aria-hidden="true">
-          <img src="assets/img-books.jpg" alt="" loading="lazy">
-        </div>
-        <div class="container domaine-row__inner">
-          <div class="domaine-row__intro">
-            <p class="eyebrow">02 — Domaine d'intervention</p>
-            <p class="domaine-row__teaser">Défense des droits et résolution des litiges du quotidien&nbsp;: contrats, baux d'habitation, responsabilité civile, troubles de voisinage.</p>
-          </div>
-          <h3 class="domaine-keyword" data-text="Civil" aria-hidden="true">Civil</h3>
-          <button class="domaine-row__trigger" aria-expanded="false" aria-controls="dom-detail-2" aria-label="Voir le détail du Droit civil">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="domaine-detail" id="dom-detail-2" hidden>
-        <div class="container domaine-detail__body">
-          <p>Maître Morgane Joseph intervient en droit civil afin d'accompagner ses clients dans la défense de leurs droits et la résolution de leurs litiges du quotidien.</p>
-          <p>Elle intervient notamment dans les domaines suivants&nbsp;:</p>
-          <ul>
-            <li><strong>Litiges contractuels</strong>&nbsp;: accompagnement dans les différends liés à l'exécution, l'inexécution ou la rupture de contrats entre particuliers ou professionnels.</li>
-            <li><strong>Contentieux des baux d'habitation</strong>&nbsp;: assistance des propriétaires et locataires dans les problématiques relatives aux loyers impayés, expulsions, troubles locatifs ou résiliation de bail.</li>
-            <li><strong>Réparation du préjudice et responsabilité civile</strong>&nbsp;: accompagnement dans les demandes d'indemnisation à la suite d'un dommage corporel, matériel ou moral.</li>
-            <li><strong>Troubles et conflits de voisinage</strong>&nbsp;: défense des intérêts des clients dans les litiges liés aux nuisances, troubles anormaux de voisinage ou empiètements.</li>
-          </ul>
-        </div>
-      </div>
+          <article class="hub-card reveal-up" data-fill="assets/domaine-civil.webp">
+            <span class="hub-card__num">II</span>
+            <h2 class="hub-card__title">Droit civil</h2>
+            <p class="hub-card__teaser">Litiges contractuels, contentieux des baux d'habitation, responsabilité civile et troubles de voisinage. Une défense structurée dans les litiges du quotidien.</p>
+            <ul class="hub-card__items">
+              <li>Litiges contractuels</li>
+              <li>Contentieux des baux d'habitation</li>
+              <li>Responsabilité civile</li>
+              <li>Troubles et conflits de voisinage</li>
+            </ul>
+            <a href="domaines/droit-civil.html" class="hub-card__link">En savoir plus sur le droit civil →</a>
+          </article>
 
-      <!-- Row 3: AAH -->
-      <div class="domaine-row reveal-up" data-index="03" id="aah">
-        <div class="domaine-row__bg" aria-hidden="true">
-          <img src="assets/img-texture.jpg" alt="" loading="lazy">
+          <article class="hub-card reveal-up" data-fill="assets/domaine-aah.webp">
+            <span class="hub-card__num">III</span>
+            <h2 class="hub-card__title">Contentieux AAH</h2>
+            <p class="hub-card__teaser">Recours contre les décisions de la MDPH, refus d'attribution de l'Allocation aux Adultes Handicapés et procédure devant le Pôle social du tribunal judiciaire.</p>
+            <ul class="hub-card__items">
+              <li>Refus d'attribution de l'AAH</li>
+              <li>Recours administratif préalable obligatoire</li>
+              <li>Saisine du Pôle social</li>
+              <li>Compléments et prestations associées</li>
+            </ul>
+            <a href="domaines/contentieux-aah.html" class="hub-card__link">En savoir plus sur le contentieux AAH →</a>
+          </article>
         </div>
-        <div class="container domaine-row__inner">
-          <div class="domaine-row__intro">
-            <p class="eyebrow">03 — Domaine d'intervention</p>
-            <p class="domaine-row__teaser">Accompagnement des personnes en situation de handicap dans leurs démarches et recours relatifs à l'Allocation aux Adultes Handicapés (AAH).</p>
-          </div>
-          <h3 class="domaine-keyword" data-text="AAH" aria-hidden="true">AAH</h3>
-          <button class="domaine-row__trigger" aria-expanded="false" aria-controls="dom-detail-3" aria-label="Voir le détail du Contentieux AAH">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="domaine-detail" id="dom-detail-3" hidden>
-        <div class="container domaine-detail__body">
-          <p>Maître Morgane Joseph accompagne les personnes en situation de handicap dans leurs démarches et recours relatifs à l'Allocation aux Adultes Handicapés (AAH). Elle veille à assurer une défense rigoureuse et attentive des droits de ses clients face aux décisions administratives contestées.</p>
-          <p>Elle intervient notamment dans les domaines suivants&nbsp;:</p>
-          <ul>
-            <li><strong>Refus d'attribution de l'AAH</strong>&nbsp;: accompagnement dans les recours engagés à la suite d'une décision de refus de la MDPH ou des organismes compétents.</li>
-            <li><strong>Refus d'attribution ou révision des compléments</strong>&nbsp;: défense des droits des bénéficiaires concernant les décisions relatives aux compléments et prestations associées à l'AAH.</li>
-          </ul>
-        </div>
-      </div>
 
+        <section class="hub-cta-block reveal-up" aria-label="Prendre rendez-vous">
+          <h2>Une question sur votre situation ?</h2>
+          <p>Chaque dossier est analysé lors d'un premier rendez-vous confidentiel. Les modalités d'intervention et les honoraires sont expliqués de manière transparente.</p>
+          <a href="contact.html" class="btn btn--primary">Prendre rendez-vous</a>
+        </section>
+      </div>
     </section>
 
     <div class="ornament-sep" aria-hidden="true">
@@ -159,20 +151,18 @@
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
+<footer class="footer" role="contentinfo">
     <div class="footer__bg-img" aria-hidden="true">
-      <img src="assets/img-montpellier.jpg" alt="" class="footer__bg-photo" loading="lazy"
-           onerror="this.parentElement.classList.add('img-placeholder')">
+      <img src="assets/img-montpellier.jpg" alt="" class="footer__bg-photo" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('img-placeholder')">
       <div class="footer__bg-overlay"></div>
     </div>
     <div class="footer__inner container">
       <div class="footer__top">
         <div class="footer__brand">
           <a href="index.html" aria-label="Retour à l'accueil">
-            <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="footer__logo" width="60" height="auto" loading="lazy">
+            <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="footer__logo" width="60" height="auto" loading="lazy" decoding="async">
           </a>
-          <img src="assets/signature_clair.png" alt="Signature Morgane JOSEPH — Avocat à la Cour" class="footer__signature" width="210" height="auto" loading="lazy">
+          <img src="assets/signature_clair.png" alt="Signature Morgane JOSEPH — Avocat à la Cour" class="footer__signature" width="210" height="auto" loading="lazy" decoding="async">
         </div>
         <nav class="footer__nav" aria-label="Navigation secondaire">
           <ul class="footer__links" role="list">
@@ -197,7 +187,6 @@
       </div>
     </div>
   </footer>
-
   <script src="app.js"></script>
 </body>
 </html>

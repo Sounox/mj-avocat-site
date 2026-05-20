@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mj-avocat-site.abl-slancry.workers.dev/sitemap.xml
