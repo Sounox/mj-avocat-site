@@ -2315,12 +2315,17 @@ body::after {
   margin-top: auto;
   padding: 1rem 1.2rem 1.2rem;
   border-radius: 10px;
-  border: 1px solid transparent;
+  border: 1px solid rgba(240,235,230,0.08);
+  background: linear-gradient(180deg, rgba(22,10,5,0.18) 0%, rgba(22,10,5,0.34) 100%);
+  box-shadow: inset 0 1px 0 rgba(240,235,230,0.03);
   transition: background 550ms var(--ease-out-quart),
-              border-color 550ms var(--ease-out-quart);
+              border-color 550ms var(--ease-out-quart),
+              box-shadow 550ms var(--ease-out-quart);
 }
 
 .domaine-card__title {
+  position: relative;
+  display: inline-block;
   margin: 0;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 300;
@@ -2333,7 +2338,18 @@ body::after {
   background-position: center;
   -webkit-background-clip: text;
   background-clip: text;
-  transition: background-size 1200ms var(--ease-in-out-quart), transform 600ms var(--ease-out-quart), color 600ms var(--ease-out-quart);
+  -webkit-text-stroke: 1px rgba(240,235,230,0.42);
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+  transition: background-size 1200ms var(--ease-in-out-quart), transform 600ms var(--ease-out-quart), color 600ms var(--ease-out-quart), -webkit-text-stroke-color 600ms var(--ease-out-quart), filter 600ms var(--ease-out-quart);
+}
+
+.domaine-card__title::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: rgba(240,235,230,0.16);
+  z-index: -1;
+  transform: translateY(1px);
 }
 
 .domaine-card__teaser {
@@ -2365,6 +2381,8 @@ body::after {
 .domaine-card:focus-visible .domaine-card__title {
   background-size: 100% auto;
   transform: scale(0.96);
+  -webkit-text-stroke-color: rgba(240,235,230,0.6);
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,0.38));
 }
 
 .domaine-card:hover .domaine-card__teaser,
@@ -2803,10 +2821,18 @@ body::after {
   }
 
   .domaine-card__title,
+  .hub-card__title,
   .marquee__word {
     background-image: none !important;
     -webkit-text-fill-color: var(--sand);
     color: var(--sand);
+    -webkit-text-stroke: 0;
+    filter: none;
+  }
+
+  .domaine-card__title::before,
+  .hub-card__title::before {
+    content: none;
   }
 
   .quote__word[data-fill],
@@ -3475,6 +3501,8 @@ body::after {
 }
 
 .hub-card__title {
+  position: relative;
+  display: inline-block;
   line-height: 0.94;
   letter-spacing: -0.035em;
   color: transparent;
@@ -3483,13 +3511,26 @@ body::after {
   background-position: center;
   -webkit-background-clip: text;
   background-clip: text;
-  transition: background-size 1200ms var(--ease-in-out-quart), transform 600ms var(--ease-out-quart);
+  -webkit-text-stroke: 0.95px rgba(240,235,230,0.42);
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.3));
+  transition: background-size 1200ms var(--ease-in-out-quart), transform 600ms var(--ease-out-quart), -webkit-text-stroke-color 600ms var(--ease-out-quart), filter 600ms var(--ease-out-quart);
+}
+
+.hub-card__title::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: rgba(240,235,230,0.14);
+  z-index: -1;
+  transform: translateY(1px);
 }
 
 .hub-card:hover .hub-card__title,
 .hub-card:focus-within .hub-card__title {
   background-size: 100% auto;
   transform: scale(0.97);
+  -webkit-text-stroke-color: rgba(240,235,230,0.58);
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,0.38));
 }
 
 .hub-card__items {
