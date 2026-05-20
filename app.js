@@ -275,6 +275,7 @@ function initReveals() {
 
 function initDomainTextFlow() {
   const blocks = document.querySelectorAll(
+    '.domaine-page .domaine-overview, ' +
     '.domaine-page .domaine-section, ' +
     '.domaine-page .domaine-faq-section, ' +
     '.domaine-page .domaine-cta-block, ' +
