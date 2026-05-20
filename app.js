@@ -726,9 +726,9 @@ function initNavDropdown() {
   const getPreviewSrc = href => {
     if (!href) return '';
     const assetPrefix = href.startsWith('../') ? '../assets/' : 'assets/';
-    if (href.includes('droit-de-la-famille')) return `${assetPrefix}domaine-famille.webp`;
-    if (href.includes('droit-civil')) return `${assetPrefix}domaine-civil.webp`;
-    if (href.includes('contentieux-aah')) return `${assetPrefix}domaine-aah.webp`;
+    if (href.includes('droit-de-la-famille')) return `${assetPrefix}domaine-famille-horizontal.webp`;
+    if (href.includes('droit-civil')) return `${assetPrefix}domaine-civil-horizontal.webp`;
+    if (href.includes('contentieux-aah')) return `${assetPrefix}domaine-aah-horizontal.webp`;
     return '';
   };
 
