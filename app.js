@@ -724,13 +724,28 @@ function initNavDropdown() {
   const triggers = document.querySelectorAll('.nav__dropdown-trigger');
   if (!triggers.length) return;
 
-  const getPreviewSrc = href => {
+  const getPreviewConfig = href => {
     if (!href) return '';
     const assetPrefix = href.startsWith('../') ? '../assets/' : 'assets/';
-    if (href.includes('droit-de-la-famille')) return `${assetPrefix}domaine-famille-horizontal.webp`;
-    if (href.includes('droit-civil')) return `${assetPrefix}domaine-civil-horizontal.webp`;
-    if (href.includes('contentieux-aah')) return `${assetPrefix}domaine-aah-horizontal.webp`;
-    return '';
+    if (href.includes('droit-de-la-famille')) {
+      return {
+        src: `${assetPrefix}domaine-famille-horizontal.webp`,
+        pos: 'center 28%'
+      };
+    }
+    if (href.includes('droit-civil')) {
+      return {
+        src: `${assetPrefix}domaine-civil-horizontal.webp`,
+        pos: 'center 24%'
+      };
+    }
+    if (href.includes('contentieux-aah')) {
+      return {
+        src: `${assetPrefix}domaine-aah-horizontal.webp`,
+        pos: 'center 22%'
+      };
+    }
+    return null;
   };
 
   function closeAll() {
@@ -747,8 +762,10 @@ function initNavDropdown() {
     const items = [...panel.querySelectorAll('.nav__dropdown-item')];
 
     items.forEach(item => {
-      const src = getPreviewSrc(item.getAttribute('href') || '');
-      if (src) item.style.setProperty('--nav-item-preview', `url("${src}")`);
+      const preview = getPreviewConfig(item.getAttribute('href') || '');
+      if (!preview) return;
+      item.style.setProperty('--nav-item-preview', `url("${preview.src}")`);
+      item.style.setProperty('--nav-item-preview-pos', preview.pos);
     });
 
     trigger.addEventListener('click', e => {

@@ -2944,7 +2944,7 @@ body::after {
 .nav__dropdown-item::before {
   background-image: var(--nav-item-preview, none);
   background-size: cover;
-  background-position: center;
+  background-position: var(--nav-item-preview-pos, center 50%);
   transform: scale(1.06);
   z-index: 0;
 }
