@@ -723,17 +723,59 @@ function initNavDropdown() {
   const triggers = document.querySelectorAll('.nav__dropdown-trigger');
   if (!triggers.length) return;
 
+  const getPreviewSrc = href => {
+    if (!href) return '';
+    const assetPrefix = href.startsWith('../') ? '../assets/' : 'assets/';
+    if (href.includes('droit-de-la-famille')) return `${assetPrefix}domaine-famille.webp`;
+    if (href.includes('droit-civil')) return `${assetPrefix}domaine-civil.webp`;
+    if (href.includes('contentieux-aah')) return `${assetPrefix}domaine-aah.webp`;
+    return '';
+  };
+
   function closeAll() {
     triggers.forEach(t => {
       t.setAttribute('aria-expanded', 'false');
       const p = t.nextElementSibling;
-      if (p?.classList.contains('nav__dropdown')) p.setAttribute('hidden', '');
+      if (p?.classList.contains('nav__dropdown')) {
+        p.setAttribute('hidden', '');
+        p.classList.remove('has-preview');
+        p.style.removeProperty('--nav-dropdown-preview');
+      }
     });
   }
 
   triggers.forEach(trigger => {
     const panel = trigger.nextElementSibling;
     if (!panel?.classList.contains('nav__dropdown')) return;
+    const items = [...panel.querySelectorAll('.nav__dropdown-item')];
+    const footer = panel.querySelector('.nav__dropdown-footer');
+    const defaultItem = items.find(item => item.getAttribute('aria-current') === 'page') || items[0];
+
+    items.forEach(item => {
+      const src = getPreviewSrc(item.getAttribute('href') || '');
+      if (src) item.dataset.preview = src;
+    });
+
+    const setPreview = item => {
+      const src = item?.dataset.preview;
+      if (!src || isMobile) return;
+      panel.style.setProperty('--nav-dropdown-preview', `url("${src}")`);
+      panel.classList.add('has-preview');
+    };
+
+    const clearPreview = () => {
+      panel.classList.remove('has-preview');
+      panel.style.removeProperty('--nav-dropdown-preview');
+    };
+
+    const resetPreview = () => {
+      if (isMobile) return;
+      if (defaultItem?.dataset.preview) {
+        setPreview(defaultItem);
+      } else {
+        clearPreview();
+      }
+    };
 
     trigger.addEventListener('click', e => {
       e.stopPropagation();
@@ -742,6 +784,7 @@ function initNavDropdown() {
       if (!isOpen) {
         trigger.setAttribute('aria-expanded', 'true');
         panel.removeAttribute('hidden');
+        resetPreview();
       }
     });
 
@@ -755,18 +798,33 @@ function initNavDropdown() {
       closeAll();
       trigger.setAttribute('aria-expanded', 'true');
       panel.removeAttribute('hidden');
+      resetPreview();
 
       const target = e.key === 'ArrowUp' ? items[items.length - 1] : items[0];
       target.focus();
     });
 
     panel.addEventListener('keydown', e => {
-      const items = [...panel.querySelectorAll('.nav__dropdown-item, .nav__dropdown-footer')];
-      const idx   = items.indexOf(document.activeElement);
-      if (e.key === 'ArrowDown') { e.preventDefault(); (items[idx + 1] || items[0]).focus(); }
-      if (e.key === 'ArrowUp')   { e.preventDefault(); (items[idx - 1] || items[items.length - 1]).focus(); }
+      const focusables = [...panel.querySelectorAll('.nav__dropdown-item, .nav__dropdown-footer')];
+      const idx   = focusables.indexOf(document.activeElement);
+      if (e.key === 'ArrowDown') { e.preventDefault(); (focusables[idx + 1] || focusables[0]).focus(); }
+      if (e.key === 'ArrowUp')   { e.preventDefault(); (focusables[idx - 1] || focusables[focusables.length - 1]).focus(); }
       if (e.key === 'Escape')    { closeAll(); trigger.focus(); }
     });
+
+    items.forEach(item => {
+      item.addEventListener('mouseenter', () => setPreview(item));
+      item.addEventListener('focus', () => setPreview(item));
+    });
+
+    panel.addEventListener('mouseleave', resetPreview);
+    panel.addEventListener('focusout', () => {
+      requestAnimationFrame(() => {
+        if (!panel.contains(document.activeElement)) resetPreview();
+      });
+    });
+    footer?.addEventListener('mouseenter', resetPreview);
+    footer?.addEventListener('focus', resetPreview);
 
     /* Close dropdown items close the mobile menu too */
     panel.querySelectorAll('a').forEach(a => {
