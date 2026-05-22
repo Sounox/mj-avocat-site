@@ -1268,6 +1268,10 @@ select::-ms-expand { display: none; }
   z-index: 1;
 }
 
+.contact-faq__accordion {
+  max-width: 860px;
+}
+
 .contact__info { display: flex; flex-direction: column; gap: 0.85rem; }
 
 .contact__form-wrap {
