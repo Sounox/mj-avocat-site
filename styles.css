@@ -2098,7 +2098,8 @@ body::after {
 .manifesto {
   background: var(--ivory);
   color: var(--espresso);
-  padding-block: clamp(4rem, 8vw, 6rem);
+  padding-top: clamp(3.5rem, 7vw, 5.5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
   display: flex;
   align-items: center;
 }
@@ -2169,6 +2170,8 @@ body::after {
 
 .home-about {
   background: var(--ivory);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2rem, 3.8vw, 2.85rem);
 }
 
 .home-about__grid {
@@ -2176,10 +2179,6 @@ body::after {
   grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.9fr);
   gap: clamp(2.5rem, 6vw, 6rem);
   align-items: center;
-}
-
-.home-about {
-  padding-bottom: clamp(2rem, 3.8vw, 2.85rem);
 }
 
 .home-about__media {
@@ -2190,6 +2189,7 @@ body::after {
   position: relative;
   aspect-ratio: 4 / 5;
   overflow: hidden;
+  border-radius: var(--radius-lg);
   background: rgba(47,26,18,0.06);
   box-shadow: 0 30px 80px rgba(47,26,18,0.12);
 }
@@ -2628,7 +2628,7 @@ body::after {
 
 .contact-card {
   background: var(--ivory);
-  padding-block: clamp(5rem, 9vw, 7rem);
+  padding-block: clamp(3.5rem, 7vw, 5.5rem);
   padding-inline: clamp(1.5rem, 4vw, 3rem);
   display: flex;
   align-items: center;
@@ -2639,7 +2639,7 @@ body::after {
   background: linear-gradient(180deg, rgba(240,235,230,1) 0%, rgba(221,213,200,0.4) 100%);
   border: 1px solid rgba(118,95,90,0.15);
   border-radius: var(--radius-lg);
-  padding: clamp(2.5rem, 5vw, 4rem);
+  padding: clamp(2rem, 4vw, 3.25rem);
   max-width: 720px;
   width: 100%;
   text-align: center;
