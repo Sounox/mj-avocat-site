@@ -1,6 +1,6 @@
 # AUDIT_VISUEL.md — MJ Avocat
 *Audit complet — Desktop (1440px / 1920px) · Tablette (768px) · Mobile (375px / 390px)*
-*Réalisé le 2026-05-26, mis à jour le 2026-05-27 — analyse statique du code source (HTML + CSS + JS)*
+*Réalisé le 2026-05-26, mis à jour le 2026-05-27 (Session 3) — analyse statique du code source (HTML + CSS + JS)*
 
 ---
 
@@ -204,6 +204,15 @@
 
 ---
 
+### Session 3 — Audit exhaustif 10 pages × 4 breakpoints (2026-05-27)
+
+| # | Défaut | Fichier(s) | Statut |
+|---|--------|-----------|--------|
+| A12 | H1→H3 sans H2 parent sur honoraires (4 h-cards) | honoraires.html, styles.css | ✅ Corrigé → H2 |
+| A13 | Texte placeholder visible côté client dans FAQ droit civil | domaines/droit-civil.html | ✅ Supprimé (→ commentaire HTML) |
+
+---
+
 ## RÉCAPITULATIF GLOBAL DES DÉFAUTS
 
 ### 🔴 Critiques (tous corrigés)
@@ -218,6 +227,8 @@
 9. FAQ H3 cat-titles avant H2 → saut de hiérarchie invalide
 10. « Maître JOSEPH » sans prénom (déontologie)
 11. Lien RGPD manquant dans formulaire
+12. honoraires.html H3 h-cards sans H2 parent → saut H1→H3
+13. Texte placeholder interne visible dans FAQ droit civil
 
 ### 🟠 Moyens (tous corrigés)
 1. Checkbox RGPD 16×16px → 18×18px
@@ -232,12 +243,47 @@
 
 ---
 
+## AUDIT SESSION 3 — Vérification exhaustive par page
+
+### Résultats globaux — toutes pages × 4 breakpoints
+
+| Page | Hiérarchie | Contraste | Responsive | Images | SEO/meta | Statut |
+|------|-----------|-----------|-----------|--------|---------|--------|
+| `/` | ✅ H1→H2→H3 | ✅ rythme dark/light | ✅ grilles 1-col 768px | ✅ lazy/eager correct | ✅ og+JSON-LD | ✅ |
+| `/presentation.html` | ✅ H1→H2 (piliers en `<p>`) | ✅ section-light colors | ✅ grid 1-col 1024px | ✅ photo.jpg descriptif | ✅ canonical | ✅ |
+| `/domaines.html` | ✅ H1→H2 | ✅ hub-cards dark-on-light | ✅ hub-cards 1-col 768px | ✅ | ✅ | ✅ |
+| `/domaines/droit-de-la-famille.html` | ✅ H1→H2 | ✅ espresso sur ivory | ✅ topic-pair 1-col 768px | ✅ _u_ alt descriptif | ✅ JSON-LD | ✅ |
+| `/domaines/droit-civil.html` | ✅ H1→H2 | ✅ | ✅ | ✅ img-desk alt descriptif | ✅ | ✅ A13 corrigé |
+| `/domaines/contentieux-aah.html` | ✅ H1→H2 | ✅ | ✅ | ✅ | ✅ JSON-LD | ✅ |
+| `/honoraires.html` | ✅ H1→H2 (corrigé A12) | ✅ h-card h2 espresso | ✅ 4→2→1 col | ✅ | ✅ | ✅ A12 corrigé |
+| `/faq.html` | ✅ H1→H2 cat-titles | ✅ faq__cat-title taupe | ✅ accordion mobile | ✅ | ✅ | ✅ |
+| `/contact.html` | ✅ H1→H2 | ✅ c-cards section-light | ✅ form 1-col 768px | ✅ img-desk décoratif | ✅ | ✅ |
+| `/mentions-legales.html` | ✅ H1→H2 | ✅ section espresso | ✅ max-width 75ch | ✅ | ✅ noindex | ✅ |
+
+### Responsive confirmé — points clés
+
+| Point | Résultat |
+|-------|---------|
+| Container max-width 1280px | ✅ `--container-max: 1280px` |
+| Padding mobile `clamp(1.5rem,5vw,4rem)` → ~24px à 375px | ✅ |
+| `overflow-x: hidden` sur body | ✅ |
+| Hero "JOSEPH" massif (`20vw`, opacity 0.03) | ✅ décoratif, non bloquant |
+| Marquee d'expertises | ✅ `display: none` sous 768px |
+| Grilles toutes pages → 1 col sous 768px | ✅ |
+| Burger 48×48px, zone tactile OK | ✅ |
+| Curseur custom désactivé `(pointer: coarse)` | ✅ |
+| Select custom chevron (pas de doublon) | ✅ `appearance: none` + SVG |
+| Nav `.scrolled` forcé sur `page-interior` | ✅ logo blanc visible |
+
+---
+
 ## CE QUI RESTE EN SUSPENS
 
 | Item | Raison |
 |------|--------|
-| Contenus des sous-sections domaines | Attend validation cliente (cf. CONTENUS_A_VENIR.md) |
+| Contenus FAQ droit civil | Attend validation formulations par la cliente |
+| Contenus sous-sections domaines (TEXTE À VENIR) | Await validation cliente (cf. CONTENUS_A_VENIR.md) |
 | Choix de police définitif (Playfair vs Cormorant) | Attend retour cliente sur test-fonts.html |
 | Scores Lighthouse réels | Nécessite un environnement de navigateur headless (non disponible en CLI) |
 | Images hero en WebP + srcset | Optimisation long terme, photos à recompresser côté cliente |
-| Photo cliente pour `_u_*` assets | Remplacement avec les vraies photos du cabinet |
+| Photos cabinet pour `_u_*` assets | Remplacement avec les vraies photos du cabinet |

@@ -392,7 +392,7 @@ p {
 .section-light .h-card             { background: rgba(47,26,18,0.04); border-color: rgba(47,26,18,0.1); }
 .section-light .h-card:hover       { border-color: rgba(47,26,18,0.28); box-shadow: 0 24px 60px rgba(47,26,18,0.1); }
 .section-light .h-card::before     { background: radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(47,26,18,0.07), transparent 60%); }
-.section-light .h-card h3          { color: var(--espresso); }
+.section-light .h-card h2          { color: var(--espresso); }
 .section-light .h-card p           { color: rgba(47,26,18,0.66); }
 .section-light .honoraires__text p { color: rgba(47,26,18,0.8); }
 
@@ -1246,7 +1246,7 @@ select::-ms-expand { display: none; }
 }
 
 .h-card__icon { color: var(--taupe); margin-bottom: 1.2rem; }
-.h-card h3 {
+.h-card h2 {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
