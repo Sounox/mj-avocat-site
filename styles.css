@@ -27,6 +27,8 @@
   --radius-lg:   22px;
   --radius-pill: 999px;
 
+  --font-name: 'Playfair Display', Georgia, serif;
+
   --container-max: 1280px;
   --container-pad: clamp(1.5rem, 5vw, 4rem);
   --nav-h:   96px;
@@ -423,6 +425,22 @@ select::-ms-expand { display: none; }
 .section-light .btn--outline       { color: var(--espresso); border-color: rgba(47,26,18,0.3); }
 .section-light .btn--outline:hover { background: rgba(47,26,18,0.06); border-color: rgba(47,26,18,0.55); }
 
+/* Accordion on light */
+.section-light .accordion__item       { border-top-color: rgba(47,26,18,0.14); }
+.section-light .accordion__item:last-child { border-bottom-color: rgba(47,26,18,0.14); }
+.section-light .accordion__item.open  { border-left-color: rgba(47,26,18,0.35); }
+.section-light .accordion__label      { color: var(--espresso); }
+.section-light .accordion__item.open .accordion__label { color: var(--taupe); }
+.section-light .accordion__content p  { color: rgba(47,26,18,0.78); }
+.section-light .accordion__content ul li { color: rgba(47,26,18,0.78); }
+.section-light .accordion__content strong { color: var(--espresso); }
+.section-light .faq__cat-title        { color: rgba(47,26,18,0.38); }
+
+/* Domaine topic plain on light */
+.section-light .domaine-topic-plain p { color: rgba(47,26,18,0.78); }
+.section-light .domaine-topic-plain h2 { color: var(--espresso); }
+.section-light .domaine-topic-plain h3 { color: var(--espresso); }
+
 /* ---------------------------------------------------------------------------
    12. SECTION LINE SEPARATORS
 --------------------------------------------------------------------------- */
@@ -652,6 +670,7 @@ select::-ms-expand { display: none; }
   color: rgba(227,216,205,0.84);
 }
 .hero__title {
+  font-family: var(--font-name);
   margin-bottom: 1rem;
   white-space: nowrap;
   color: rgba(248,243,238,0.97);
@@ -2258,9 +2277,6 @@ body::after {
 }
 
 .home-domaines {
-  background:
-    radial-gradient(circle at 20% 10%, rgba(221,213,200,0.08) 0%, rgba(221,213,200,0) 35%),
-    linear-gradient(180deg, #25130d 0%, var(--espresso) 42%, #20100b 100%);
   padding-top: clamp(2.6rem, 4vw, 3.5rem);
 }
 
@@ -2436,8 +2452,8 @@ body::after {
 }
 
 .quote-section {
-  background: var(--espresso);
-  color: var(--ivory);
+  background: var(--ivory);
+  color: var(--espresso);
   padding-block: clamp(4rem, 8vw, 6rem);
   display: flex;
   align-items: center;
@@ -2457,7 +2473,7 @@ body::after {
 .quote-section__mark {
   width: clamp(32px, 4vw, 48px);
   height: auto;
-  color: var(--sand);
+  color: var(--taupe);
   display: block;
   margin: 0 auto clamp(1.5rem, 3vw, 2.5rem) auto;
   opacity: 0;
@@ -2488,7 +2504,7 @@ body::after {
   font-size: 0.8125rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--sand);
+  color: var(--taupe);
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 900ms var(--ease-out-expo) 500ms, transform 900ms var(--ease-out-expo) 500ms;
@@ -2902,11 +2918,11 @@ body::after {
   position: absolute; top: calc(100% + 18px); left: 50%;
   transform: translateX(-50%) translateY(-6px);
   width: min(400px, 90vw); padding: 10px;
-  background: rgba(47,26,18,0.95);
+  background: rgba(240,235,230,0.97);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(221,213,200,0.11); border-radius: var(--radius-md);
-  box-shadow: 0 28px 64px rgba(0,0,0,0.5);
+  border: 1px solid rgba(118,95,90,0.15); border-radius: var(--radius-md);
+  box-shadow: 0 28px 64px rgba(0,0,0,0.2);
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity 320ms var(--ease-out-quart), transform 320ms var(--ease-out-quart),
               visibility 0s linear 320ms;
@@ -2917,9 +2933,9 @@ body::after {
   transform: translateX(-50%) translateY(0); transition-delay: 0s;
 }
 .nav__dropdown-item {
-  display: grid; grid-template-columns: 2.2rem 1fr 1.1rem;
+  display: grid; grid-template-columns: 1fr 1.1rem;
   align-items: center; gap: 10px; padding: 12px 14px; border-radius: var(--radius-sm);
-  text-decoration: none; color: var(--ivory);
+  text-decoration: none; color: var(--espresso);
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -2957,10 +2973,11 @@ body::after {
 }
 .nav__dropdown-item:hover,
 .nav__dropdown-item:focus-visible {
-  background: rgba(221,213,200,0.08);
-  border-color: rgba(221,213,200,0.14);
+  background: rgba(47,26,18,0.06);
+  border-color: rgba(118,95,90,0.18);
   transform: translateX(3px);
   outline: none;
+  color: var(--ivory);
 }
 .nav__dropdown-item:hover::before,
 .nav__dropdown-item:hover::after,
@@ -2972,13 +2989,10 @@ body::after {
 .nav__dropdown-item:focus-visible::before {
   transform: scale(1);
 }
-.nav__dropdown-item[aria-current="page"] { background: rgba(221,213,200,0.12); }
 .nav__dropdown-item:hover .nav__dropdown-title,
 .nav__dropdown-item:hover .nav__dropdown-teaser,
-.nav__dropdown-item:hover .nav__dropdown-num,
 .nav__dropdown-item:focus-visible .nav__dropdown-title,
-.nav__dropdown-item:focus-visible .nav__dropdown-teaser,
-.nav__dropdown-item:focus-visible .nav__dropdown-num {
+.nav__dropdown-item:focus-visible .nav__dropdown-teaser {
   text-shadow: 0 8px 28px rgba(0,0,0,0.42);
 }
 .nav__dropdown-item:hover .nav__dropdown-teaser,
@@ -2986,20 +3000,17 @@ body::after {
   color: rgba(240,235,230,0.82);
   opacity: 1;
 }
-.nav__dropdown-num {
-  font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic;
-  font-size: 1.35rem; color: var(--sand); opacity: 0.6; line-height: 1; text-align: center;
-}
 .nav__dropdown-body { display: flex; flex-direction: column; gap: 2px; }
-.nav__dropdown-title { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 400; font-size: 1.05rem; line-height: 1.2; }
-.nav__dropdown-teaser { font-size: 0.76rem; color: var(--sand); opacity: 0.6; line-height: 1.4; }
+.nav__dropdown-title { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.9rem; line-height: 1.2; }
+.nav__dropdown-teaser { font-size: 0.76rem; color: var(--taupe); opacity: 0.8; line-height: 1.4; }
 .nav__dropdown-arrow { opacity: 0.3; flex-shrink: 0; transition: opacity 260ms, transform 260ms; }
 .nav__dropdown-item:hover .nav__dropdown-arrow { opacity: 0.85; transform: translateX(3px); }
+.nav__dropdown-item[aria-current="page"] { background: rgba(47,26,18,0.08); }
 .nav__dropdown-footer {
   display: block; text-align: center; padding: 9px 14px; margin-top: 4px;
-  border-top: 1px solid rgba(221,213,200,0.09);
+  border-top: 1px solid rgba(118,95,90,0.15);
   font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--sand); opacity: 0.55; text-decoration: none; transition: opacity 260ms, border-color 260ms;
+  color: var(--taupe); opacity: 0.7; text-decoration: none; transition: opacity 260ms;
 }
 .nav__dropdown-footer:hover { opacity: 1; }
 
@@ -3061,6 +3072,56 @@ body::after {
   font-weight: 300; font-style: italic; line-height: 1.7;
   color: rgba(240,235,230,0.79); max-width: 62ch;
 }
+.domaine-page {
+  background: var(--ivory);
+  color: var(--espresso);
+}
+/* Light overrides for domaine content area */
+.domaine-page .domaine-overview__panel,
+.domaine-page .domaine-faq-section,
+.domaine-page .domaine-cta-block {
+  background: rgba(255,255,255,0.55);
+  border-color: rgba(47,26,18,0.1);
+  box-shadow: 0 8px 32px rgba(47,26,18,0.07);
+}
+.domaine-page .domaine-overview__points li {
+  border-color: rgba(47,26,18,0.14);
+  color: rgba(47,26,18,0.78);
+  background: rgba(47,26,18,0.04);
+}
+.domaine-page .domaine-section {
+  border-bottom-color: rgba(47,26,18,0.1);
+}
+.domaine-page .domaine-section ul li { color: rgba(47,26,18,0.78); }
+.domaine-page .domaine-faq-section .accordion__item { border-top-color: rgba(47,26,18,0.14); }
+.domaine-page .domaine-faq-section .accordion__item:last-child { border-bottom-color: rgba(47,26,18,0.14); }
+.domaine-page .domaine-faq-section .accordion__item.open { border-left-color: rgba(47,26,18,0.35); }
+.domaine-page .domaine-faq-section .accordion__label { color: var(--espresso); }
+.domaine-page .domaine-faq-section .accordion__item.open .accordion__label { color: var(--taupe); }
+.domaine-page .domaine-faq-section .accordion__content p { color: rgba(47,26,18,0.78); }
+.domaine-page .domaine-cta-block .eyebrow { color: var(--taupe); }
+.domaine-page .domaine-topic-plain p { color: rgba(47,26,18,0.78); }
+.domaine-page .domaine-topic-plain ul li { color: rgba(47,26,18,0.78); }
+.domaine-page .domaine-topic-plain { border-bottom-color: rgba(47,26,18,0.1); }
+
+/* Valorized sub-section */
+.domaine-topic-subsection {
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  padding-top: clamp(1.4rem, 2.5vw, 2rem);
+  border-top: 1px solid rgba(47,26,18,0.1);
+}
+.domaine-topic-subsection h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin-bottom: 0.9rem;
+}
+.domaine-topic-subsection p { color: rgba(47,26,18,0.72); font-size: 0.93rem; }
+.domaine-topic-subsection p + p { margin-top: 0.7rem; }
+
 .domaine-body {
   max-width: min(1240px, calc(100vw - 2.8rem));
   margin: 0 auto;
@@ -3068,7 +3129,7 @@ body::after {
 }
 .domaine-overview {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   gap: clamp(1.4rem, 3vw, 2.6rem);
   align-items: stretch;
   margin-bottom: clamp(2rem, 4vw, 3rem);
@@ -3117,7 +3178,8 @@ body::after {
 .domaine-overview__visual img {
   width: 100%;
   height: 100%;
-  min-height: 420px;
+  min-height: 260px;
+  max-height: 420px;
   object-fit: cover;
 }
 .domaine-overview__visual figcaption {
@@ -3253,7 +3315,7 @@ body::after {
 /* Plain section with illustration */
 .domaine-topic-plain.has-image {
   display: grid;
-  grid-template-columns: 1fr minmax(220px, 0.78fr);
+  grid-template-columns: 3fr 2fr;
   gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
 }
@@ -3330,7 +3392,8 @@ body::after {
   }
 
   .domaine-overview__visual img {
-    min-height: 320px;
+    min-height: 220px;
+    max-height: 320px;
   }
 
   .domaine-overview__points {

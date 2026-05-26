@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test polices — Maître JOSEPH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory:    #f0ebe6;
+      --sand:     #ddd5c8;
+      --taupe:    #765f5a;
+      --espresso: #2f1a12;
+    }
+
+    body {
+      background: var(--espresso);
+      color: var(--ivory);
+      font-family: 'Inter', sans-serif;
+      padding: 3rem 2rem;
+    }
+
+    .page-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 3.5rem;
+      text-align: center;
+    }
+
+    .font-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr));
+      gap: 2px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .font-card {
+      background: rgba(240,235,230,0.04);
+      border: 1px solid rgba(240,235,230,0.08);
+      padding: clamp(2rem, 5vw, 3.5rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: background 0.3s;
+    }
+    .font-card:hover { background: rgba(240,235,230,0.07); }
+
+    .font-card--active {
+      background: rgba(118,95,90,0.15);
+      border-color: rgba(118,95,90,0.4);
+    }
+
+    .font-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+
+    .font-card--active .font-label::after {
+      content: ' — actuelle';
+      color: rgba(118,95,90,0.7);
+    }
+
+    .font-name-display {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.05;
+      color: rgba(248,243,238,0.97);
+      font-weight: 400;
+    }
+
+    .font-name-italic {
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+      color: rgba(234,223,211,0.82);
+      line-height: 1.4;
+    }
+
+    .font-sample-body {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(240,235,230,0.65);
+      font-family: 'Inter', sans-serif;
+      max-width: 42ch;
+    }
+
+    .font-meta {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(240,235,230,0.3);
+      letter-spacing: 0.04em;
+    }
+
+    /* Option A — Fraunces */
+    .font-card[data-font="fraunces"] .font-name-display,
+    .font-card[data-font="fraunces"] .font-name-italic {
+      font-family: 'Fraunces', Georgia, serif;
+    }
+
+    /* Option B — Playfair Display */
+    .font-card[data-font="playfair"] .font-name-display,
+    .font-card[data-font="playfair"] .font-name-italic {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* Option C — EB Garamond */
+    .font-card[data-font="eb-garamond"] .font-name-display,
+    .font-card[data-font="eb-garamond"] .font-name-italic {
+      font-family: 'EB Garamond', Georgia, serif;
+    }
+
+    /* Option D — Cormorant Garamond (actuelle) */
+    .font-card[data-font="cormorant"] .font-name-display,
+    .font-card[data-font="cormorant"] .font-name-italic {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+  </style>
+</head>
+<body>
+
+  <p class="page-title">Test polices — Nom du cabinet</p>
+
+  <div class="font-grid">
+
+    <div class="font-card" data-font="fraunces">
+      <span class="font-label">Option A — Fraunces</span>
+      <p class="font-name-display">Maître Morgane Joseph</p>
+      <p class="font-name-italic">Le droit comme outil de protection,<br>d'écoute et d'accompagnement.</p>
+      <p class="font-sample-body">Cabinet d'avocat dédié au Droit de la famille, Droit civil général et au contentieux de l'Allocation Adultes Handicapés.</p>
+      <p class="font-meta">Fraunces · Optical size variable · Style littéraire, contrastes marqués</p>
+    </div>
+
+    <div class="font-card font-card--active" data-font="playfair">
+      <span class="font-label">Option B — Playfair Display</span>
+      <p class="font-name-display">Maître Morgane Joseph</p>
+      <p class="font-name-italic">Le droit comme outil de protection,<br>d'écoute et d'accompagnement.</p>
+      <p class="font-sample-body">Cabinet d'avocat dédié au Droit de la famille, Droit civil général et au contentieux de l'Allocation Adultes Handicapés.</p>
+      <p class="font-meta">Playfair Display · Haut contraste · Lisibilité titraille, présence institutionnelle</p>
+    </div>
+
+    <div class="font-card" data-font="eb-garamond">
+      <span class="font-label">Option C — EB Garamond</span>
+      <p class="font-name-display">Maître Morgane Joseph</p>
+      <p class="font-name-italic">Le droit comme outil de protection,<br>d'écoute et d'accompagnement.</p>
+      <p class="font-sample-body">Cabinet d'avocat dédié au Droit de la famille, Droit civil général et au contentieux de l'Allocation Adultes Handicapés.</p>
+      <p class="font-meta">EB Garamond · Renaissance · Élégance classique, traits fins</p>
+    </div>
+
+    <div class="font-card" data-font="cormorant">
+      <span class="font-label">Option D — Cormorant Garamond</span>
+      <p class="font-name-display">Maître Morgane Joseph</p>
+      <p class="font-name-italic">Le droit comme outil de protection,<br>d'écoute et d'accompagnement.</p>
+      <p class="font-sample-body">Cabinet d'avocat dédié au Droit de la famille, Droit civil général et au contentieux de l'Allocation Adultes Handicapés.</p>
+      <p class="font-meta">Cormorant Garamond · Actuelle sur le site · Traits très fins, raffinement extrême</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
