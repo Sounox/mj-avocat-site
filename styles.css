@@ -43,6 +43,12 @@
 
 html { font-size: 17px; -webkit-text-size-adjust: 100%; }
 
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
 body {
   background: var(--espresso);
   color: var(--ivory);
@@ -95,6 +101,14 @@ h3 {
   font-weight: 600;
   font-size: clamp(1rem, 2vw, 1.2rem);
   line-height: 1.3;
+}
+
+/* Interior pages whose section title is h1 but should use h2 scale visually */
+#honoraires .section__header h1,
+#faq .section__header h1,
+#contact .section__header h1 {
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  letter-spacing: -0.01em;
 }
 
 .eyebrow {
@@ -1863,11 +1877,12 @@ body::after {
 .section-citation {
   position: relative;
   min-height: 80vh;
-  background: var(--espresso);
+  background: var(--ivory);
   display: flex;
   align-items: center;
   overflow: hidden;
 }
+.section-citation .citation-bg { display: none; }
 
 .citation-bg {
   position: absolute;
@@ -1895,7 +1910,7 @@ body::after {
 .citation-line {
   width: 60px;
   height: 1px;
-  background: var(--sand);
+  background: var(--taupe);
   opacity: 0.3;
   margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
   transform: scaleX(0);
@@ -1912,7 +1927,7 @@ body::after {
   font-style: italic;
   font-weight: 300;
   line-height: 1.45;
-  color: var(--ivory);
+  color: var(--espresso);
   margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
