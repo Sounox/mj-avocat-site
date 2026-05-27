@@ -3140,6 +3140,15 @@ body::after {
 .domaine-page .domaine-topic-plain ul li { color: rgba(47,26,18,0.78); }
 .domaine-page .domaine-topic-plain { border-bottom-color: rgba(47,26,18,0.1); }
 
+/* Related cards + CTA text on ivory domaine-page */
+.domaine-page .related-card               { color: var(--espresso); border-color: rgba(47,26,18,0.12); }
+.domaine-page .related-card:hover         { background: rgba(47,26,18,0.05); border-color: rgba(47,26,18,0.22); }
+.domaine-page .related-card__num          { color: var(--taupe); opacity: 0.55; }
+.domaine-page .related-card__title,
+.domaine-page .related-card__name         { color: var(--espresso); }
+.domaine-page .related-card__teaser       { color: rgba(47,26,18,0.62); }
+.domaine-page .domaine-cta-block p        { color: rgba(47,26,18,0.7); }
+
 /* Valorized sub-section */
 .domaine-topic-subsection {
   margin-top: clamp(1.6rem, 3vw, 2.4rem);
