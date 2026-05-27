@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Maître Morgane JOSEPH — Avocat à Montpellier | Famille, Civil, AAH">
   <meta property="og:description" content="Cabinet de Maître Morgane JOSEPH, Avocat au Barreau de Montpellier. Droit de la famille, droit civil, contentieux de l'Allocation aux Adultes Handicapés.">
-  <meta property="og:image" content="https://mj-avocat-site.abl-slancry.workers.dev/assets/hero-cour-appel.jpg">
+  <meta property="og:image" content="https://mj-avocat-site.abl-slancry.workers.dev/assets/hero-tribunal-montpellier.jpg">
   <meta property="og:url" content="https://mj-avocat-site.abl-slancry.workers.dev/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,10 +130,14 @@
         <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
 
         <div class="hero__bg-img parallax" data-speed="0.08" aria-hidden="true">
-          <img src="assets/hero-cour-appel.jpg" alt=""
-               class="hero__bg-photo"
-               loading="eager"
-               onerror="this.parentElement.classList.add('img-placeholder')">
+          <picture>
+            <source srcset="assets/hero-tribunal-montpellier.webp" type="image/webp">
+            <img src="assets/hero-tribunal-montpellier.jpg" alt=""
+                 class="hero__bg-photo"
+                 loading="eager"
+                 width="1920" height="1024"
+                 onerror="this.closest('.hero__bg-img').classList.add('img-placeholder')">
+          </picture>
           <div class="hero__bg-overlay"></div>
         </div>
 
@@ -145,11 +149,13 @@
 
         <div class="hero__inner container">
           <div class="hero__content">
-            <p class="hero__eyebrow eyebrow hero-anim" data-delay="200">AVOCAT AU BARREAU DE MONTPELLIER</p>
-            <h1 class="hero__title split-chars hero-anim" data-delay="400">Maître Morgane Joseph<span class="sr-only"> — Avocat en droit de la famille, droit civil et AAH à Montpellier</span></h1>
-            <p class="hero__subtitle hero-anim" data-delay="900">Le droit comme outil de protection,<br>d'écoute et d'accompagnement.</p>
-            <p class="hero__description hero-anim" data-delay="1100">Cabinet d'avocat dédié au Droit de la famille, Droit civil général et au contentieux de l'Allocation Adultes Handicapés.</p>
-            <div class="hero__ctas hero-anim" data-delay="1300">
+            <p class="hero__eyebrow eyebrow hero-anim" data-delay="200">CABINET D'AVOCAT</p>
+            <h1 class="hero__title hero-anim" data-delay="400">
+              <span class="hero__name-main">Maître Morgane Joseph</span>
+              <span class="hero__name-sub">Avocat au Barreau de Montpellier</span>
+            </h1>
+            <p class="hero__manifesto hero-anim" data-delay="800">Le droit comme outil de <span class="hero__manifesto-word">protection</span>, d'<span class="hero__manifesto-word">écoute</span> et d'<span class="hero__manifesto-word">accompagnement</span>.</p>
+            <div class="hero__ctas hero-anim" data-delay="1100">
               <a href="contact.html" class="btn btn--primary">
                 Prendre rendez-vous
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="btn__icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -172,7 +178,7 @@
           </div>
         </div>
 
-        <div class="hero__scroll-indicator hero-anim" data-delay="1700" aria-hidden="true">
+        <div class="hero__scroll-indicator hero-anim" data-delay="1450" aria-hidden="true">
           <span class="hero__scroll-line"></span>
           <span class="hero__scroll-label">Défiler</span>
         </div>
