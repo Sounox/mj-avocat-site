@@ -2413,9 +2413,11 @@ body::after {
   margin: 0;
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 300;
-  font-size: clamp(3rem, 5vw, 4.75rem);
+  font-size: clamp(2.6rem, 3.8vw, 3.8rem);
   line-height: 0.92;
   letter-spacing: -0.04em;
+  max-width: 100%;
+  overflow-wrap: break-word;
   color: transparent;
   background-image: var(--bg-img);
   background-size: 260% auto;
