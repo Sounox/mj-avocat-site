@@ -3072,15 +3072,15 @@ body::after {
    46. DOMAINE PAGES â€” /domaines/ subfolder
 --------------------------------------------------------------------------- */
 .domaine-page-hero {
-  background: var(--espresso);
-  padding: calc(var(--nav-h) + clamp(2rem, 4.5vw, 3.5rem)) 0 clamp(2rem, 4vw, 3.25rem);
+  background: var(--ivory);
+  padding: calc(var(--nav-h) + clamp(2rem, 4.5vw, 3.5rem)) 0 clamp(1.5rem, 3vw, 2.5rem);
   position: relative; overflow: hidden;
 }
 .domaine-page-hero__bg { position: absolute; inset: 0; z-index: 0; }
-.domaine-page-hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.18; }
+.domaine-page-hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0.07; }
 .domaine-page-hero__bg::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(47,26,18,0.12) 0%, rgba(47,26,18,0.84) 100%);
+  background: linear-gradient(180deg, rgba(240,235,230,0) 0%, rgba(240,235,230,0.75) 100%);
 }
 .domaine-page-hero__inner {
   position: relative;
@@ -3091,21 +3091,22 @@ body::after {
 .breadcrumb {
   display: flex; align-items: center; flex-wrap: wrap; gap: 0.35rem;
   margin-bottom: clamp(1.2rem, 2.2vw, 2rem);
-  font-size: 0.72rem; letter-spacing: 0.07em; color: rgba(240,235,230,0.45);
+  font-size: 0.72rem; letter-spacing: 0.07em; color: rgba(47,26,18,0.45);
 }
-.breadcrumb a { color: rgba(240,235,230,0.45); transition: color 260ms; }
-.breadcrumb a:hover { color: var(--ivory); }
+.breadcrumb a { color: rgba(47,26,18,0.45); transition: color 260ms; }
+.breadcrumb a:hover { color: var(--espresso); }
 .breadcrumb__sep { opacity: 0.3; }
 .domaine-page-hero h1 {
   margin: 0.6rem 0 1rem;
   max-width: 13.5ch;
   font-size: clamp(3.2rem, 5.2vw, 5.9rem);
+  color: var(--espresso);
 }
 .domaine-lede {
   font-size: clamp(0.98rem, 1.45vw, 1.1rem);
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 300; font-style: italic; line-height: 1.7;
-  color: rgba(240,235,230,0.79); max-width: 62ch;
+  color: rgba(47,26,18,0.68); max-width: 62ch;
 }
 .domaine-page {
   background: var(--ivory);
@@ -3493,12 +3494,12 @@ body::after {
 }
 
 .breadcrumb__link {
-  color: rgba(240,235,230,0.5);
+  color: rgba(47,26,18,0.5);
   text-decoration: none;
 }
 
 .breadcrumb__item--current {
-  color: rgba(240,235,230,0.78);
+  color: rgba(47,26,18,0.78);
 }
 
 .domaine-section a,
