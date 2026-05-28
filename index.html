@@ -211,11 +211,15 @@
         <div class="home-about__grid">
           <div class="home-about__media reveal-up">
             <div class="home-about__image-wrap">
-              <img src="assets/photo.jpg"
-                   alt="Maître Morgane JOSEPH, avocat au Barreau de Montpellier"
-                   class="home-about__image"
-                   loading="lazy"
-                   onerror="this.parentElement.classList.add('img-placeholder')">
+              <picture>
+                <source srcset="assets/photo.webp" type="image/webp">
+                <img src="assets/photo.jpg"
+                     alt="Maître Morgane JOSEPH, avocat au Barreau de Montpellier"
+                     class="home-about__image"
+                     loading="lazy"
+                     width="900" height="1200"
+                     onerror="this.closest('.home-about__image-wrap').classList.add('img-placeholder')">
+              </picture>
             </div>
           </div>
 

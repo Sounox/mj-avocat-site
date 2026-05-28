@@ -101,11 +101,15 @@
         <div class="presentation__grid">
           <div class="presentation__col-left">
             <div class="presentation__img-wrap">
-              <img src="assets/photo.jpg"
-                   alt="Maître Morgane JOSEPH, Avocat au Barreau de Montpellier"
-                   class="presentation__img"
-                   loading="eager"
-                   onerror="this.parentElement.classList.add('img-placeholder')">
+              <picture>
+                <source srcset="assets/photo.webp" type="image/webp">
+                <img src="assets/photo.jpg"
+                     alt="Maître Morgane JOSEPH, Avocat au Barreau de Montpellier"
+                     class="presentation__img"
+                     loading="eager"
+                     width="900" height="1200"
+                     onerror="this.closest('.presentation__img-wrap').classList.add('img-placeholder')">
+              </picture>
             </div>
             <div class="presentation__pillars reveal-stagger">
               <div class="pillar card">
