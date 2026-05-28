@@ -1440,6 +1440,7 @@ select::-ms-expand { display: none; }
   border: 1px solid rgba(118,95,90,0.28);
   border-radius: var(--radius-sm);
   padding: 0.8rem 0.95rem;
+  min-height: 44px;
   color: var(--ivory);
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 0.88rem;
