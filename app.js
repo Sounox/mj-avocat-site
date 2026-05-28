@@ -645,19 +645,19 @@ function initForm() {
     const domaine = form.querySelector('#f-domaine')?.value || '';
     const message = form.querySelector('#f-message')?.value || '';
 
-    const body = [
+    const rawBody = [
       `Nom : ${nom}`,
       `Email : ${email}`,
       `T\u00E9l\u00E9phone : ${tel || '\u2014'}`,
       `Domaine : ${domaine}`,
       '',
       message
-    ].join('%0A');
+    ].join('\n');
 
     window.location.href =
       `mailto:morganejoseph.avocat@gmail.com` +
       `?subject=${encodeURIComponent('Demande de rendez-vous \u2014 ' + nom)}` +
-      `&body=${body}`;
+      `&body=${encodeURIComponent(rawBody)}`;
 
     if (success) {
       success.removeAttribute('hidden');
