@@ -143,7 +143,7 @@
 
 | Image | loading | Format | alt | Résultat |
 |-------|---------|--------|-----|---------|
-| `hero-cour-appel.jpg` | eager ✅ | JPG | "" dans aria-hidden ✅ | ✅ |
+| `hero-tribunal-montpellier.jpg` | eager ✅ | WebP+JPG (`<picture>`) ✅ | "" dans aria-hidden ✅ | ✅ |
 | `photo.jpg` | lazy ✅ | JPG | Descriptif ✅ | ✅ |
 | `domaine-famille.webp` | lazy ✅ | WebP ✅ | "" décoratif ✅ | ✅ |
 | `_u_domaine_famille.jpg` | lazy ✅ | JPG | Descriptif ✅ | ✅ Image cliente livrée |
@@ -230,6 +230,16 @@
 | A24 | `img-dark.jpg` 230K non optimisé, pas de WebP | presentation.html | ✅ 1000px, 57K, WebP 28K, `<picture>` |
 | A25 | JSON-LD homepage : téléphone placeholder, adresse incomplète, pas d'email | index.html | ✅ Tel, email, streetAddress, postalCode |
 
+### Session 5 — Optimisation images + correctifs JS (2026-05-27)
+
+| # | Défaut / Amélioration | Fichier(s) | Statut |
+|---|--------|-----------|--------|
+| A26 | `_u_domaine_famille.jpg` 314K non optimisé, pas de WebP | domaines/droit-de-la-famille.html | ✅ 900px, 45K (–86%), WebP 22K, `<picture>` |
+| A27 | `_u_domaine_aah.jpg` brisé (29 octets) — image absente | domaines/contentieux-aah.html | ✅ `onerror` → masque la `<figure>` ; en attente photo cliente |
+| A28 | `aria-current` dropdown inactif sur Cloudflare (URLs sans `.html`) | app.js | ✅ `.replace(/\.html$/, '')` sur path et href avant comparaison |
+| A29 | Corps du formulaire contact non encodé (caractères spéciaux cassaient le mailto) | app.js | ✅ `encodeURIComponent(rawBody)` sur tout le corps |
+| A30 | Fichiers brouillon/test non filtrés par `.gitignore` | .gitignore | ✅ Règles ajoutées pour `_css_append.css`, `verify-home/`, sources JPG non référencées, `_ffmpeg-test.webp` |
+
 ---
 
 ## RÉCAPITULATIF GLOBAL DES DÉFAUTS
@@ -307,5 +317,4 @@
 | Contenus sous-sections domaines (TEXTE À VENIR) | Await validation cliente (cf. CONTENUS_A_VENIR.md) |
 | Choix de police définitif (Playfair vs Cormorant) | Attend retour cliente sur test-fonts.html |
 | Scores Lighthouse réels | Nécessite un environnement de navigateur headless (non disponible en CLI) |
-| Photos cabinet pour `_u_*` assets | Remplacement avec les vraies photos du cabinet |
-| Photos cabinet pour `_u_*` assets | Remplacement avec les vraies photos du cabinet |
+| Photos cabinet pour `_u_*` assets | Remplacement avec les vraies photos du cabinet (voir `_u_domaine_aah.jpg` brisé — `onerror` en place) |

@@ -1,2 +1,23 @@
 *.DS_Store
 Thumbs.db
+
+# Brouillons / fichiers de travail
+_css_append.css
+verify-home/
+
+# Fichiers test FFmpeg
+assets/_ffmpeg-test.webp
+
+# Sources JPEG non référencées (les .webp sont dans le repo)
+assets/domaine-aah.jpg
+assets/domaine-civil.jpg
+assets/domaine-famille.jpg
+assets/texture-*.jpg
+assets/contact-montpellier.jpg
+assets/manifesto-fill.jpg
+
+# Assets client non encore intégrés (photos à fournir par la cliente)
+assets/_u_domaine_aah.jpg
+assets/_u_domaine_aah2.jpg
+assets/_u_manifesto.jpg
+assets/_u_texture*.jpg
