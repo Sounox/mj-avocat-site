@@ -213,6 +213,25 @@
 
 ---
 
+### Session 4 — Refonte hero + correctifs SEO/perf (2026-05-28)
+
+| # | Défaut / Amélioration | Fichier(s) | Statut |
+|---|--------|-----------|--------|
+| A14 | Hero homepage : photo placeholder → Palais de Justice Montpellier | index.html, styles.css | ✅ `<picture>` WebP+JPG, 64KB/98KB |
+| A15 | H1 hero : niveau unique → deux niveaux (nom + titre) | index.html, styles.css | ✅ `.hero__name-main` / `.hero__name-sub` |
+| A16 | Manifesto : deux paragraphes → phrase fluide avec mots-clés dorés | index.html, styles.css | ✅ `.hero__manifesto` + `.hero__manifesto-word` |
+| A17 | Polish hero : grain overlay, accent line dorée, cascade d'animation | styles.css | ✅ `::before` grain, `@keyframes line-grow` |
+| A18 | `og:image` domaines.html → encore `hero-cour-appel.jpg` | domaines.html | ✅ Mis à jour |
+| A19 | Canonical domaines.html avec `.html` incohérent avec sitemap | domaines.html | ✅ `/domaines.html` → `/domaines` |
+| A20 | `form__input` sans `min-height: 44px` (tactile WCAG) | styles.css | ✅ Ajouté |
+| A21 | `aria-current="page"` manquant sur dropdown footer domaines | domaines.html | ✅ Ajouté |
+| A22 | canonical + Open Graph absents sur 4 pages intérieures | presentation, honoraires, faq, contact | ✅ Tous ajoutés |
+| A23 | `photo.jpg` 418K non optimisé, pas de WebP | index.html, presentation.html | ✅ 900px, 167K, WebP 106K, `<picture>` |
+| A24 | `img-dark.jpg` 230K non optimisé, pas de WebP | presentation.html | ✅ 1000px, 57K, WebP 28K, `<picture>` |
+| A25 | JSON-LD homepage : téléphone placeholder, adresse incomplète, pas d'email | index.html | ✅ Tel, email, streetAddress, postalCode |
+
+---
+
 ## RÉCAPITULATIF GLOBAL DES DÉFAUTS
 
 ### 🔴 Critiques (tous corrigés)
@@ -234,11 +253,14 @@
 1. Checkbox RGPD 16×16px → 18×18px
 2. H1 FAQ et Contact sans mots-clés SEO locaux → enrichis
 3. Lien RGPD sans ancre spécifique → `#donnees-personnelles` ajouté
+4. canonical + og manquants sur 4 pages intérieures → ajoutés
+5. JSON-LD homepage : téléphone/adresse/email incomplets → enrichis
+6. Photos `photo.jpg` (–60%) et `img-dark.jpg` (–75%) compressées + WebP
 
 ### 🟡 Mineurs (listés, non bloquants)
 1. `font-display` non explicité dans l'URL Google Fonts (géré côté Google)
 2. `domaine-overview__visual` sans `aspect-ratio` CSS (pas de CLS réel)
-3. Inputs formulaire ~42px (légèrement sous 44px recommandé mobile)
+3. ~~Inputs formulaire ~42px~~ ✅ Corrigé → `min-height: 44px`
 4. Transitions hover CSS non couvertes par `prefers-reduced-motion` (impact minimal)
 
 ---
@@ -250,14 +272,14 @@
 | Page | Hiérarchie | Contraste | Responsive | Images | SEO/meta | Statut |
 |------|-----------|-----------|-----------|--------|---------|--------|
 | `/` | ✅ H1→H2→H3 | ✅ rythme dark/light | ✅ grilles 1-col 768px | ✅ lazy/eager correct | ✅ og+JSON-LD | ✅ |
-| `/presentation.html` | ✅ H1→H2 (piliers en `<p>`) | ✅ section-light colors | ✅ grid 1-col 1024px | ✅ photo.jpg descriptif | ✅ canonical | ✅ |
-| `/domaines.html` | ✅ H1→H2 | ✅ hub-cards dark-on-light | ✅ hub-cards 1-col 768px | ✅ | ✅ | ✅ |
+| `/presentation.html` | ✅ H1→H2 (piliers en `<p>`) | ✅ section-light colors | ✅ grid 1-col 1024px | ✅ photo.jpg descriptif | ✅ canonical+og | ✅ |
+| `/domaines.html` | ✅ H1→H2 | ✅ hub-cards dark-on-light | ✅ hub-cards 1-col 768px | ✅ | ✅ canonical+og | ✅ |
 | `/domaines/droit-de-la-famille.html` | ✅ H1→H2 | ✅ espresso sur ivory | ✅ topic-pair 1-col 768px | ✅ _u_ alt descriptif | ✅ JSON-LD | ✅ |
-| `/domaines/droit-civil.html` | ✅ H1→H2 | ✅ | ✅ | ✅ img-desk alt descriptif | ✅ | ✅ A13 corrigé |
+| `/domaines/droit-civil.html` | ✅ H1→H2 | ✅ | ✅ | ✅ img-desk alt descriptif | ✅ | ✅ |
 | `/domaines/contentieux-aah.html` | ✅ H1→H2 | ✅ | ✅ | ✅ | ✅ JSON-LD | ✅ |
-| `/honoraires.html` | ✅ H1→H2 (corrigé A12) | ✅ h-card h2 espresso | ✅ 4→2→1 col | ✅ | ✅ | ✅ A12 corrigé |
-| `/faq.html` | ✅ H1→H2 cat-titles | ✅ faq__cat-title taupe | ✅ accordion mobile | ✅ | ✅ | ✅ |
-| `/contact.html` | ✅ H1→H2 | ✅ c-cards section-light | ✅ form 1-col 768px | ✅ img-desk décoratif | ✅ | ✅ |
+| `/honoraires.html` | ✅ H1→H2 | ✅ h-card h2 espresso | ✅ 4→2→1 col | ✅ | ✅ canonical+og | ✅ |
+| `/faq.html` | ✅ H1→H2 cat-titles | ✅ faq__cat-title taupe | ✅ accordion mobile | ✅ | ✅ canonical+og | ✅ |
+| `/contact.html` | ✅ H1→H2 | ✅ c-cards section-light | ✅ form 1-col 768px | ✅ img-desk décoratif | ✅ canonical+og | ✅ |
 | `/mentions-legales.html` | ✅ H1→H2 | ✅ section espresso | ✅ max-width 75ch | ✅ | ✅ noindex | ✅ |
 
 ### Responsive confirmé — points clés
@@ -285,5 +307,5 @@
 | Contenus sous-sections domaines (TEXTE À VENIR) | Await validation cliente (cf. CONTENUS_A_VENIR.md) |
 | Choix de police définitif (Playfair vs Cormorant) | Attend retour cliente sur test-fonts.html |
 | Scores Lighthouse réels | Nécessite un environnement de navigateur headless (non disponible en CLI) |
-| Images hero en WebP + srcset | Optimisation long terme, photos à recompresser côté cliente |
 | Photos cabinet pour `_u_*` assets | Remplacement avec les vraies photos du cabinet |
+| Transitions hover `prefers-reduced-motion` | Impact très limité, non bloquant |
