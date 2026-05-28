@@ -137,7 +137,7 @@
 | Ken Burns + `will-change` | ✅ `will-change: transform` sur `.hero__bg-img` |
 | Parallax RAF | ✅ `requestAnimationFrame` robuste |
 | IntersectionObserver `.reveal-up` | ✅ Présent dans app.js |
-| 🟡 Transitions hover non couvertes par reduced-motion | — | Transitions CSS hover (~60 occurrences) non désactivées |
+| Transitions hover + `prefers-reduced-motion` | ✅ Couvertes — règle globale `*, *::before, *::after { transition-duration: 0.01ms !important }` |
 
 ### B9 — Images & médias
 
@@ -261,7 +261,7 @@
 1. `font-display` non explicité dans l'URL Google Fonts (géré côté Google)
 2. `domaine-overview__visual` sans `aspect-ratio` CSS (pas de CLS réel)
 3. ~~Inputs formulaire ~42px~~ ✅ Corrigé → `min-height: 44px`
-4. Transitions hover CSS non couvertes par `prefers-reduced-motion` (impact minimal)
+4. ~~Transitions hover CSS non couvertes par `prefers-reduced-motion`~~ ✅ Faux positif — règle globale `*` couvre tout
 
 ---
 
@@ -308,4 +308,4 @@
 | Choix de police définitif (Playfair vs Cormorant) | Attend retour cliente sur test-fonts.html |
 | Scores Lighthouse réels | Nécessite un environnement de navigateur headless (non disponible en CLI) |
 | Photos cabinet pour `_u_*` assets | Remplacement avec les vraies photos du cabinet |
-| Transitions hover `prefers-reduced-motion` | Impact très limité, non bloquant |
+| Photos cabinet pour `_u_*` assets | Remplacement avec les vraies photos du cabinet |

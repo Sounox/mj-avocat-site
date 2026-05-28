@@ -770,10 +770,10 @@ function initNavDropdown() {
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
 
-  /* Mark current page in dropdown */
-  const path = window.location.pathname;
+  /* Mark current page in dropdown — strip .html for Cloudflare (extensionless URLs) */
+  const path = window.location.pathname.replace(/\.html$/, '');
   document.querySelectorAll('.nav__dropdown-item').forEach(item => {
-    const href = item.getAttribute('href') || '';
+    const href = (item.getAttribute('href') || '').replace(/\.html$/, '');
     const norm = href.replace(/^\.\.\//, '/');
     if (path.endsWith(href) || path.includes(norm.replace(/^\//, ''))) {
       item.setAttribute('aria-current', 'page');
@@ -782,7 +782,7 @@ function initNavDropdown() {
           ?.setAttribute('data-active', 'true');
     }
   });
-  if (path.includes('/domaines.html')) {
+  if (path.replace(/\.html$/, '').endsWith('/domaines')) {
     document.querySelector('.nav__dropdown-trigger')?.setAttribute('data-active', 'true');
   }
 }
