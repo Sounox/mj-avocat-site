@@ -2406,6 +2406,7 @@ body::after {
 
 .domaine-card {
   --bg-img: none;
+  --bg-pos: center 25%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2434,7 +2435,7 @@ body::after {
 .domaine-card::before {
   background-image: var(--bg-img);
   background-size: cover;
-  background-position: center;
+  background-position: var(--bg-pos);
   opacity: 0;
   transform: scale(1.08);
 }
@@ -2512,7 +2513,7 @@ body::after {
   color: transparent;
   background-image: var(--bg-img);
   background-size: 260% auto;
-  background-position: center;
+  background-position: var(--bg-pos);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-stroke: 1px rgba(240,235,230,0.42);
@@ -3674,6 +3675,7 @@ body::after {
 /* FAQ domain links : hover photo (même effet que .domaine-card) */
 .faq-domain-links .related-card {
   --bg-img: none;
+  --bg-pos: center 25%;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -3686,7 +3688,7 @@ body::after {
   content: '';
   position: absolute; inset: 0; z-index: -2;
   background-image: var(--bg-img);
-  background-size: cover; background-position: center 25%;
+  background-size: cover; background-position: var(--bg-pos);
   opacity: 0; transform: scale(1.07);
   transition: opacity 600ms var(--ease-in-out-quart),
               transform 1200ms var(--ease-in-out-quart);
@@ -3735,6 +3737,7 @@ body::after {
 
 .hub-card {
   --bg-img: none;
+  --bg-pos: center 25%;
   position: relative;
   min-height: clamp(460px, 42vw, 580px);
   padding: clamp(1.6rem, 2.8vw, 2.3rem);
@@ -3756,7 +3759,7 @@ body::after {
 .hub-card::before {
   background-image: var(--bg-img);
   background-size: cover;
-  background-position: center;
+  background-position: var(--bg-pos);
   opacity: 0;
   transform: scale(1.08);
 }
@@ -3798,7 +3801,7 @@ body::after {
   color: transparent;
   background-image: var(--bg-img);
   background-size: 250% auto;
-  background-position: center;
+  background-position: var(--bg-pos);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-stroke: 0.95px rgba(240,235,230,0.42);
