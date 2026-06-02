@@ -2365,7 +2365,7 @@ body::after {
 }
 
 .home-about__body h2 {
-  max-width: 10ch;
+  max-width: 15ch;
 }
 
 .home-about__body p {
@@ -3672,8 +3672,8 @@ body::after {
   transform: translateX(3px);
 }
 
-/* FAQ domain links : hover photo (même effet que .domaine-card) */
-.faq-domain-links .related-card {
+/* Small related cards : hover photo (FAQ + pages domaines) */
+.related-card[data-fill] {
   --bg-img: none;
   --bg-pos: center 25%;
   position: relative;
@@ -3684,7 +3684,7 @@ body::after {
               box-shadow 350ms var(--ease-out-quart),
               color 350ms var(--ease-out-quart);
 }
-.faq-domain-links .related-card::before {
+.related-card[data-fill]::before {
   content: '';
   position: absolute; inset: 0; z-index: -2;
   background-image: var(--bg-img);
@@ -3693,25 +3693,33 @@ body::after {
   transition: opacity 600ms var(--ease-in-out-quart),
               transform 1200ms var(--ease-in-out-quart);
 }
-.faq-domain-links .related-card::after {
+.related-card[data-fill]::after {
   content: '';
   position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(135deg, rgba(47,26,18,0.6) 0%, rgba(47,26,18,0.9) 100%);
   opacity: 0;
   transition: opacity 600ms var(--ease-in-out-quart);
 }
-.faq-domain-links .related-card:hover {
+.related-card[data-fill]:hover,
+.related-card[data-fill]:focus-visible {
   transform: translateY(-3px);
   border-color: rgba(240,235,230,0.2);
   box-shadow: 0 16px 48px rgba(47,26,18,0.2);
   color: var(--ivory);
+  outline: none;
 }
-.faq-domain-links .related-card:hover::before { opacity: 1; transform: scale(1); }
-.faq-domain-links .related-card:hover::after  { opacity: 1; }
-.faq-domain-links .related-card:hover .related-card__num,
-.faq-domain-links .related-card:hover .related-card__title,
-.faq-domain-links .related-card:hover .related-card__teaser { color: var(--ivory); }
-.faq-domain-links .related-card:hover .related-card__arrow  { opacity: 0.9; }
+.related-card[data-fill]:hover::before,
+.related-card[data-fill]:focus-visible::before { opacity: 1; transform: scale(1); }
+.related-card[data-fill]:hover::after,
+.related-card[data-fill]:focus-visible::after  { opacity: 1; }
+.related-card[data-fill]:hover .related-card__num,
+.related-card[data-fill]:hover .related-card__title,
+.related-card[data-fill]:hover .related-card__teaser,
+.related-card[data-fill]:focus-visible .related-card__num,
+.related-card[data-fill]:focus-visible .related-card__title,
+.related-card[data-fill]:focus-visible .related-card__teaser { color: var(--ivory); }
+.related-card[data-fill]:hover .related-card__arrow,
+.related-card[data-fill]:focus-visible .related-card__arrow  { opacity: 0.9; }
 
 .domaines-hub-page .section__header {
   max-width: 56rem;

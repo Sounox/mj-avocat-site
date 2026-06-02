@@ -717,19 +717,19 @@ function initNavDropdown() {
     if (href.includes('droit-de-la-famille')) {
       return {
         src: `${assetPrefix}domaine-famille-horizontal.webp`,
-        pos: 'center 28%'
+        pos: '72% 24%'
       };
     }
     if (href.includes('droit-civil')) {
       return {
         src: `${assetPrefix}domaine-civil-horizontal.webp`,
-        pos: 'center 24%'
+        pos: '56% 20%'
       };
     }
     if (href.includes('contentieux-aah')) {
       return {
         src: `${assetPrefix}domaine-aah-horizontal.webp`,
-        pos: 'center 22%'
+        pos: '57% 18%'
       };
     }
     return null;
