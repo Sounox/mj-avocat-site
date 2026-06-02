@@ -11,6 +11,7 @@
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isTouch        = window.matchMedia('(pointer: coarse)').matches;
 const isMobile       = window.innerWidth < 768;
+const canHover       = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
 let cursorX = 0, cursorY = 0;
 let ringX   = 0, ringY   = 0;
@@ -516,29 +517,79 @@ function closeDomaineRow(row) {
    12. ACCORDIONS (FAQ)
 --------------------------------------------------------------------------- */
 function initAccordions() {
+  if (canHover) {
+    document.querySelectorAll('.accordion').forEach(accordion => {
+      accordion.classList.add('accordion--hoverable');
+      accordion.dataset.hint = 'Survolez pour lire / cliquez pour verrouiller';
+    });
+  }
+
   document.querySelectorAll('.accordion__trigger').forEach(trigger => {
     const panelId = trigger.getAttribute('aria-controls');
     const panel   = document.getElementById(panelId);
     const item    = trigger.closest('.accordion__item');
-    if (!panel || !item) return;
+    const accordion = item?.closest('.accordion');
+    if (!panel || !item || !accordion) return;
 
     panel.style.maxHeight = '0';
     panel.setAttribute('hidden', '');
 
     trigger.addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
+      const isLocked = item.classList.contains('is-locked');
 
-      item.closest('.accordion')?.querySelectorAll('.accordion__item.open').forEach(sib => {
-        if (sib !== item) closeAccordion(sib);
+      if (isLocked) {
+        closeAccordion(item);
+        return;
+      }
+
+      closeAccordionSiblings(accordion, item);
+      openAccordion(item, panel, trigger, 'locked');
+    });
+
+    if (canHover) {
+      item.addEventListener('mouseenter', () => {
+        const lockedItem = accordion.querySelector('.accordion__item.is-locked');
+        if (lockedItem && lockedItem !== item) return;
+
+        closeAccordionSiblings(accordion, item);
+        openAccordion(item, panel, trigger, item.classList.contains('is-locked') ? 'locked' : 'preview');
       });
 
-      isOpen ? closeAccordion(item) : openAccordion(item, panel, trigger);
+      item.addEventListener('mouseleave', () => {
+        if (item.classList.contains('is-locked')) return;
+        closeAccordion(item);
+      });
+    }
+
+    item.addEventListener('focusin', () => {
+      if (item.classList.contains('is-locked')) return;
+
+      const lockedItem = accordion.querySelector('.accordion__item.is-locked');
+      if (lockedItem && lockedItem !== item) return;
+
+      closeAccordionSiblings(accordion, item);
+      openAccordion(item, panel, trigger, 'preview');
+    });
+
+    item.addEventListener('focusout', () => {
+      requestAnimationFrame(() => {
+        if (item.contains(document.activeElement) || item.classList.contains('is-locked')) return;
+        closeAccordion(item);
+      });
     });
   });
 }
 
-function openAccordion(item, panel, trigger) {
+function closeAccordionSiblings(accordion, currentItem) {
+  accordion.querySelectorAll('.accordion__item.open').forEach(item => {
+    if (item !== currentItem) closeAccordion(item);
+  });
+}
+
+function openAccordion(item, panel, trigger, mode = 'locked') {
   item.classList.add('open');
+  item.classList.toggle('is-preview', mode === 'preview');
+  item.classList.toggle('is-locked', mode === 'locked');
   trigger.setAttribute('aria-expanded', 'true');
   panel.removeAttribute('hidden');
   const content = panel.querySelector('.accordion__content');
@@ -550,6 +601,7 @@ function closeAccordion(item) {
   const panelId = trigger?.getAttribute('aria-controls');
   const panel   = panelId ? document.getElementById(panelId) : null;
   item.classList.remove('open');
+  item.classList.remove('is-preview', 'is-locked');
   trigger?.setAttribute('aria-expanded', 'false');
   if (panel) {
     panel.style.maxHeight = '0';

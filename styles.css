@@ -1197,6 +1197,17 @@ select::-ms-expand { display: none; }
    22. ACCORDION (FAQ only)
 --------------------------------------------------------------------------- */
 .accordion { width: 100%; }
+.accordion--hoverable::before {
+  content: attr(data-hint);
+  display: block;
+  margin: 0 0 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(118,95,90,0.76);
+}
 
 .accordion__item {
   border-top: 1px solid rgba(118,95,90,0.22);
@@ -1238,6 +1249,27 @@ select::-ms-expand { display: none; }
   transition: color var(--dur-fast) var(--ease-out-quart);
 }
 .accordion__item.open .accordion__label { color: var(--sand); }
+.accordion--hoverable .accordion__item.is-preview .accordion__label,
+.accordion--hoverable .accordion__item.is-locked .accordion__label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.32rem;
+}
+.accordion--hoverable .accordion__item.is-preview .accordion__label::after,
+.accordion--hoverable .accordion__item.is-locked .accordion__label::after {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(118,95,90,0.76);
+}
+.accordion--hoverable .accordion__item.is-preview .accordion__label::after {
+  content: 'Cliquez pour verrouiller';
+}
+.accordion--hoverable .accordion__item.is-locked .accordion__label::after {
+  content: 'Verrouillée / cliquez pour refermer';
+}
 
 .accordion__icon { width: 18px; height: 18px; position: relative; flex-shrink: 0; }
 .accordion__icon-h,
@@ -1251,6 +1283,10 @@ select::-ms-expand { display: none; }
 .accordion__icon-h { width: 100%; height: 1px; top: 50%;  left: 0;   transform: translateY(-50%); }
 .accordion__icon-v { width: 1px;  height: 100%; left: 50%; top: 0;    transform: translateX(-50%); }
 .accordion__item.open .accordion__icon-v { transform: translateX(-50%) rotate(90deg); opacity: 0; }
+.accordion--hoverable .accordion__item.is-locked .accordion__icon-h,
+.accordion--hoverable .accordion__item.is-locked .accordion__icon-v {
+  background: var(--espresso);
+}
 
 .accordion__panel {
   overflow: hidden;
@@ -1757,6 +1793,7 @@ select::-ms-expand { display: none; }
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
 
   .accordion__content { padding-right: 0; }
+  .accordion--hoverable::before { display: none; }
   .section__header { margin-bottom: clamp(2rem, 9vw, 3rem); }
   .hero__scroll-indicator { display: none; }
   .bg-word,
