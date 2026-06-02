@@ -3221,6 +3221,17 @@ body::after {
 .domaine-page .domaine-topic-plain p { color: rgba(47,26,18,0.78); }
 .domaine-page .domaine-topic-plain ul li { color: rgba(47,26,18,0.78); }
 .domaine-page .domaine-topic-plain { border-bottom-color: rgba(47,26,18,0.1); }
+/* Topic cards (domaine-section domaine-topic-card) : p invisible sur ivory */
+.domaine-page .domaine-topic-card p { color: rgba(47,26,18,0.78); }
+.domaine-page .domaine-topic-card ul li { color: rgba(47,26,18,0.78); }
+/* Liens dans sections domaine : sand/ivory sur ivory */
+.domaine-page .domaine-section a,
+.domaine-page .domaine-faq-section a { color: var(--taupe); text-decoration-color: rgba(118,95,90,0.35); }
+.domaine-page .domaine-section a:hover,
+.domaine-page .domaine-faq-section a:hover { color: var(--espresso); text-decoration-color: var(--espresso); }
+/* Accordion FAQ sur domaine-page : ul li et strong invisibles sur ivory */
+.domaine-page .domaine-faq-section .accordion__content ul li { color: rgba(47,26,18,0.78); }
+.domaine-page .domaine-faq-section .accordion__content strong { color: var(--espresso); }
 
 /* Related cards + CTA text on ivory domaine-page */
 .domaine-page .related-card               { color: var(--espresso); border-color: rgba(47,26,18,0.12); }
