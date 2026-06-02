@@ -138,26 +138,26 @@ p {
 
 .cursor-dot {
   width: 8px; height: 8px;
-  background: var(--ivory);
+  background: #fff;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   will-change: transform;
+  mix-blend-mode: difference;
   transition: opacity var(--dur-fast) var(--ease-out-quart),
-              transform var(--dur-fast) var(--ease-out-quart),
-              background 280ms var(--ease-out-quart);
+              transform var(--dur-fast) var(--ease-out-quart);
 }
 
 .cursor-ring {
   width: 40px; height: 40px;
-  border: 1.5px solid rgba(240,235,230,0.4);
+  border: 1.5px solid rgba(255,255,255,0.5);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   will-change: transform;
+  mix-blend-mode: difference;
   display: flex; align-items: center; justify-content: center;
   transition: width var(--dur-base) var(--ease-out-quart),
               height var(--dur-base) var(--ease-out-quart),
-              background var(--dur-base) var(--ease-out-quart),
-              border-color 280ms var(--ease-out-quart);
+              background var(--dur-base) var(--ease-out-quart);
 }
 
 .cursor-ring__label {
@@ -166,26 +166,17 @@ p {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--ivory);
+  color: #fff;
   pointer-events: none;
   user-select: none;
 }
 
-/* Default states (dark bg) */
 .cursor-dot.hov-link  { opacity: 0; transform: translate(-50%,-50%) scale(0); }
-.cursor-ring.hov-link { width: 72px; height: 72px; background: rgba(240,235,230,0.08); border-color: rgba(240,235,230,0.6); }
+.cursor-ring.hov-link { width: 72px; height: 72px; background: rgba(255,255,255,0.08); }
 
 .cursor-dot.hov-img   { opacity: 0; transform: translate(-50%,-50%) scale(0); }
-.cursor-ring.hov-img  { width: 96px; height: 96px; background: rgba(240,235,230,0.07); border-color: rgba(240,235,230,0.5); }
+.cursor-ring.hov-img  { width: 96px; height: 96px; background: rgba(255,255,255,0.07); }
 .cursor-ring.hov-img .cursor-ring__label { display: block; }
-
-/* Light background — switch to espresso palette */
-.cursor-dot.on-light  { background: var(--espresso); }
-.cursor-ring.on-light { border-color: rgba(47,26,18,0.45); }
-.cursor-ring.on-light .cursor-ring__label { color: var(--espresso); }
-
-.cursor-ring.on-light.hov-link { background: rgba(47,26,18,0.1); border-color: rgba(47,26,18,0.62); }
-.cursor-ring.on-light.hov-img  { background: rgba(47,26,18,0.08); border-color: rgba(47,26,18,0.52); }
 
 /* ---------------------------------------------------------------------------
    7. PAGE OVERLAY
@@ -838,11 +829,11 @@ select::-ms-expand { display: none; }
 }
 
 /* Hero entry animations */
-.hero-anim { opacity: 0; transform: translateY(22px); }
-.hero-anim.entered {
-  opacity: 1; transform: translateY(0);
+.hero-anim {
+  opacity: 0; transform: translateY(22px);
   transition: opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo);
 }
+.hero-anim.entered { opacity: 1; transform: translateY(0); }
 
 /* Line-mask reveal for hero name */
 .hero__name-main .line-mask {
@@ -3644,7 +3635,7 @@ body::after {
   content: '';
   position: absolute; inset: 0; z-index: -2;
   background-image: var(--bg-img);
-  background-size: cover; background-position: center;
+  background-size: cover; background-position: center 25%;
   opacity: 0; transform: scale(1.07);
   transition: opacity 600ms var(--ease-in-out-quart),
               transform 1200ms var(--ease-in-out-quart);
@@ -3688,6 +3679,7 @@ body::after {
 .hub-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 2rem);
+  margin-top: clamp(0.75rem, 1.5vw, 1.25rem);
 }
 
 .hub-card {

@@ -79,10 +79,6 @@ function initCursor() {
     cursorX = e.clientX;
     cursorY = e.clientY;
     if (dot) dot.style.transform = `translate(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%))`;
-    const under = document.elementFromPoint(cursorX, cursorY);
-    const onLight = !!under?.closest('.section-light');
-    dot?.classList.toggle('on-light', onLight);
-    ring?.classList.toggle('on-light', onLight);
   }, { passive: true });
 
   document.addEventListener('mouseover', e => {
@@ -325,8 +321,9 @@ function initHero() {
   /* Only fade the overlay when no loader is running */
   if (!loaderActive) at(0, () => overlay?.classList.add('gone'));
 
+  const loaderOffset = loaderActive ? 1300 : 0;
   document.querySelectorAll('.hero-anim').forEach(el => {
-    const delay = parseInt(el.dataset.delay || '0', 10);
+    const delay = parseInt(el.dataset.delay || '0', 10) + loaderOffset;
     at(delay, () => el.classList.add('entered'));
   });
 
