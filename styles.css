@@ -2354,6 +2354,7 @@ body::after {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1rem, 2vw, 2rem);
+  align-items: stretch;
 }
 
 .domaine-card {
@@ -2363,6 +2364,7 @@ body::after {
   flex-direction: column;
   justify-content: space-between;
   gap: 1.2rem;
+  height: 100%;
   min-height: clamp(380px, 48vw, 560px);
   padding: clamp(1.5rem, 3vw, 2.4rem);
   background: rgba(240,235,230,0.035);
@@ -2430,8 +2432,10 @@ body::after {
 .domaine-card__body {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   gap: 1rem;
   margin-top: auto;
+  min-height: 170px;
   padding: 1rem 1.2rem 1.2rem;
   border-radius: var(--radius-md);
   border: 1px solid rgba(240,235,230,0.08);
