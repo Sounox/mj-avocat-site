@@ -608,12 +608,17 @@ select::-ms-expand { display: none; }
   object-fit: cover;
   object-position: center 30%;
   transform-origin: center 35%;
-  animation: heroBgKenBurns 22s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: hero-image-settle 1800ms var(--ease-out-expo) both,
+             hero-kenburns 26s ease-in-out 1800ms infinite alternate;
   will-change: transform;
 }
-@keyframes heroBgKenBurns {
-  from { transform: scale(1.1) translate3d(1%, 0.5%, 0); }
-  to   { transform: scale(1)   translate3d(0, 0, 0); }
+@keyframes hero-image-settle {
+  from { transform: scale(1.12); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+@keyframes hero-kenburns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06) translateY(-1.5%); }
 }
 .hero__bg-overlay {
   position: absolute;
@@ -837,6 +842,21 @@ select::-ms-expand { display: none; }
 .hero-anim.entered {
   opacity: 1; transform: translateY(0);
   transition: opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo);
+}
+
+/* Line-mask reveal for hero name */
+.hero__name-main .line-mask {
+  display: block;
+  overflow: hidden;
+  line-height: inherit;
+}
+.hero__name-main .line-mask .line {
+  display: block;
+  transform: translateY(105%);
+  transition: transform 950ms var(--ease-out-expo);
+}
+.hero__title.entered .hero__name-main .line-mask .line {
+  transform: translateY(0);
 }
 
 /* ---------------------------------------------------------------------------
@@ -1815,6 +1835,7 @@ select::-ms-expand { display: none; }
   }
   .split-chars .char-inner,
   .split-words .word-inner  { transform: translateY(0) !important; }
+  .hero__name-main .line-mask .line { transform: translateY(0) !important; }
 
   .hero-anim,
   .reveal-up,
