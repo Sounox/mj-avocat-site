@@ -462,7 +462,7 @@ select::-ms-expand { display: none; }
 .section-light .related-card__num         { color: var(--taupe); }
 .section-light .related-card__title,
 .section-light .related-card__name        { color: var(--espresso); }
-.section-light .related-card__teaser      { color: rgba(47,26,18,0.62); }
+.section-light .related-card__teaser      { color: rgba(47,26,18,0.78); }
 .section-light .faq__cat-intro            { color: rgba(47,26,18,0.68); }
 
 /* Hub cards dark-on-light (domaines.html overview) — dark cards stand out on ivory page */
@@ -2456,7 +2456,9 @@ body::after {
   justify-content: flex-end;
   gap: 1rem;
   margin-top: auto;
-  min-height: 170px;
+  height: 200px;
+  min-height: unset;
+  overflow: hidden;
   padding: 1rem 1.2rem 1.2rem;
   border-radius: var(--radius-md);
   border: 1px solid rgba(240,235,230,0.08);
@@ -2700,68 +2702,6 @@ body::after {
   background: rgba(47,26,18,0.04);
 }
 
-.home-reperes {
-  background:
-    radial-gradient(circle at 50% 10%, rgba(221,213,200,0.08) 0%, rgba(221,213,200,0) 30%),
-    linear-gradient(180deg, #24120d 0%, var(--espresso) 48%, #1d0d09 100%);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.stat-card {
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: clamp(1.4rem, 2.5vw, 1.9rem);
-  background: rgba(240,235,230,0.04);
-  border: 1px solid rgba(240,235,230,0.08);
-}
-
-.stat-number {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 300;
-  font-size: clamp(3.6rem, 6vw, 5.2rem);
-  line-height: 0.92;
-  letter-spacing: -0.05em;
-  color: var(--sand);
-}
-
-.stat-label,
-.stat-kicker {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(240,235,230,0.5);
-}
-
-.stat-meta {
-  font-size: 0.95rem;
-  color: rgba(240,235,230,0.86);
-}
-
-.stat-text {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 300;
-  font-size: clamp(1.55rem, 2.6vw, 2rem);
-  line-height: 1.28;
-  color: var(--ivory);
-}
-
-/* Home repères : 4 colonnes + stagger d'entrée */
-.home-reperes .stats-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-.home-reperes .stat-card:nth-child(2) { transition-delay: 80ms; }
-.home-reperes .stat-card:nth-child(3) { transition-delay: 160ms; }
-.home-reperes .stat-card:nth-child(4) { transition-delay: 240ms; }
-
 .contact-card {
   background: var(--ivory);
   padding-block: clamp(3.5rem, 7vw, 5.5rem);
@@ -2889,8 +2829,7 @@ body::after {
 @media (max-width: 1024px) {
   .home-about__grid,
   .home-domaines__grid,
-  .approach-grid,
-  .stats-grid {
+  .approach-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -2901,17 +2840,12 @@ body::after {
   .home-about__body {
     max-width: none;
   }
-
-  .stats-grid .stat-card--text {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 768px) {
   .home-about__grid,
   .home-domaines__grid,
-  .approach-grid,
-  .stats-grid {
+  .approach-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2935,10 +2869,6 @@ body::after {
 
   .home-approach__links .btn {
     justify-content: center;
-  }
-
-  .stat-card {
-    min-height: 0;
   }
 
   .home-approach .section__header h2 {
@@ -3589,7 +3519,7 @@ body::after {
 /* ---------------------------------------------------------------------------
    47. DOMAINES HUB
 --------------------------------------------------------------------------- */
-.domaines-hub-hero { padding: calc(var(--nav-h) + clamp(2rem, 4vw, 3.25rem)) 0 clamp(1.75rem, 3.5vw, 2.75rem); }
+.domaines-hub-hero { padding: 0 0 clamp(1.5rem, 3vw, 2rem); }
 .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: clamp(1.75rem, 4vw, 2.75rem) 0; }
 .hub-card {
   background: rgba(240,235,230,0.04); border: 1px solid rgba(221,213,200,0.12);
@@ -3698,6 +3628,46 @@ body::after {
   opacity: 0.92;
   transform: translateX(3px);
 }
+
+/* FAQ domain links : hover photo (même effet que .domaine-card) */
+.faq-domain-links .related-card {
+  --bg-img: none;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: transform 350ms var(--ease-out-quart),
+              border-color 350ms var(--ease-out-quart),
+              box-shadow 350ms var(--ease-out-quart),
+              color 350ms var(--ease-out-quart);
+}
+.faq-domain-links .related-card::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -2;
+  background-image: var(--bg-img);
+  background-size: cover; background-position: center;
+  opacity: 0; transform: scale(1.07);
+  transition: opacity 600ms var(--ease-in-out-quart),
+              transform 1200ms var(--ease-in-out-quart);
+}
+.faq-domain-links .related-card::after {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(135deg, rgba(47,26,18,0.6) 0%, rgba(47,26,18,0.9) 100%);
+  opacity: 0;
+  transition: opacity 600ms var(--ease-in-out-quart);
+}
+.faq-domain-links .related-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(240,235,230,0.2);
+  box-shadow: 0 16px 48px rgba(47,26,18,0.2);
+  color: var(--ivory);
+}
+.faq-domain-links .related-card:hover::before { opacity: 1; transform: scale(1); }
+.faq-domain-links .related-card:hover::after  { opacity: 1; }
+.faq-domain-links .related-card:hover .related-card__num,
+.faq-domain-links .related-card:hover .related-card__title,
+.faq-domain-links .related-card:hover .related-card__teaser { color: var(--ivory); }
+.faq-domain-links .related-card:hover .related-card__arrow  { opacity: 0.9; }
 
 .domaines-hub-page .section__header {
   max-width: 56rem;

@@ -15,6 +15,7 @@ const isMobile       = window.innerWidth < 768;
 let cursorX = 0, cursorY = 0;
 let ringX   = 0, ringY   = 0;
 let loaderActive = false;
+let heroScrollEl = null, heroScrollContent = null;
 
 /* ---------------------------------------------------------------------------
    0.5 SITE LOADER (first visit via sessionStorage)
@@ -59,6 +60,7 @@ function startRAF() {
   function loop() {
     updateCursorRing();
     updateParallax();
+    updateHeroScroll();
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);
@@ -129,6 +131,21 @@ function updateParallax() {
     const offset = Math.max(-120, Math.min(120, center * speed));
     el.style.transform = `translate3d(0,${offset}px,0)`;
   });
+}
+
+function initHeroScroll() {
+  if (prefersReduced) return;
+  heroScrollEl      = document.querySelector('.hero');
+  heroScrollContent = document.querySelector('.hero__content');
+}
+
+function updateHeroScroll() {
+  if (!heroScrollEl || !heroScrollContent) return;
+  const rect = heroScrollEl.getBoundingClientRect();
+  if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+  const progress = Math.max(0, Math.min(1, -rect.top / window.innerHeight));
+  heroScrollContent.style.opacity   = String(Math.max(0, 1 - progress * 1.5));
+  heroScrollContent.style.transform = `translate3d(0,${-progress * 50}px,0)`;
 }
 
 function easeInOutCubic(t) {
@@ -252,6 +269,9 @@ function initMaskAssets() {
     card.style.setProperty('--bg-img', `url("${card.dataset.fill}")`);
   });
 
+  document.querySelectorAll('.related-card[data-fill]').forEach(card => {
+    card.style.setProperty('--bg-img', `url("${card.dataset.fill}")`);
+  });
 }
 
 function initCounters() {
@@ -805,6 +825,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveals();
   initMaskAssets();
   initParallax();
+  initHeroScroll();
   initNav();
   initMobileNav();
   initNavDropdown();
