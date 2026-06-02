@@ -565,6 +565,15 @@ select::-ms-expand { display: none; }
 
 /* ---------------------------------------------------------------------------
    17. HERO
+   DOM audit 2026-06-02
+   - section hero: section#accueil.hero
+   - image wrapper: .hero__bg-img.parallax
+   - image node: .hero__bg-photo
+   - content wrapper: .hero__inner > .hero__content
+   - animated content nodes: .hero__eyebrow, .hero__title, .hero__manifesto,
+     .hero__ctas, .hero__scroll-indicator
+   Existing transitions were already present, but the entry sequence was
+   triggered under .site-loader, making it effectively invisible on load.
 --------------------------------------------------------------------------- */
 .hero {
   position: relative;
@@ -593,6 +602,7 @@ select::-ms-expand { display: none; }
   position: absolute;
   inset: -15% 0;
   z-index: 0;
+  will-change: transform;
 }
 .hero__bg-photo {
   width: 100%; height: 100%;
@@ -700,6 +710,7 @@ select::-ms-expand { display: none; }
   flex-direction: column;
   align-items: flex-start;
   gap: 0;
+  will-change: transform, opacity;
 }
 .hero__content::before {
   content: none;
@@ -830,10 +841,19 @@ select::-ms-expand { display: none; }
 
 /* Hero entry animations */
 .hero-anim {
-  opacity: 0; transform: translateY(22px);
-  transition: opacity 700ms var(--ease-out-expo), transform 700ms var(--ease-out-expo);
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  filter: blur(7px);
+  transition:
+    opacity 900ms var(--ease-out-expo),
+    transform 900ms var(--ease-out-expo),
+    filter 900ms var(--ease-out-expo);
 }
-.hero-anim.entered { opacity: 1; transform: translateY(0); }
+.hero-anim.entered {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
 
 /* Line-mask reveal for hero name */
 .hero__name-main .line-mask {

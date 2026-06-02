@@ -15,7 +15,7 @@ const isMobile       = window.innerWidth < 768;
 let cursorX = 0, cursorY = 0;
 let ringX   = 0, ringY   = 0;
 let loaderActive = false;
-let heroScrollEl = null, heroScrollContent = null;
+let heroScrollEl = null, heroScrollMedia = null, heroScrollContent = null, heroScrollMassive = null;
 
 /* ---------------------------------------------------------------------------
    0.5 SITE LOADER (first visit via sessionStorage)
@@ -113,6 +113,7 @@ const parallaxEls = [];
 function initParallax() {
   if (prefersReduced) return;
   document.querySelectorAll('.parallax').forEach(el => {
+    if (el.classList.contains('hero__bg-img')) return;
     parallaxEls.push({ el, speed: parseFloat(el.dataset.speed || '0.15') });
     el.style.willChange = 'transform';
   });
@@ -131,17 +132,32 @@ function updateParallax() {
 
 function initHeroScroll() {
   if (prefersReduced) return;
-  heroScrollEl      = document.querySelector('.hero');
+  heroScrollEl      = document.querySelector('#accueil.hero');
+  heroScrollMedia   = document.querySelector('.hero__bg-img');
   heroScrollContent = document.querySelector('.hero__content');
+  heroScrollMassive = document.getElementById('massiveText');
 }
 
 function updateHeroScroll() {
-  if (!heroScrollEl || !heroScrollContent) return;
+  if (!heroScrollEl) return;
   const rect = heroScrollEl.getBoundingClientRect();
   if (rect.bottom < 0 || rect.top > window.innerHeight) return;
   const progress = Math.max(0, Math.min(1, -rect.top / window.innerHeight));
-  heroScrollContent.style.opacity   = String(Math.max(0, 1 - progress * 1.5));
-  heroScrollContent.style.transform = `translate3d(0,${-progress * 50}px,0)`;
+  const eased = easeInOutCubic(progress);
+
+  if (heroScrollMedia) {
+    heroScrollMedia.style.transform = `translate3d(0, ${Math.round(eased * 96)}px, 0) scale(${(1 + eased * 0.05).toFixed(3)})`;
+  }
+
+  if (heroScrollContent) {
+    heroScrollContent.style.opacity   = String(Math.max(0, 1 - eased * 1.25));
+    heroScrollContent.style.transform = `translate3d(0, ${Math.round(-eased * 72)}px, 0)`;
+  }
+
+  if (heroScrollMassive) {
+    heroScrollMassive.style.transform = `translate3d(0, ${Math.round(eased * 34)}px, 0)`;
+    heroScrollMassive.style.opacity = String(Math.max(0.08, 0.28 - eased * 0.16));
+  }
 }
 
 function easeInOutCubic(t) {
@@ -311,31 +327,35 @@ function initCounters() {
    7. HERO CHOREOGRAPHY
 --------------------------------------------------------------------------- */
 function initHero() {
-  if (!document.querySelector('.hero')) return;
+  const hero = document.querySelector('#accueil.hero');
+  if (!hero) return;
 
   const overlay = document.querySelector('.page-overlay');
-  document.body.classList.add('is-locked');
+  const baseDelay = loaderActive ? 2680 : 120;
+
+  if (!loaderActive) {
+    document.body.classList.add('is-locked');
+  }
 
   function at(ms, fn) { setTimeout(fn, ms); }
 
   /* Only fade the overlay when no loader is running */
   if (!loaderActive) at(0, () => overlay?.classList.add('gone'));
-
-  const loaderOffset = loaderActive ? 1300 : 0;
   document.querySelectorAll('.hero-anim').forEach(el => {
-    const delay = parseInt(el.dataset.delay || '0', 10) + loaderOffset;
+    const delay = parseInt(el.dataset.delay || '0', 10) + baseDelay;
     at(delay, () => el.classList.add('entered'));
   });
 
   /* Portrait mask reveal */
   const portrait = document.querySelector('.hero__portrait-frame[data-mask-hero]');
-  at(1500, () => portrait?.classList.add('is-visible'));
+  at(baseDelay + 1280, () => portrait?.classList.add('is-visible'));
 
   /* Canvas fade in */
-  at(1900, () => document.querySelector('.hero__canvas')?.classList.add('ready'));
+  at(baseDelay + 1580, () => document.querySelector('.hero__canvas')?.classList.add('ready'));
 
   /* Unlock scroll */
-  at(1400, () => document.body.classList.remove('is-locked'));
+  at(loaderActive ? baseDelay : baseDelay + 1120, () => document.body.classList.remove('is-locked'));
+  at(baseDelay - (loaderActive ? 80 : 0), () => hero.classList.add('hero--ready'));
 }
 
 /* ---------------------------------------------------------------------------
