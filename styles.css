@@ -1760,8 +1760,8 @@ select::-ms-expand { display: none; }
   .nav {
     background: rgba(47, 26, 18, 0.96);
     border-bottom: 1px solid rgba(221, 213, 200, 0.12);
-    backdrop-filter: blur(16px) saturate(160%);
-    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    /* No backdrop-filter — nearly-opaque bg makes it invisible, and it would
+       create a fixed containing block trapping nav__links inside the 70px bar */
   }
 
   .nav__inner {
@@ -1770,32 +1770,38 @@ select::-ms-expand { display: none; }
   }
 
   .nav__links {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: var(--espresso);
-    padding: 7rem 2rem 2rem;
+    /* Visibility/opacity instead of display:none — allows pre-rendering and CSS transition */
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2.5rem;
-    font-size: 1.1rem;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: var(--nav-h);
+    left: 0; right: 0; bottom: 0;
     z-index: 998;
+    transition: opacity 160ms ease, visibility 0s linear 160ms;
   }
-  .nav__links.open { display: flex; }
+  .nav__links.open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 160ms ease, visibility 0s;
+  }
   .nav__cta        { display: none; }
   .nav__toggle {
+    /* Flex item instead of absolute — nav__inner align-items:center does the job */
     display: flex;
-    position: absolute;
-    top: 50%;
-    right: 0;
+    position: static;
+    top: auto; right: auto;
+    transform: none;
+    margin-left: auto;
+    flex-shrink: 0;
     width: 40px;
     height: 40px;
-    margin-left: 0;
     padding: 0;
     align-items: center;
     justify-content: center;
-    transform: translateY(-50%);
     border: 1.5px solid rgba(240,235,230,0.3);
     border-radius: var(--radius-pill);
     background: rgba(47,26,18,0.55);
@@ -4060,11 +4066,15 @@ body::after {
     z-index: 1001;
   }
 
+  /* .nav.scrolled (desktop) adds backdrop-filter — override on mobile to keep
+     nav free of fixed containing blocks regardless of scroll state */
+  .nav.scrolled {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .nav__links {
-    /* Start exactly below the header bar, not from viewport top */
-    inset: unset;
-    top: var(--nav-h);
-    left: 0; right: 0; bottom: 0;
+    /* Layout overrides — position is set in section 29 */
     justify-content: flex-start;
     align-items: stretch;
     gap: 0;
@@ -4124,14 +4134,6 @@ body::after {
 
   .nav__dropdown-trigger::after {
     display: none;
-  }
-
-  /* Remove backdrop-filter when menu is open — it was creating a fixed containing block
-     that trapped nav__links (position:fixed;inset:0) inside the 70px nav bar */
-  .nav.menu-open {
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    background: rgba(20, 9, 5, 0.96);
   }
 
   .nav__dropdown {
