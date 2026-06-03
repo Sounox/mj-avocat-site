@@ -117,7 +117,8 @@ h3 {
 }
 
 #faq .section__header h1 {
-  max-width: 15ch;
+  max-width: 24ch;
+  text-wrap: balance;
 }
 
 #contact .section__header h1 {
@@ -2233,9 +2234,17 @@ body::after {
   padding-top: calc(var(--nav-h) + clamp(1rem, 2.8vw, 1.75rem));
 }
 
+#faq.section-first {
+  padding-top: calc(var(--nav-h) + clamp(0.75rem, 2vw, 1.25rem));
+}
+
 #faq.section-first .section__header,
 #contact.section-first .section__header {
   margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+#faq.section-first .section__header {
+  margin-bottom: clamp(1.1rem, 2vw, 1.6rem);
 }
 
 .nav__link[aria-current="page"] {
@@ -3953,7 +3962,7 @@ body::after {
   }
 
   #faq .section__header h1 {
-    max-width: 11.5ch;
+    max-width: 17ch;
   }
 
   #contact .section__header h1 {
