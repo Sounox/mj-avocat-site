@@ -2573,7 +2573,9 @@ body::after {
 .domaine-card__body {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   gap: 1rem;
   margin-top: auto;
   height: 200px;
