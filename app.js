@@ -453,23 +453,30 @@ function initNav() {
    10. MOBILE NAV
 --------------------------------------------------------------------------- */
 function initMobileNav() {
+  const nav    = document.querySelector('.nav');
   const toggle = document.querySelector('.nav__toggle');
   const links  = document.querySelector('.nav__links');
   if (!toggle || !links) return;
+
+  function closeMenu() {
+    toggle.setAttribute('aria-expanded', 'false');
+    links.classList.remove('open');
+    nav?.classList.remove('menu-open');
+    document.body.style.overflow = '';
+  }
 
   toggle.addEventListener('click', () => {
     const expanded = toggle.getAttribute('aria-expanded') === 'true';
     toggle.setAttribute('aria-expanded', String(!expanded));
     links.classList.toggle('open', !expanded);
+    /* .menu-open removes backdrop-filter which was creating a fixed containing block,
+       trapping the nav__links overlay inside the 70px nav bar */
+    nav?.classList.toggle('menu-open', !expanded);
     document.body.style.overflow = expanded ? '' : 'hidden';
   });
 
   links.querySelectorAll('.nav__link').forEach(a => {
-    a.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', 'false');
-      links.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+    a.addEventListener('click', closeMenu);
   });
 }
 
@@ -787,11 +794,19 @@ function initNavDropdown() {
     return null;
   };
 
+  const onMobile = () => window.innerWidth <= 768;
+
+  /* On mobile, CSS max-height handles collapse — the hidden attribute (display:none)
+     would override it, so we remove it once at init and never touch it again */
+  if (onMobile()) {
+    document.querySelectorAll('.nav__dropdown').forEach(d => d.removeAttribute('hidden'));
+  }
+
   function closeAll() {
     triggers.forEach(t => {
       t.setAttribute('aria-expanded', 'false');
       const p = t.nextElementSibling;
-      if (p?.classList.contains('nav__dropdown')) p.setAttribute('hidden', '');
+      if (p?.classList.contains('nav__dropdown') && !onMobile()) p.setAttribute('hidden', '');
     });
   }
 
@@ -813,7 +828,7 @@ function initNavDropdown() {
       closeAll();
       if (!isOpen) {
         trigger.setAttribute('aria-expanded', 'true');
-        panel.removeAttribute('hidden');
+        if (!onMobile()) panel.removeAttribute('hidden');
       }
     });
 
@@ -843,11 +858,13 @@ function initNavDropdown() {
     /* Close dropdown items close the mobile menu too */
     panel.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
+        const nav    = document.querySelector('.nav');
         const toggle = document.querySelector('.nav__toggle');
         const links  = document.querySelector('.nav__links');
         if (toggle && links) {
           toggle.setAttribute('aria-expanded', 'false');
           links.classList.remove('open');
+          nav?.classList.remove('menu-open');
           document.body.style.overflow = '';
         }
       });

@@ -4122,17 +4122,40 @@ body::after {
     display: none;
   }
 
+  /* Remove backdrop-filter when menu is open — it was creating a fixed containing block
+     that trapped nav__links (position:fixed;inset:0) inside the 70px nav bar */
+  .nav.menu-open {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(20, 9, 5, 0.96);
+  }
+
   .nav__dropdown {
+    /* Reset desktop opacity/visibility — mobile uses max-height instead */
+    opacity: 1;
+    visibility: visible;
+    pointer-events: none;
+    position: static;
+    transform: none;
+    width: 100%;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    overflow: hidden;
+    transition: max-height 320ms var(--ease-in-out-quart);
+    /* collapse */
     margin: 0.25rem 0 0.2rem;
-    margin-left: 0;
-    padding: 0.15rem 0 0.3rem;
-    border-left: none;
+    padding: 0;
     background: transparent;
     max-height: 0;
   }
 
   .nav__dropdown-trigger[aria-expanded="true"] + .nav__dropdown {
     max-height: 680px;
+    pointer-events: auto;
+    padding: 0.15rem 0 0.3rem;
   }
 
   .nav__dropdown-item {
