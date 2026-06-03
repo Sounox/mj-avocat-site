@@ -19,3 +19,15 @@ assets/manifesto-fill.jpg
 # Assets client non encore intégrés
 assets/_u_manifesto.jpg
 assets/_u_texture*.jpg
+
+# Profils et audits locaux navigateur
+.browser-audit-profile/
+.browser-cdp-profile/
+.browser-profile/
+.chrome-mobile-audit*/
+.edge-mobile-audit/
+.mobile-audit/
+_favicon-source.png
+
+# Outils Cloudflare
+.wrangler/
