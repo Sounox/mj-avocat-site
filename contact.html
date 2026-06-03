@@ -1,33 +1,64 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Contacter le cabinet de Maître Morgane JOSEPH à Montpellier pour une prise de rendez-vous ou une première demande.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mj-avocat-site.abl-slancry.workers.dev/contact">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Cabinet Maître Morgane JOSEPH">
   <meta property="og:title" content="Contact — Maître Morgane JOSEPH, Avocat au Barreau de Montpellier">
   <meta property="og:description" content="Contacter le cabinet de Maître Morgane JOSEPH à Montpellier pour une prise de rendez-vous ou une première demande.">
-  <meta property="og:image" content="https://mj-avocat-site.abl-slancry.workers.dev/assets/hero-tribunal-montpellier.jpg">
+  <meta property="og:image" content="https://mj-avocat-site.abl-slancry.workers.dev/assets/og-contact.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://mj-avocat-site.abl-slancry.workers.dev/contact">
-
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — Maître Morgane JOSEPH, Avocat au Barreau de Montpellier">
+  <meta name="twitter:description" content="Contacter le cabinet de Maître Morgane JOSEPH à Montpellier pour une prise de rendez-vous ou une première demande.">
+  <meta name="twitter:image" content="https://mj-avocat-site.abl-slancry.workers.dev/assets/og-contact.jpg">
   <title>Contact — Maître Morgane JOSEPH, Avocat au Barreau de Montpellier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://mj-avocat-site.abl-slancry.workers.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Contact",
+      "item": "https://mj-avocat-site.abl-slancry.workers.dev/contact"
+    }
+  ]
+}
+</script>
+  <!-- PLAUSIBLE ANALYTICS — snippet à coller ici une fois fourni -->
+  <!-- <script defer data-domain="..." src="https://plausible.io/js/script.js"></script> -->
+  
+  <!-- MICROSOFT CLARITY — snippet à coller ici une fois fourni -->
 </head>
 <body class="page-interior">
 
   <!-- Site Loader (first visit only via sessionStorage) -->
   <div class="site-loader" id="siteLoader" aria-hidden="true" role="presentation">
-    <img src="assets/1_LOGO_BLANC.png" alt="" class="site-loader__logo">
+    <img src="assets/1_LOGO_BLANC.png" alt="" class="site-loader__logo" width="120" height="120">
     <div class="site-loader__curtain"></div>
   </div>
 
@@ -43,41 +74,41 @@
   <!-- Navigation (fixed) -->
   <nav class="nav" role="navigation" aria-label="Navigation principale">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo" aria-label="Maître Morgane JOSEPH — Accueil">
-        <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="nav__logo-img" height="44" width="auto">
+      <a href="/" class="nav__logo" aria-label="Maître Morgane JOSEPH — Accueil">
+        <img src="assets/1_LOGO_BLANC.png" alt="Logo Cabinet Maître Morgane JOSEPH" class="nav__logo-img" width="44" height="44">
       </a>
       <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
         <span class="nav__toggle-line"></span>
         <span class="nav__toggle-line"></span>
       </button>
       <ul class="nav__links" id="nav-menu" role="list">
-        <li><a href="presentation.html" class="nav__link">Présentation</a></li>
+        <li><a href="/presentation" class="nav__link">Présentation</a></li>
         <li class="nav__item--dropdown">
           <button class="nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-dropdown-domaines">
             Domaines
             <svg class="nav__dropdown-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div id="nav-dropdown-domaines" class="nav__dropdown" hidden role="menu">
-            <a class="nav__dropdown-item" href="domaines/droit-de-la-famille.html" role="menuitem">
+            <a class="nav__dropdown-item" href="/domaines/droit-de-la-famille" role="menuitem">
               <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit de la famille</span><span class="nav__dropdown-teaser">Divorce, autorité parentale, ordonnance de protection.</span></span>
               <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="nav__dropdown-item" href="domaines/droit-civil.html" role="menuitem">
+            <a class="nav__dropdown-item" href="/domaines/droit-civil" role="menuitem">
               <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit civil</span><span class="nav__dropdown-teaser">Litiges contractuels, baux, responsabilité civile.</span></span>
               <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="nav__dropdown-item" href="domaines/contentieux-aah.html" role="menuitem">
+            <a class="nav__dropdown-item" href="/domaines/contentieux-aah" role="menuitem">
               <span class="nav__dropdown-body"><span class="nav__dropdown-title">Contentieux AAH</span><span class="nav__dropdown-teaser">Recours MDPH, refus d'attribution, Pôle social.</span></span>
               <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="nav__dropdown-footer" href="domaines.html" role="menuitem">Vue d'ensemble des domaines →</a>
+            <a class="nav__dropdown-footer" href="/domaines" role="menuitem">Vue d'ensemble des domaines →</a>
           </div>
         </li>
-        <li><a href="honoraires.html" class="nav__link">Honoraires</a></li>
-        <li><a href="faq.html" class="nav__link">FAQ</a></li>
-        <li><a href="contact.html" class="nav__link" aria-current="page">Contact</a></li>
+        <li><a href="/honoraires" class="nav__link">Honoraires</a></li>
+        <li><a href="/faq" class="nav__link">FAQ</a></li>
+        <li><a href="/contact" class="nav__link" aria-current="page">Contact</a></li>
       </ul>
-      <a href="contact.html" class="nav__cta btn btn--outline">Prendre rendez-vous</a>
+      <a href="/contact" class="nav__cta btn btn--outline">Prendre rendez-vous</a>
     </div>
   </nav>
 
@@ -91,7 +122,7 @@
       </div>
 
       <div class="contact__desk-visual" aria-hidden="true">
-        <img src="assets/img-desk.jpg" alt="" class="contact__desk-img parallax" data-speed="0.1" loading="lazy"
+        <img src="assets/img-desk.jpg" alt="" class="contact__desk-img parallax" data-speed="0.1" loading="lazy" width="1400" height="933"
              onerror="this.parentElement.classList.add('img-placeholder')">
         <div class="contact__desk-overlay"></div>
       </div>
@@ -145,7 +176,7 @@
               <div class="form__field"><label for="f-message" class="form__label">Message <abbr title="obligatoire">*</abbr></label><textarea id="f-message" name="message" class="form__input form__textarea" required rows="5" placeholder="Décrivez brièvement votre situation…"></textarea></div>
               <div class="form__field form__field--check">
                 <input type="checkbox" id="f-rgpd" name="rgpd" class="form__checkbox" required>
-                <label for="f-rgpd" class="form__label form__label--check">J'accepte que mes données soient utilisées pour me recontacter dans le cadre de ma demande, conformément à la <a href="mentions-legales.html#donnees-personnelles" class="rgpd-link">politique de confidentialité du cabinet</a>.</label>
+                <label for="f-rgpd" class="form__label form__label--check">J'accepte que mes données soient utilisées pour me recontacter dans le cadre de ma demande, conformément à la <a href="/politique-confidentialite" class="rgpd-link">politique de confidentialité du cabinet</a>.</label>
               </div>
               <button type="submit" class="btn btn--primary btn--full">Envoyer ma demande<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="btn__icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
               <p class="form__success" id="formSuccess" aria-live="polite" hidden>Votre message a bien été envoyé. Maître Morgane JOSEPH reviendra vers vous dans les meilleurs délais.</p>
@@ -199,7 +230,7 @@
               <span class="accordion__icon" aria-hidden="true"><span class="accordion__icon-h"></span><span class="accordion__icon-v"></span></span>
             </button>
             <div class="accordion__panel" id="cfaq-4" role="region" aria-labelledby="cfaq-4-btn">
-              <div class="accordion__content"><p>Les honoraires sont fix&eacute;s librement, en tenant compte de la nature et de la complexit&eacute; du dossier. Ils sont pr&eacute;cis&eacute;s dans une convention d'honoraires sign&eacute;e d&egrave;s le d&eacute;but de la mission. Vous pouvez consulter la page <a href="honoraires.html" style="color:var(--taupe)">Honoraires</a> pour une pr&eacute;sentation des modalit&eacute;s appliqu&eacute;es.</p></div>
+              <div class="accordion__content"><p>Les honoraires sont fix&eacute;s librement, en tenant compte de la nature et de la complexit&eacute; du dossier. Ils sont pr&eacute;cis&eacute;s dans une convention d'honoraires sign&eacute;e d&egrave;s le d&eacute;but de la mission. Vous pouvez consulter la page <a href="/honoraires" style="color:var(--taupe)">Honoraires</a> pour une pr&eacute;sentation des modalit&eacute;s appliqu&eacute;es.</p></div>
             </div>
           </div>
 
@@ -228,24 +259,30 @@
   </main>
 
   <!-- Footer -->
+  
   <footer class="footer" role="contentinfo">
     <div class="footer__inner container">
       <div class="footer__top">
         <div class="footer__brand">
-          <a href="index.html" aria-label="Retour à l'accueil">
-            <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="footer__logo" width="60" height="auto" loading="lazy" decoding="async">
+          <a href="/" aria-label="Retour à l'accueil">
+            <img src="assets/1_LOGO_BLANC.png" alt="Logo Cabinet Maître Morgane JOSEPH" class="footer__logo" width="60" height="60" loading="lazy" decoding="async">
           </a>
           <p class="footer__brand-name">Maître Morgane JOSEPH<br><span>Avocat à la Cour</span></p>
         </div>
         <nav class="footer__nav" aria-label="Navigation secondaire">
           <ul class="footer__links" role="list">
-            <li><a href="index.html" class="footer__link">Accueil</a></li>
-            <li><a href="presentation.html" class="footer__link">Présentation</a></li>
-            <li><a href="domaines.html" class="footer__link">Domaines</a></li>
-            <li><a href="honoraires.html" class="footer__link">Honoraires</a></li>
-            <li><a href="faq.html" class="footer__link">FAQ</a></li>
-            <li><a href="contact.html" class="footer__link" aria-current="page">Contact</a></li>
-            <li><a href="mentions-legales.html" class="footer__link">Mentions légales</a></li>
+            <li><a href="/" class="footer__link">Accueil</a></li>
+            <li><a href="/presentation" class="footer__link">Présentation</a></li>
+            <li><a href="/domaines" class="footer__link">Domaines</a></li>
+            <li><a href="/honoraires" class="footer__link">Honoraires</a></li>
+            <li><a href="/faq" class="footer__link">FAQ</a></li>
+            <li><a href="/premier-rendez-vous" class="footer__link">Premier rendez-vous</a></li>
+            <li><a href="/aide-juridictionnelle" class="footer__link">Aide juridictionnelle</a></li>
+            <li><a href="/zone-intervention" class="footer__link">Zone d'intervention</a></li>
+            <li><a href="/glossaire-juridique" class="footer__link">Glossaire juridique</a></li>
+            <li><a href="/contact" class="footer__link" aria-current="page">Contact</a></li>
+            <li><a href="/politique-confidentialite" class="footer__link">Politique de confidentialité</a></li>
+            <li><a href="/mentions-legales" class="footer__link">Mentions légales</a></li>
           </ul>
         </nav>
         <address class="footer__contact">
@@ -261,7 +298,8 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
+
 

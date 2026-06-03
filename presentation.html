@@ -1,33 +1,64 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Présentation du cabinet de Maître Morgane JOSEPH, Avocat au Barreau de Montpellier : parcours, approche et engagement auprès de ses clients.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://mj-avocat-site.abl-slancry.workers.dev/presentation">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Cabinet Maître Morgane JOSEPH">
   <meta property="og:title" content="Maître Morgane JOSEPH — Parcours &amp; approche | Avocat à Montpellier">
   <meta property="og:description" content="Présentation du cabinet de Maître Morgane JOSEPH, Avocat au Barreau de Montpellier : parcours, approche et engagement auprès de ses clients.">
-  <meta property="og:image" content="https://mj-avocat-site.abl-slancry.workers.dev/assets/hero-tribunal-montpellier.jpg">
+  <meta property="og:image" content="https://mj-avocat-site.abl-slancry.workers.dev/assets/og-presentation.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://mj-avocat-site.abl-slancry.workers.dev/presentation">
-
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Maître Morgane JOSEPH — Parcours &amp; approche | Avocat à Montpellier">
+  <meta name="twitter:description" content="Présentation du cabinet de Maître Morgane JOSEPH, Avocat au Barreau de Montpellier : parcours, approche et engagement auprès de ses clients.">
+  <meta name="twitter:image" content="https://mj-avocat-site.abl-slancry.workers.dev/assets/og-presentation.jpg">
   <title>Maître Morgane JOSEPH — Parcours &amp; approche | Avocat à Montpellier</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://mj-avocat-site.abl-slancry.workers.dev/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Présentation",
+      "item": "https://mj-avocat-site.abl-slancry.workers.dev/presentation"
+    }
+  ]
+}
+</script>
+  <!-- PLAUSIBLE ANALYTICS — snippet à coller ici une fois fourni -->
+  <!-- <script defer data-domain="..." src="https://plausible.io/js/script.js"></script> -->
+  
+  <!-- MICROSOFT CLARITY — snippet à coller ici une fois fourni -->
 </head>
 <body class="page-interior">
 
   <!-- Site Loader (first visit only via sessionStorage) -->
   <div class="site-loader" id="siteLoader" aria-hidden="true" role="presentation">
-    <img src="assets/1_LOGO_BLANC.png" alt="" class="site-loader__logo">
+    <img src="assets/1_LOGO_BLANC.png" alt="" class="site-loader__logo" width="120" height="120">
     <div class="site-loader__curtain"></div>
   </div>
 
@@ -43,41 +74,41 @@
   <!-- Navigation (fixed) -->
   <nav class="nav" role="navigation" aria-label="Navigation principale">
     <div class="nav__inner">
-      <a href="index.html" class="nav__logo" aria-label="Maître Morgane JOSEPH — Accueil">
-        <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="nav__logo-img" height="44" width="auto">
+      <a href="/" class="nav__logo" aria-label="Maître Morgane JOSEPH — Accueil">
+        <img src="assets/1_LOGO_BLANC.png" alt="Logo Cabinet Maître Morgane JOSEPH" class="nav__logo-img" width="44" height="44">
       </a>
       <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
         <span class="nav__toggle-line"></span>
         <span class="nav__toggle-line"></span>
       </button>
       <ul class="nav__links" id="nav-menu" role="list">
-        <li><a href="presentation.html" class="nav__link" aria-current="page">Présentation</a></li>
+        <li><a href="/presentation" class="nav__link" aria-current="page">Présentation</a></li>
         <li class="nav__item--dropdown">
           <button class="nav__dropdown-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="nav-dropdown-domaines">
             Domaines
             <svg class="nav__dropdown-caret" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div id="nav-dropdown-domaines" class="nav__dropdown" hidden role="menu">
-            <a class="nav__dropdown-item" href="domaines/droit-de-la-famille.html" role="menuitem">
+            <a class="nav__dropdown-item" href="/domaines/droit-de-la-famille" role="menuitem">
               <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit de la famille</span><span class="nav__dropdown-teaser">Divorce, autorité parentale, ordonnance de protection.</span></span>
               <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="nav__dropdown-item" href="domaines/droit-civil.html" role="menuitem">
+            <a class="nav__dropdown-item" href="/domaines/droit-civil" role="menuitem">
               <span class="nav__dropdown-body"><span class="nav__dropdown-title">Droit civil</span><span class="nav__dropdown-teaser">Litiges contractuels, baux, responsabilité civile.</span></span>
               <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="nav__dropdown-item" href="domaines/contentieux-aah.html" role="menuitem">
+            <a class="nav__dropdown-item" href="/domaines/contentieux-aah" role="menuitem">
               <span class="nav__dropdown-body"><span class="nav__dropdown-title">Contentieux AAH</span><span class="nav__dropdown-teaser">Recours MDPH, refus d'attribution, Pôle social.</span></span>
               <svg class="nav__dropdown-arrow" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a class="nav__dropdown-footer" href="domaines.html" role="menuitem">Vue d'ensemble des domaines →</a>
+            <a class="nav__dropdown-footer" href="/domaines" role="menuitem">Vue d'ensemble des domaines →</a>
           </div>
         </li>
-        <li><a href="honoraires.html" class="nav__link">Honoraires</a></li>
-        <li><a href="faq.html" class="nav__link">FAQ</a></li>
-        <li><a href="contact.html" class="nav__link">Contact</a></li>
+        <li><a href="/honoraires" class="nav__link">Honoraires</a></li>
+        <li><a href="/faq" class="nav__link">FAQ</a></li>
+        <li><a href="/contact" class="nav__link">Contact</a></li>
       </ul>
-      <a href="contact.html" class="nav__cta btn btn--outline">Prendre rendez-vous</a>
+      <a href="/contact" class="nav__cta btn btn--outline">Prendre rendez-vous</a>
     </div>
   </nav>
 
@@ -102,9 +133,9 @@
           <div class="presentation__col-left">
             <div class="presentation__img-wrap">
               <picture>
-                <source srcset="assets/photo.webp" type="image/webp">
-                <img src="assets/photo.jpg"
-                     alt="Maître Morgane JOSEPH, Avocat au Barreau de Montpellier"
+                <source srcset="assets/portrait-morgane-joseph-avocat-montpellier.webp" type="image/webp">
+                <img src="assets/portrait-morgane-joseph-avocat-montpellier.jpg"
+                     alt="Maître Morgane JOSEPH, avocat au Barreau de Montpellier"
                      class="presentation__img"
                      loading="eager"
                      width="900" height="1200"
@@ -143,7 +174,7 @@
               <p>Son parcours s'est construit autour d'une conviction forte&nbsp;: le droit doit être un outil de protection, d'écoute et d'accompagnement. Grâce à ses expériences en cabinet d'avocat, en association et auprès de publics parfois en situation de vulnérabilité, Maître Morgane JOSEPH a développé une approche à la fois rigoureuse et humaine.</p>
               <h2 class="presentation__body-h2">Les domaines d'intervention du cabinet à Montpellier</h2>
               <p>Elle intervient principalement en Droit civil général, Droit de la famille, contentieux de l'Allocation aux Adultes Handicapés (AAH), avec une attention particulière portée aux situations sensibles nécessitant disponibilité, réactivité et confiance.</p>
-              <p>Pour approfondir les matières traitées par le cabinet, vous pouvez <a href="domaines.html">consulter la vue d'ensemble des domaines d'activité</a>, puis découvrir le <a href="domaines/droit-de-la-famille.html">droit de la famille à Montpellier</a>, <a href="domaines/droit-civil.html">le droit civil</a> ou <a href="domaines/contentieux-aah.html">le contentieux AAH</a> selon votre situation.</p>
+              <p>Pour approfondir les matières traitées par le cabinet, vous pouvez <a href="/domaines">consulter la vue d'ensemble des domaines d'activité</a>, puis découvrir le <a href="/domaines/droit-de-la-famille">droit de la famille à Montpellier</a>, <a href="/domaines/droit-civil">le droit civil</a> ou <a href="/domaines/contentieux-aah">le contentieux AAH</a> selon votre situation.</p>
               <p>Attachée à instaurer une relation transparente et accessible avec chacun de ses clients, Maître Morgane JOSEPH s'engage à assurer un accompagnement personnalisé, fondé sur l'écoute, la précision et la défense de leurs intérêts.</p>
             </div>
             <figure class="presentation__consultation-img reveal-fade" style="margin: 2.5rem 0 2rem; border-radius: var(--radius-md); overflow: hidden;">
@@ -153,7 +184,7 @@
               </picture>
             </figure>
             <div class="presentation__signature reveal-fade">
-              <img src="assets/signature_fonce.png" alt="Signature — Morgane JOSEPH, Avocat à la Cour" class="signature-img" loading="lazy" width="280">
+              <img src="assets/signature_fonce.png" alt="Signature — Morgane JOSEPH, Avocat à la Cour" class="signature-img" loading="lazy" width="280" height="102">
             </div>
           </div>
         </div>
@@ -201,24 +232,30 @@
   </main>
 
   <!-- Footer -->
+  
   <footer class="footer" role="contentinfo">
     <div class="footer__inner container">
       <div class="footer__top">
         <div class="footer__brand">
-          <a href="index.html" aria-label="Retour à l'accueil">
-            <img src="assets/1_LOGO_BLANC.png" alt="Logo Maître Morgane JOSEPH" class="footer__logo" width="60" height="auto" loading="lazy" decoding="async">
+          <a href="/" aria-label="Retour à l'accueil">
+            <img src="assets/1_LOGO_BLANC.png" alt="Logo Cabinet Maître Morgane JOSEPH" class="footer__logo" width="60" height="60" loading="lazy" decoding="async">
           </a>
           <p class="footer__brand-name">Maître Morgane JOSEPH<br><span>Avocat à la Cour</span></p>
         </div>
         <nav class="footer__nav" aria-label="Navigation secondaire">
           <ul class="footer__links" role="list">
-            <li><a href="index.html" class="footer__link">Accueil</a></li>
-            <li><a href="presentation.html" class="footer__link" aria-current="page">Présentation</a></li>
-            <li><a href="domaines.html" class="footer__link">Domaines</a></li>
-            <li><a href="honoraires.html" class="footer__link">Honoraires</a></li>
-            <li><a href="faq.html" class="footer__link">FAQ</a></li>
-            <li><a href="contact.html" class="footer__link">Contact</a></li>
-            <li><a href="mentions-legales.html" class="footer__link">Mentions légales</a></li>
+            <li><a href="/" class="footer__link">Accueil</a></li>
+            <li><a href="/presentation" class="footer__link" aria-current="page">Présentation</a></li>
+            <li><a href="/domaines" class="footer__link">Domaines</a></li>
+            <li><a href="/honoraires" class="footer__link">Honoraires</a></li>
+            <li><a href="/faq" class="footer__link">FAQ</a></li>
+            <li><a href="/premier-rendez-vous" class="footer__link">Premier rendez-vous</a></li>
+            <li><a href="/aide-juridictionnelle" class="footer__link">Aide juridictionnelle</a></li>
+            <li><a href="/zone-intervention" class="footer__link">Zone d'intervention</a></li>
+            <li><a href="/glossaire-juridique" class="footer__link">Glossaire juridique</a></li>
+            <li><a href="/contact" class="footer__link">Contact</a></li>
+            <li><a href="/politique-confidentialite" class="footer__link">Politique de confidentialité</a></li>
+            <li><a href="/mentions-legales" class="footer__link">Mentions légales</a></li>
           </ul>
         </nav>
         <address class="footer__contact">
@@ -234,7 +271,8 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
+
 

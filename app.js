@@ -1,6 +1,6 @@
 ﻿/* =============================================================================
-   MAÃŽTRE MORGANE JOSEPH â€” app.js â€” astr.studio
-   Native scroll Â· RAF loop for cursor + parallax + massive text
+   MAITRE MORGANE JOSEPH - app.js - astr.studio
+   Native scroll - RAF loop for cursor + parallax + massive text
 ============================================================================= */
 
 'use strict';
@@ -53,7 +53,7 @@ function initLoader() {
 
 /* ---------------------------------------------------------------------------
    1. RAF MAIN LOOP
-   Handles: cursor ring lerp Â· parallax Â· massive text scaling
+   Handles: cursor ring lerp - parallax - massive text scaling
 --------------------------------------------------------------------------- */
 function startRAF() {
   if (prefersReduced) return;
@@ -483,7 +483,7 @@ function initDomaines() {
     const row     = trigger.closest('.domaine-row');
     if (!panel || !row) return;
 
-    /* Remove hidden attr â€” CSS handles collapse via max-height/opacity */
+    /* Remove hidden attr - CSS handles collapse via max-height/opacity */
     panel.removeAttribute('hidden');
 
     trigger.addEventListener('click', () => {
@@ -661,11 +661,11 @@ function initAnchors() {
 
 function redirectLegacySectionHash() {
   const redirects = {
-    '#presentation': 'presentation.html',
-    '#domaines': 'domaines.html',
-    '#honoraires': 'honoraires.html',
-    '#faq': 'faq.html',
-    '#contact': 'contact.html'
+    '#presentation': '/presentation',
+    '#domaines': '/domaines',
+    '#honoraires': '/honoraires',
+    '#faq': '/faq',
+    '#contact': '/contact'
   };
 
   if (!document.querySelector('.hero')) return false;
@@ -673,7 +673,7 @@ function redirectLegacySectionHash() {
   const nextPage = redirects[window.location.hash];
   if (!nextPage) return false;
 
-  window.location.replace(nextPage);
+  window.location.replace(new URL(nextPage, window.location.origin).toString());
   return true;
 }
 function initInitialHash() {
@@ -768,19 +768,19 @@ function initNavDropdown() {
     const assetPrefix = href.startsWith('../') ? '../assets/' : 'assets/';
     if (href.includes('droit-de-la-famille')) {
       return {
-        src: `${assetPrefix}domaine-famille-horizontal.webp`,
+        src: `${assetPrefix}avocat-droit-famille-montpellier-horizontal.webp`,
         pos: '72% 24%'
       };
     }
     if (href.includes('droit-civil')) {
       return {
-        src: `${assetPrefix}domaine-civil-horizontal.webp`,
+        src: `${assetPrefix}avocat-droit-civil-montpellier-horizontal.webp`,
         pos: '56% 20%'
       };
     }
     if (href.includes('contentieux-aah')) {
       return {
-        src: `${assetPrefix}domaine-aah-horizontal.webp`,
+        src: `${assetPrefix}avocat-contentieux-aah-montpellier-horizontal.webp`,
         pos: '57% 18%'
       };
     }
