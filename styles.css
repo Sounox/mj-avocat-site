@@ -1778,7 +1778,10 @@ select::-ms-expand { display: none; }
     pointer-events: none;
     position: fixed;
     top: var(--nav-h);
-    left: 0; right: 0; bottom: 0;
+    left: 0; right: 0;
+    /* height auto = adapts to content, not full screen */
+    height: auto;
+    max-height: calc(100dvh - var(--nav-h));
     z-index: 998;
     transition: opacity 160ms ease, visibility 0s linear 160ms;
   }
@@ -4066,11 +4069,19 @@ body::after {
     z-index: 1001;
   }
 
-  /* .nav.scrolled (desktop) adds backdrop-filter — override on mobile to keep
-     nav free of fixed containing blocks regardless of scroll state */
-  .nav.scrolled {
+  /* All nav states on mobile: no backdrop-filter (creates fixed containing block),
+     consistent height and background across homepage AND interior pages */
+  .nav.scrolled,
+  .page-interior .nav,
+  .page-interior .nav.scrolled {
+    height: var(--nav-h);
+    background: rgba(47, 26, 18, 0.96);
+    border-bottom: 1px solid rgba(221, 213, 200, 0.12);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+  }
+  .page-interior .nav__logo-img {
+    height: 44px;
   }
 
   .nav__links {
@@ -4161,7 +4172,10 @@ body::after {
   .nav__dropdown-trigger[aria-expanded="true"] + .nav__dropdown {
     max-height: 680px;
     pointer-events: auto;
-    padding: 0.15rem 0 0.3rem;
+    padding: 0.5rem 0 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .nav__dropdown-item {
