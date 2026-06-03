@@ -1758,9 +1758,10 @@ select::-ms-expand { display: none; }
   }
 
   .nav {
-    background: linear-gradient(to bottom, rgba(47,26,18,0.24), rgba(47,26,18,0));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(47, 26, 18, 0.96);
+    border-bottom: 1px solid rgba(221, 213, 200, 0.12);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
   }
 
   .nav__inner {
@@ -1788,26 +1789,24 @@ select::-ms-expand { display: none; }
     position: absolute;
     top: 50%;
     right: 0;
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     margin-left: 0;
     padding: 0;
     align-items: center;
     justify-content: center;
     transform: translateY(-50%);
-    border: 1.5px solid rgba(240,235,230,0.4);
+    border: 1.5px solid rgba(240,235,230,0.3);
     border-radius: var(--radius-pill);
-    background: rgba(47,26,18,0.38);
-    box-shadow: 0 10px 26px rgba(0,0,0,0.16);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(47,26,18,0.55);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
   }
   .nav__toggle-line {
-    width: 20px;
+    width: 18px;
     height: 1.5px;
     background: rgba(240,235,230,0.95);
   }
-  .nav__logo-img { height: 40px; }
+  .nav__logo-img { height: 44px; }
 
   .honoraires__cards       { grid-template-columns: 1fr; }
   .form__row               { grid-template-columns: 1fr; }
@@ -4062,16 +4061,21 @@ body::after {
   }
 
   .nav__links {
-    inset: 0;
+    /* Start exactly below the header bar, not from viewport top */
+    inset: unset;
+    top: var(--nav-h);
+    left: 0; right: 0; bottom: 0;
     justify-content: flex-start;
     align-items: stretch;
-    gap: 0.35rem;
+    gap: 0;
     padding:
-      calc(var(--nav-h) + 1rem)
-      clamp(1rem, 4vw, 1.2rem)
-      calc(1.35rem + env(safe-area-inset-bottom, 0px));
+      1rem
+      clamp(1rem, 5vw, 1.5rem)
+      calc(1.5rem + env(safe-area-inset-bottom, 0px));
     background:
-      linear-gradient(180deg, rgba(20,9,5,0.98) 0%, rgba(47,26,18,0.96) 48%, rgba(47,26,18,0.98) 100%);
+      radial-gradient(ellipse at 20% 0%, rgba(118,95,90,0.2) 0%, transparent 55%),
+      linear-gradient(180deg, rgba(20,9,5,0.99) 0%, rgba(47,26,18,0.98) 100%);
+    border-top: 1px solid rgba(221,213,200,0.1);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -4208,6 +4212,61 @@ body::after {
     padding: 0.85rem 0.15rem 0 0.15rem;
     border-top: 0;
     color: rgba(240,235,230,0.78);
+  }
+
+  /* Contact card — email overflow fix */
+  .contact-card__row {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+  .contact-card__row > span:not(.contact-card__row-meta) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    min-width: 0;
+  }
+
+  /* Domaine cards — show image + overlay on mobile (no hover needed) */
+  .domaine-card::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .domaine-card::after {
+    opacity: 1;
+  }
+  .domaine-card__title {
+    color: var(--ivory);
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-stroke: 0;
+    filter: none;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+  .domaine-card__title::before {
+    display: none;
+  }
+  .domaine-card__teaser {
+    color: rgba(240,235,230,0.9);
+  }
+
+  /* Related cards with images — show photo on mobile, text in ivory */
+  .related-card[data-fill]::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .related-card[data-fill]::after {
+    opacity: 1;
+  }
+  .related-card[data-fill] .related-card__num,
+  .related-card[data-fill] .related-card__title,
+  .related-card[data-fill] .related-card__name,
+  .related-card[data-fill] .related-card__teaser {
+    color: var(--ivory);
+  }
+  .related-card[data-fill] .related-card__teaser {
+    opacity: 0.88;
+  }
+  .related-card[data-fill] .related-card__arrow {
+    opacity: 0.8;
   }
 
   .hero__inner {
