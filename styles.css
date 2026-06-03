@@ -1815,7 +1815,7 @@ select::-ms-expand { display: none; }
     height: 1.5px;
     background: rgba(240,235,230,0.95);
   }
-  .nav__logo-img { height: 44px; }
+  .nav__logo-img { height: 54px; }
 
   .honoraires__cards       { grid-template-columns: 1fr; }
   .form__row               { grid-template-columns: 1fr; }
@@ -2303,7 +2303,7 @@ body::after {
 
 @media (max-width: 768px) {
   .page-interior .nav__logo-img {
-    height: 40px;
+    height: 54px;
   }
 }
 
@@ -4081,7 +4081,7 @@ body::after {
     -webkit-backdrop-filter: none;
   }
   .page-interior .nav__logo-img {
-    height: 44px;
+    height: 54px;
   }
 
   .nav__links {
