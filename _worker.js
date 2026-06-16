@@ -1,5 +1,10 @@
 const FILE_EXT_RE = /\.[a-z0-9]+$/i;
 
+const REDIRECTS_301 = {
+  '/domaines/contentieux-aah': '/domaines/contentieux-mdph',
+  '/domaines/contentieux-aah.html': '/domaines/contentieux-mdph',
+};
+
 function buildCandidates(pathname) {
   if (pathname === '/') return ['/index.html'];
   if (FILE_EXT_RE.test(pathname)) return [pathname];
@@ -33,6 +38,11 @@ export default {
     }
 
     const url = new URL(request.url);
+
+    const redirect301 = REDIRECTS_301[url.pathname];
+    if (redirect301) {
+      return Response.redirect(new URL(redirect301, url).toString(), 301);
+    }
 
     for (const candidate of buildCandidates(url.pathname)) {
       const response = await fetchAsset(env, request, candidate);

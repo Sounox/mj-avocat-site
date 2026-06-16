@@ -785,7 +785,7 @@ function initNavDropdown() {
         pos: '56% 20%'
       };
     }
-    if (href.includes('contentieux-aah')) {
+    if (href.includes('contentieux-mdph')) {
       return {
         src: `${assetPrefix}avocat-contentieux-aah-montpellier-horizontal.webp`,
         pos: '57% 18%'
