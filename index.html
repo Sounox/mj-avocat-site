@@ -195,8 +195,10 @@
 
         <div class="hero__bg-img parallax" data-speed="0.22" aria-hidden="true">
           <picture>
-            <source srcset="assets/cour-appel-montpellier-cabinet-avocat.webp" type="image/webp">
-            <img src="assets/cour-appel-montpellier-cabinet-avocat.jpg" alt="Façade de la Cour d'appel de Montpellier"
+            <source media="(max-width: 768px)" srcset="assets/cour-appel-montpellier-colonnes-hero-mobile.webp" type="image/webp">
+            <source media="(min-width: 769px)" srcset="assets/cour-appel-montpellier-colonnes-hero.webp" type="image/webp">
+            <source media="(min-width: 769px)" srcset="assets/cour-appel-montpellier-colonnes-hero.jpg" type="image/jpeg">
+            <img src="assets/cour-appel-montpellier-colonnes-hero-mobile.jpg" alt="Façade de la Cour d'appel de Montpellier"
                  class="hero__bg-photo"
                  loading="eager"
                  width="1920" height="1024"
