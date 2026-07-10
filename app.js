@@ -169,19 +169,6 @@ function clamp01(value) {
   return Math.max(0, Math.min(1, value));
 }
 
-function initManifestoObserver() {
-  const manifesto = document.querySelector('.manifesto');
-  if (!manifesto) return;
-  new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.25 }).observe(manifesto);
-}
-
 function initQuoteObserver() {
   const quote = document.querySelector('.quote-section');
   if (!quote) return;
@@ -919,7 +906,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initAccordions();
   initCardEffects();
   initCounters();
-  initManifestoObserver();
   initQuoteObserver();
   initContactCardObserver();
   initAnchors();
