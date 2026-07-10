@@ -359,6 +359,8 @@ p {
   border-radius: var(--radius-sm);
   cursor: none;
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
   transition:
     background var(--dur-fast) var(--ease-out-quart),
     color var(--dur-fast) var(--ease-out-quart),
@@ -367,12 +369,41 @@ p {
     box-shadow var(--dur-fast) var(--ease-out-quart);
 }
 
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 -72%;
+  width: 44%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.24) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: transform 700ms var(--ease-out-quart);
+  pointer-events: none;
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: translateX(360%) skewX(-20deg);
+}
+
 .btn--primary {
   background: var(--ivory);
   color: var(--espresso);
   border: 1px solid var(--ivory);
 }
 .btn--primary:hover { background: var(--sand); border-color: var(--sand); transform: scale(1.02); }
+.btn--primary::before {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(118,95,90,0.15) 50%,
+    transparent 100%
+  );
+}
 
 .btn--outline {
   background: transparent;
@@ -483,8 +514,25 @@ select::-ms-expand { display: none; }
   border-color: var(--espresso);
 }
 .section-light .btn--primary:hover { background: rgba(47,26,18,0.82); border-color: rgba(47,26,18,0.82); }
+.section-light .btn--primary::before {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255,255,255,0.24) 50%,
+    transparent 100%
+  );
+}
 .section-light .btn--outline       { color: var(--espresso); border-color: rgba(47,26,18,0.3); }
 .section-light .btn--outline:hover { background: rgba(47,26,18,0.06); border-color: rgba(47,26,18,0.55); }
+.section-light .btn--outline::before,
+.section-light .btn--ghost::before {
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(118,95,90,0.15) 50%,
+    transparent 100%
+  );
+}
 
 /* Accordion on light */
 .section-light .accordion__item       { border-top-color: rgba(47,26,18,0.14); }
@@ -1980,6 +2028,7 @@ select::-ms-expand { display: none; }
   .hero__marquee  { display: none !important; }
   .site-loader    { display: none !important; }
   .citation-line  { transform: scaleX(1) !important; }
+  .btn::before    { display: none !important; }
 }
 
 /* ---------------------------------------------------------------------------
