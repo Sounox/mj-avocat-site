@@ -643,6 +643,34 @@ select::-ms-expand { display: none; }
 .ornament-corner--bl { bottom: 1.5rem; left: 1.5rem;  }
 .ornament-corner--br { bottom: 1.5rem; right: 1.5rem; }
 
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: clamp(1.6rem, 3vw, 2.4rem) clamp(1rem, 4vw, 2rem);
+}
+
+.section-divider__line {
+  flex: 1;
+  max-width: 110px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(118,95,90,0.42), transparent);
+}
+
+.section-divider__ornament {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(118,95,90,0.72);
+}
+
+.section-divider--sand {
+  background: linear-gradient(180deg, var(--sand) 0%, #d4c8bb 100%);
+}
+
 /* ---------------------------------------------------------------------------
    15. IMAGE PLACEHOLDER SHIMMER
 --------------------------------------------------------------------------- */
@@ -1719,6 +1747,19 @@ select::-ms-expand { display: none; }
   background: rgba(22,10,5,0.82);
 }
 
+.page-home .footer {
+  background: linear-gradient(180deg, rgba(20,10,6,0.96) 0%, rgba(14,7,4,0.99) 100%);
+  border-top-color: rgba(221,213,200,0.08);
+}
+
+.page-home .footer__bg-photo {
+  opacity: 0.12;
+}
+
+.page-home .footer__bg-overlay {
+  background: rgba(14,7,4,0.88);
+}
+
 .footer__inner {
   position: relative;
   z-index: 1;
@@ -2709,6 +2750,25 @@ body::after {
   margin-top: clamp(1.75rem, 4vw, 3rem);
 }
 
+.page-home {
+  background: #140a06;
+}
+
+.section-gradient-wrapper {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    #2f1a12 0%,
+    #29160f 34%,
+    #211109 72%,
+    #140a06 100%
+  );
+}
+
+.section-gradient-wrapper > section {
+  background: transparent !important;
+}
+
 .quote-section {
   background: var(--ivory);
   color: var(--espresso);
@@ -2780,6 +2840,15 @@ body::after {
   transform: translateY(0);
 }
 
+.page-home .section-gradient-wrapper .quote-section {
+  color: var(--ivory);
+}
+
+.page-home .section-gradient-wrapper .quote-section__mark,
+.page-home .section-gradient-wrapper .quote-section__author {
+  color: rgba(221,213,200,0.68);
+}
+
 .home-approach {
   background: var(--sand);
 }
@@ -2791,6 +2860,14 @@ body::after {
 
 .home-approach .eyebrow {
   color: rgba(118,95,90,0.78);
+}
+
+.page-home .section-gradient-wrapper .home-approach .section__header h2 {
+  color: var(--ivory);
+}
+
+.page-home .section-gradient-wrapper .home-approach .eyebrow {
+  color: rgba(221,213,200,0.72);
 }
 
 .approach-grid {
@@ -2810,6 +2887,12 @@ body::after {
   border: 1px solid rgba(47,26,18,0.1);
   box-shadow: 0 4px 12px rgba(47,26,18,0.05), 0 18px 48px rgba(47,26,18,0.1);
   overflow: hidden;
+}
+
+.page-home .section-gradient-wrapper .approach-card {
+  background: rgba(240,235,230,0.08);
+  border-color: rgba(221,213,200,0.12);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18), 0 24px 56px rgba(0,0,0,0.16);
 }
 
 .approach-card__roman {
@@ -2834,11 +2917,19 @@ body::after {
   color: var(--espresso);
 }
 
+.page-home .section-gradient-wrapper .approach-card h3 {
+  color: var(--ivory);
+}
+
 .approach-card p {
   position: relative;
   z-index: 1;
   max-width: 24ch;
   color: rgba(47,26,18,0.8);
+}
+
+.page-home .section-gradient-wrapper .approach-card p {
+  color: rgba(240,235,230,0.8);
 }
 
 .home-approach__links {
@@ -2868,6 +2959,11 @@ body::after {
   justify-content: center;
 }
 
+.page-home .section-gradient-wrapper .contact-card {
+  padding-top: clamp(2.2rem, 4vw, 3rem);
+  background: transparent;
+}
+
 .contact-card__inner {
   background: linear-gradient(180deg, rgba(240,235,230,1) 0%, rgba(221,213,200,0.4) 100%);
   border: 1px solid rgba(118,95,90,0.15);
@@ -2881,6 +2977,11 @@ body::after {
   transform: translateY(30px);
   transition: opacity 900ms var(--ease-out-expo), transform 900ms var(--ease-out-expo),
               box-shadow 500ms var(--ease-out-quart);
+}
+
+.page-home .section-gradient-wrapper .contact-card__inner {
+  background: linear-gradient(180deg, rgba(240,235,230,0.96) 0%, rgba(221,213,200,0.78) 100%);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.18), 0 24px 70px rgba(0,0,0,0.12);
 }
 
 .contact-card.is-visible .contact-card__inner {
