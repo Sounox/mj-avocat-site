@@ -440,6 +440,21 @@ p {
 }
 .section__header .eyebrow { margin-bottom: 1rem; }
 
+/* Editorial long-form copy */
+.presentation__body > p,
+.honoraires__text > p,
+.domaine-page .domaine-overview__panel > p:not(.eyebrow),
+.domaine-page .domaine-section > p:not(.eyebrow),
+.domaine-page .domaine-topic-plain > p:not(.eyebrow) {
+  text-align: justify;
+  text-align-last: left;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  hyphenate-limit-chars: 6 3 3;
+}
+
 /* ---------------------------------------------------------------------------
    11. SECTION LIGHT / DARK
 --------------------------------------------------------------------------- */
@@ -1833,6 +1848,18 @@ select::-ms-expand { display: none; }
     --nav-h-s: 56px;
     --container-pad: clamp(1rem, 4vw, 1.25rem);
     --section-gap: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .presentation__body > p,
+  .honoraires__text > p,
+  .domaine-page .domaine-overview__panel > p:not(.eyebrow),
+  .domaine-page .domaine-section > p:not(.eyebrow),
+  .domaine-page .domaine-topic-plain > p:not(.eyebrow) {
+    text-align: left;
+    text-align-last: left;
+    -webkit-hyphens: manual;
+    -ms-hyphens: manual;
+    hyphens: manual;
   }
 
   .nav {
