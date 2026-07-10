@@ -3286,6 +3286,10 @@ body::after {
   background: var(--ivory);
   color: var(--espresso);
 }
+
+.domaine-page main {
+  padding-bottom: 6.25rem;
+}
 /* Light overrides for domaine content area */
 .domaine-page .domaine-overview__panel,
 .domaine-page .domaine-faq-section,
@@ -3580,6 +3584,41 @@ body::after {
 .domaine-related-section { padding: clamp(1.2rem, 3vw, 2rem) 0 0; border-top: none; }
 .domaine-related-section h2 { margin-bottom: 1.5rem; font-size: var(--fs-h4); font-weight: 600; }
 .related-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; }
+.sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 3vw, 2rem);
+  background: rgba(47,26,18,0.94);
+  border-top: 1px solid rgba(240,235,230,0.1);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  transform: translateY(100%);
+  transition: transform 500ms var(--ease-out-quart);
+}
+.sticky-cta.is-visible { transform: translateY(0); }
+.sticky-cta__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+.sticky-cta__label {
+  color: var(--ivory);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.sticky-cta__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 .related-card {
   display: grid; grid-template-columns: 2rem 1fr;
   align-items: center; gap: 0.8rem; padding: 1rem 1.2rem;
@@ -3618,6 +3657,26 @@ body::after {
   .domaine-topic-pair { grid-template-columns: 1fr; }
   .domaine-topic-plain.has-image { grid-template-columns: 1fr; }
   .domaine-topic-plain__illu { aspect-ratio: 3 / 2; order: -1; }
+}
+
+@media (max-width: 640px) {
+  .domaine-page main {
+    padding-bottom: 5.35rem;
+  }
+
+  .sticky-cta__label {
+    display: none;
+  }
+
+  .sticky-cta__inner {
+    justify-content: center;
+  }
+
+  .sticky-cta__btn {
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {

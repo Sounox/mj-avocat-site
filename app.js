@@ -574,6 +574,25 @@ function initAccordions() {
   });
 }
 
+function initStickyCta() {
+  const cta = document.querySelector('.sticky-cta');
+  if (!cta) return;
+
+  let threshold = window.innerHeight * 0.5;
+
+  const sync = () => {
+    cta.classList.toggle('is-visible', window.scrollY > threshold);
+  };
+
+  window.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', () => {
+    threshold = window.innerHeight * 0.5;
+    sync();
+  });
+
+  sync();
+}
+
 function closeAccordionSiblings(accordion, currentItem) {
   accordion.querySelectorAll('.accordion__item.open').forEach(item => {
     if (item !== currentItem) closeAccordion(item);
@@ -908,6 +927,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initQuoteObserver();
   initContactCardObserver();
+  initStickyCta();
   initAnchors();
   initInitialHash();
   initForm();
