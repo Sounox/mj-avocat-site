@@ -3019,6 +3019,18 @@ body::after {
   line-height: 1.6;
 }
 
+.contact-card__helper {
+  max-width: 48ch;
+  margin: -1rem auto clamp(2rem, 3vw, 2.25rem);
+  color: rgba(118,95,90,0.88);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.contact-card__helper a {
+  color: var(--espresso);
+}
+
 .contact-card__detail {
   display: grid;
   gap: 1rem;
