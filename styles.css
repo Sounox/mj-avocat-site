@@ -1,4 +1,4 @@
-﻿/* =============================================================================
+/* =============================================================================
    MAITRE MORGANE JOSEPH - styles.css - astr.studio
 ============================================================================= */
 
@@ -4821,4 +4821,285 @@ label[for],
 .cursor-dot,
 .cursor-ring {
   display: none !important;
+}
+
+/* ---------------------------------------------------------------------------
+   51. MOBILE AUDIT FIXES - JULY 2026
+--------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  #presentation.section-first,
+  #contact.section-first {
+    padding-top: calc(var(--nav-h) + 0.75rem);
+  }
+
+  #presentation .section__header,
+  #contact .section__header {
+    max-width: 100%;
+    margin-bottom: clamp(1.15rem, 4vw, 1.65rem);
+  }
+
+  #presentation .section__header h1,
+  #contact .section__header h1 {
+    font-size: clamp(2.2rem, 9.8vw, 3rem);
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  #presentation .section__header h1 {
+    max-width: 12ch;
+  }
+
+  #contact .section__header h1 {
+    max-width: 12.5ch;
+  }
+
+  #contact .contact__intro {
+    max-width: 24ch;
+    margin-bottom: clamp(1.25rem, 5vw, 1.65rem);
+    font-size: 0.98rem;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  .domaines-hub-page .section__header {
+    margin-bottom: 0.2rem !important;
+  }
+
+  .domaines-hub-page .lede {
+    margin-top: 0.1rem;
+    line-height: 1.5;
+  }
+
+  .hub-card {
+    gap: 0.8rem;
+    min-height: auto;
+    padding: 1.25rem 1.1rem 1.15rem;
+  }
+
+  .hub-card::after {
+    background: linear-gradient(180deg, rgba(24,12,7,0.18) 0%, rgba(24,12,7,0.74) 42%, rgba(24,12,7,0.94) 100%);
+  }
+
+  .hub-card__title {
+    font-size: clamp(1.8rem, 7.8vw, 2.25rem);
+    line-height: 0.96;
+    text-shadow: 0 1px 10px rgba(0,0,0,0.22);
+  }
+
+  .hub-card__teaser {
+    font-size: 0.91rem;
+    line-height: 1.55;
+    max-width: 28ch;
+  }
+
+  .hub-card__items {
+    gap: 0.45rem;
+  }
+
+  .hub-card__items li {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+
+  .hub-card__items li:nth-child(n + 3) {
+    display: none;
+  }
+
+  .hub-card__link {
+    margin-top: 0.15rem;
+  }
+
+  .domaine-page-hero h1 {
+    max-width: 13.8ch;
+  }
+
+  .domaine-page .domaine-overview__panel p,
+  .domaine-page .domaine-topic-card p,
+  .domaine-page .domaine-topic-plain p,
+  .domaine-page .domaine-faq-section .accordion__content p {
+    font-size: 0.96rem;
+    line-height: 1.68;
+  }
+
+  .domaine-page .accordion__label {
+    line-height: 1.42;
+  }
+}
+
+@media (max-width: 430px) {
+  #presentation .section__header h1,
+  #contact .section__header h1,
+  .domaine-page-hero h1 {
+    font-size: clamp(2rem, 10.4vw, 2.7rem);
+  }
+
+  #presentation .section__header h1 {
+    max-width: 11.5ch;
+  }
+
+  #contact .section__header h1 {
+    max-width: 11.8ch;
+  }
+
+  .hub-card__teaser {
+    max-width: none;
+  }
+}
+/* ---------------------------------------------------------------------------
+   52. REMOVE ROMAN NUMERALS
+--------------------------------------------------------------------------- */
+.section--numbered::after,
+.domaine-topic-card::after {
+  content: none !important;
+  display: none !important;
+}
+
+.approach-card__roman,
+.domaine-card__num,
+.hub-card__num,
+.related-card__num {
+  display: none !important;
+}
+
+.related-card {
+  grid-template-columns: 1fr auto !important;
+}
+
+@media (max-width: 768px) {
+  .related-card {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* ---------------------------------------------------------------------------
+   53. FOOTER MENUS + HOMEPAGE BALANCE
+--------------------------------------------------------------------------- */
+.page-home {
+  background: var(--ivory);
+}
+
+.page-home .section-gradient-wrapper {
+  background: transparent;
+}
+
+.page-home .section-gradient-wrapper > #apercu-domaines {
+  background: var(--espresso) !important;
+}
+
+.page-home .section-gradient-wrapper > #citation {
+  background: var(--ivory) !important;
+  color: var(--espresso);
+}
+
+.page-home .section-gradient-wrapper > #citation .quote-section__mark,
+.page-home .section-gradient-wrapper > #citation .quote-section__author {
+  color: var(--taupe);
+}
+
+.page-home .section-gradient-wrapper > #approche {
+  background: var(--sand) !important;
+}
+
+.page-home .section-gradient-wrapper > #approche .section__header h2 {
+  color: var(--espresso);
+}
+
+.page-home .section-gradient-wrapper > #approche .eyebrow {
+  color: rgba(118,95,90,0.78);
+}
+
+.page-home .section-gradient-wrapper > #approche .approach-card {
+  background: rgba(255,255,255,0.58);
+  border-color: rgba(47,26,18,0.1);
+  box-shadow: 0 4px 12px rgba(47,26,18,0.05), 0 18px 48px rgba(47,26,18,0.1);
+}
+
+.page-home .section-gradient-wrapper > #approche .approach-card h3 {
+  color: var(--espresso);
+}
+
+.page-home .section-gradient-wrapper > #approche .approach-card p {
+  color: rgba(47,26,18,0.8);
+}
+
+.page-home .section-gradient-wrapper > #prise-rendez-vous {
+  background: linear-gradient(180deg, var(--ivory) 0%, #ebe4da 100%) !important;
+  padding-top: clamp(3rem, 6vw, 4.25rem);
+}
+
+.page-home .section-gradient-wrapper > #prise-rendez-vous .contact-card__inner {
+  background: linear-gradient(180deg, rgba(240,235,230,1) 0%, rgba(221,213,200,0.55) 100%);
+  box-shadow: 0 1px 2px rgba(47,26,18,0.04), 0 12px 40px rgba(47,26,18,0.08);
+}
+
+.home-domaines .domaine-card__title::before {
+  content: none;
+}
+
+.footer__menus {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 0.78fr);
+  gap: 1rem clamp(1.25rem, 2.8vw, 2.2rem);
+  padding-top: 0.2rem;
+}
+
+.footer__menu {
+  min-width: 0;
+}
+
+.footer__menu-title {
+  margin: 0 0 0.8rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(221,213,200,0.42);
+}
+
+.footer__menu-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.footer__menu-list .footer__link {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.footer__menu--legal {
+  justify-self: end;
+}
+
+@media (max-width: 1024px) {
+  .footer__menus {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer__menu--legal {
+    justify-self: start;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__menus {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .footer__menu {
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(118,95,90,0.12);
+  }
+
+  .footer__menu:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .home-domaines .domaine-card__title::before {
+    content: none;
+  }
 }
